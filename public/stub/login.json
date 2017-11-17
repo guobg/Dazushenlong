@@ -1,0 +1,16 @@
+{
+  "statusCode": "200",
+  "responseCode": "000",
+  "responseMsg": "SUCCESS",
+  "responseBody": {
+    "uuId": 4,
+    "staffId": "E4",
+    "account": "Bob",
+    "name": "郭宝刚",
+    "avatar": "http://img1.imgtn.bdimg.com/it/u=3834578341,1318817857&fm=214&gp=0.jpg",
+    "deptId": "D3",
+    "positionId": 3,
+    "gender": "M",
+    "status": "active"
+  }
+}

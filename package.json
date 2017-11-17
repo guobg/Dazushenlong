@@ -1,0 +1,38 @@
+{
+  "name": "dazushenlong",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "antd": "^2.13.9",
+    "babel-polyfill": "^6.26.0",
+    "classlist-polyfill": "^1.2.0",
+    "echarts": "^3.7.1",
+    "history": "^4.7.2",
+    "jquery": "^3.2.1",
+    "js-cookie": "^2.2.0",
+    "lodash": "^4.17.4",
+    "moment": "^2.19.1",
+    "prop-types": "^15.6.0",
+    "react": "^16.1.1",
+    "react-dnd": "^2.5.3",
+    "react-dnd-html5-backend": "^2.5.3",
+    "react-dom": "^16.1.1",
+    "react-intl": "^2.4.0",
+    "react-redux": "^5.0.6",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.0.17",
+    "react-slick": "^0.15.4",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
+    "semantic-ui-css": "^2.2.12",
+    "semantic-ui-react": "^0.76.0",
+    "url-search-params-polyfill": "^2.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

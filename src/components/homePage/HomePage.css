@@ -1,0 +1,161 @@
+.sider-menu {
+    margin-bottom: 48px;
+}
+
+.main-content {
+    margin-left: 200px;
+}
+
+.main-content-collapsed {
+    margin-left: 64px;
+}
+
+.create-position-button {
+    font-size: 2em !important;
+}
+
+i.icon.remove-position-button {
+    margin-left: 1em;
+    margin-top: 20px;
+    font-size: 2em;
+}
+
+.model-display-text {
+    padding: 8px 0;
+}
+
+.iteration-value-text {
+    height: 2em;
+    vertical-align: middle;
+    line-height: 2em;
+    border: 1px solid #1b1c1d;
+    text-align: center;
+}
+
+.iteration-item.iteration-display {
+    margin-top: 0;
+}
+
+.model-detail-display .ant-tree li .ant-tree-node-content-wrapper {
+    margin-top: 6px;
+}
+
+.model-creator-avatar.ui.avatar.image {
+    height: 60px;
+    width: 60px;
+    margin-right: 1em;
+}
+
+.model-creator-name {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.model-creator-company {
+    color: #999a9b;
+}
+
+.sort-text {
+    font-size: 2.5em;
+}
+
+.sort-color-1 {
+    color: #f5d93e;
+}
+
+.sort-color-2 {
+    color: #d9dbee;
+}
+
+.sort-color-3 {
+    color: #ef9f45;
+}
+
+.sort-color-other {
+    color: #8a8a8a;
+}
+
+.ant-layout {
+    background-color: #f8f8f8;
+}
+
+.ui.image.menu-icon {
+    height: 20px;
+    width: 20px;
+}
+
+.ant-menu-item,
+.sub-menu-title {
+    display: flex;
+    align-items: center;
+}
+
+.work-content {
+    padding: 20px;
+}
+
+.first-header {
+    font-size: 18px;
+    font-weight: normal;
+    border: none;
+    color: #333333;
+    padding-bottom: 20px;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+}
+
+.ui.modal > .header,
+.ui.large.modal > .header,
+.ui.modal > .header:not(.ui),
+.project-header {
+    font-size: 18px;
+    display: flex;
+    line-height: 1;
+    align-items: center;
+    font-weight: normal;
+    padding: 20px;
+    border: none;
+    color: #333333;
+}
+
+.ui.modal > .content {
+    padding: 0 20px;
+}
+
+.ui.modal > .content > .description {
+    padding: 14px 20px;
+    background: rgba(113, 129, 173, 0.7);
+    border: 1px solid rgb(113, 129, 173);
+}
+
+.model-container {
+    padding: 0 20px 20px 20px;
+}
+
+.model-second-header {
+    margin: 20px 0 10px;
+    font-size: 14px;
+    color: #666666;
+}
+
+.ui.modal > .actions {
+    background-color: #ffffff;
+}
+
+.modal-description {
+    font-size: 14px;
+    padding: 14px 20px;
+    background: rgba(113, 129, 173, 0.7);
+    border: 1px solid rgb(113, 129, 173);
+}
+
+.modal-header {
+    display: flex;
+    line-height: 1;
+    align-items: center;
+}
+
+.table-action-cell {
+    display: flex;
+}
