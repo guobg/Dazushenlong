@@ -1,0 +1,56 @@
+{
+  "statusCode": "200",
+  "responseCode": "000",
+  "responseMsg": "请求成功",
+  "responseBody": {
+    "schedules": [
+      {
+        "scheduleId": "Y0001",
+        "name": "Frank",
+        "phone": "12345678910",
+        "scheduleTime": "2017-11-18 21:50",
+        "remark": "提前十分钟提醒",
+        "status": "active",
+        "memberLevel": "1"
+      },
+      {
+        "scheduleId": "Y0002",
+        "name": "Bob",
+        "phone": "12345678910",
+        "scheduleTime": "2017-11-18 21:50",
+        "remark": "提前十分钟提醒",
+        "status": "active",
+        "memberLevel": "1"
+      },
+      {
+        "scheduleId": "Y0003",
+        "name": "Darcy",
+        "phone": "12345678910",
+        "scheduleTime": "2017-11-18 21:50",
+        "remark": "提前十分钟提醒",
+        "status": "active",
+        "memberLevel": "1"
+      },
+      {
+        "scheduleId": "Y0004",
+        "name": "Jack",
+        "phone": "12345678910",
+        "scheduleTime": "2017-11-18 21:50",
+        "remark": "提前十分钟提醒",
+        "status": "active",
+        "memberLevel": "1"
+      },
+      {
+        "scheduleId": "Y0005",
+        "name": "Todd",
+        "phone": "12345678910",
+        "scheduleTime": "2017-11-18 21:50",
+        "remark": "提前十分钟提醒",
+        "status": "active",
+        "memberLevel": "1"
+      }
+    ],
+    "totalNumber": 11,
+    "remarks": null
+  }
+}

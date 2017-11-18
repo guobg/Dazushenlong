@@ -672,10 +672,7 @@ img.ui.image.mv-image {
 }
 
 .select-top-position > .ui.active.selection.dropdown {
-    border-top-left-radius: 0 !important;
-    border-top-right-radius: 0 !important;
-    border-bottom-right-radius: 4px !important;
-    border-bottom-left-radius: 4px !important;
+    border-radius: 0 0 4px 4px !important;
 }
 
 .ui.selection.dropdown .menu {
@@ -688,4 +685,8 @@ img.ui.image.mv-image {
     border-bottom-width: 0 !important;
     border-top-width: 1px !important;
     box-shadow: 0 -2px 3px 0 rgba(34, 36, 38, .15) !important;
+}
+
+.ant-calendar-picker {
+    width: auto !important;
 }

@@ -74,6 +74,19 @@ const zh_CN = {
     "Open Store": "办理门店",
     "Member": "会员",
     "Member Level": "会员级别",
-    "Balance": "余额"
+    "Balance": "余额",
+    editMember: "修改会员信息",
+    memberType: "会员类型",
+    membershipCard: "会员卡类型管理",
+    "Membership Card ID": "会员卡编号",
+    "Membership Card Name": "会员卡类型",
+    "Discount": "折扣",
+    createMemberCard: "新增会员卡类型",
+    schedule: "预定",
+    "Schedule Time": "预定时间",
+    "Remark": "备注",
+    resume: "恢复",
+    createSchedule: "新增预定",
+    editSchedule: "修改预定"
 };
 export default zh_CN;

@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {Button, Modal} from 'semantic-ui-react';
 import {FormattedMessage} from 'react-intl';
-import EditMemberInfo from './EditMemberInfo';
-import {updateMember} from '../../actions/member_action';
+import ScheduleInfo from './ScheduleInfo';
+import {updateSchedule} from '../../actions/schedule_action';
 
-class EditMember extends Component {
-    state = {modalOpen: false, memberInfo: {}};
+class EditSchedule extends Component {
+    state = {modalOpen: false, scheduleInfo: {}};
 
     componentWillUpdate() {
         this.fixBody();
@@ -20,22 +20,22 @@ class EditMember extends Component {
         if (anotherModal > 0) document.body.classList.add('scrolling', 'dimmable', 'dimmed');
     };
 
-    openModal = (member) => {
+    openModal = (schedule) => {
         this.setState({
             modalOpen: true,
-            memberInfo: member
+            scheduleInfo: schedule
         })
     };
 
     closeModal = () => this.setState({modalOpen: false});
 
-    updateMemberInfo = () => {
-        let memberInfo = this.memberInfoNode.getInfo();
-        this.props.dispatch(updateMember(memberInfo, this.closeModal));
+    updateScheduleInfo = () => {
+        let scheduleInfo = this.scheduleInfoNode.getInfo();
+        this.props.dispatch(updateSchedule(scheduleInfo, this.closeModal));
     };
 
     render() {
-        const {modalOpen, memberInfo} = this.state;
+        const {modalOpen, scheduleInfo} = this.state;
         return (
             <div>
                 <Modal
@@ -44,14 +44,14 @@ class EditMember extends Component {
                     open={modalOpen}>
                     <Modal.Header>
                         <FormattedMessage
-                            id='editMember'
-                            defaultMessage='Edit Member'
+                            id='editSchedule'
+                            defaultMessage='Edit Schedule'
                         />
                     </Modal.Header>
                     <Modal.Content>
-                        <EditMemberInfo
-                            info={memberInfo}
-                            ref={node => this.memberInfoNode = node}/>
+                        <ScheduleInfo
+                            info={scheduleInfo}
+                            ref={node => this.scheduleInfoNode = node}/>
                     </Modal.Content>
                     <Modal.Actions>
                         <Button className="cancel-button" onClick={() => this.closeModal()}>
@@ -60,7 +60,7 @@ class EditMember extends Component {
                                 defaultMessage='Cancel'
                             />
                         </Button>
-                        <Button className="confirm-button" onClick={() => this.updateMemberInfo()}>
+                        <Button className="confirm-button" onClick={() => this.updateScheduleInfo()}>
                             <FormattedMessage
                                 id='confirm'
                                 defaultMessage='Confirm'
@@ -73,4 +73,4 @@ class EditMember extends Component {
     }
 }
 
-export default EditMember;
+export default EditSchedule;

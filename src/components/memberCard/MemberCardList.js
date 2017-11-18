@@ -1,37 +1,35 @@
 import React, {Component} from 'react';
-import {Table} from 'semantic-ui-react';
+import {Table, Button} from 'semantic-ui-react';
 import {Pagination} from 'antd';
 import {getDesc, isEmpty} from '../../util/CommUtil';
 import {FormattedMessage} from 'react-intl';
-import {getMemberList} from '../../actions/member_action';
-import {genderOptions} from '../../res/data/dataOptions';
-import EditMember from './EditMember';
+import {deleteMemberCard, getMemberCardList} from '../../actions/memberCard_action';
+import EditMemberCard from './EditMemberCard';
 
-const header = ["ID", "Member Level", "Name", "Phone", "Birthday", "Points", "Balance", "Recharge Record", "Consumption Record", "Stagnation Status", "Open Store"];
-const checklistKey = ["memberId", "memberLevel", "name", "phone", "birthday", "points", "balance", "rechargeRecord", "consumptionRecord", "stagnationStatus", "openStore"];
+const header = ["Membership Card ID", "Membership Card Name", "Discount", "Action"];
+const checklistKey = ["memberCardId", "memberCardName", "discount"];
 
-class MemberList extends Component {
+class MemberCardList extends Component {
     componentDidMount() {
-        this.props.dispatch(getMemberList(1, 10));
+        this.props.dispatch(getMemberCardList(1, 10));
     };
 
     pageChange(page, pageSize) {
-        this.props.dispatch(getMemberList(page, pageSize));
+        this.props.dispatch(getMemberCardList(page, pageSize));
     }
 
-    editMember = (member) => {
-        this.editMemberNode.openModal(member)
+    remove = (result) => {
+        this.props.dispatch(deleteMemberCard(result))
+    };
+
+    edit = (memberCard) => {
+        this.editMemberCardNode.openModal(memberCard)
     };
 
     getListDesc = (result, key) => {
-        if (key === "memberId") {
-            return <div className="link" onClick={() => this.editMember(result)}>
-                {result[key]}
-            </div>;
-        }
-
-        if (key === "gender" && !isEmpty(result[key])) {
-            return getDesc(genderOptions, result[key]);
+        if (key === "discount") {
+            if (!result[key]) return 'N/A';
+            return result[key] + "%";
         }
 
         if (isEmpty(result[key])) {
@@ -41,7 +39,7 @@ class MemberList extends Component {
     };
 
     render() {
-        const {member, dispatch} = this.props;
+        const {memberCard, dispatch} = this.props;
         return (
             <div>
                 <Table striped>
@@ -57,11 +55,12 @@ class MemberList extends Component {
                                 })
                             }
                         </Table.Row>
+
                     </Table.Header>
 
                     <Table.Body>
                         {
-                            member.members.map((result, i) => {
+                            memberCard.memberCards.map((result, i) => {
                                 return <Table.Row key={i}>
                                     {
                                         checklistKey.map((key, j) => {
@@ -71,24 +70,39 @@ class MemberList extends Component {
                                             </Table.Cell>
                                         })
                                     }
+                                    <Table.Cell className="table-action-cell">
+                                        <Button primary onClick={() => this.edit(result)}>
+                                            <FormattedMessage
+                                                id='edit'
+                                                defaultMessage='Edit'
+                                            />
+                                        </Button>
+                                        <Button color='red' onClick={() => this.remove(result)}>
+                                            <FormattedMessage
+                                                id='delete'
+                                                defaultMessage='Delete'
+                                            />
+                                        </Button>
+                                    </Table.Cell>
                                 </Table.Row>
+
                             })
                         }
                     </Table.Body>
                     <Table.Footer>
                         <Table.Row>
                             <Table.HeaderCell colSpan={header.length}>
-                                <Pagination defaultCurrent={1} total={member.totalElements}
+                                <Pagination defaultCurrent={1} total={memberCard.totalElements}
                                             showQuickJumper
                                             onChange={(page, pageSize) => this.pageChange(page, pageSize)}/>
                             </Table.HeaderCell>
                         </Table.Row>
                     </Table.Footer>
                 </Table>
-                <EditMember ref={node => this.editMemberNode = node} dispatch={dispatch}/>
+                <EditMemberCard ref={node => this.editMemberCardNode = node} dispatch={dispatch}/>
             </div>
         );
     }
 }
 
-export default MemberList;
+export default MemberCardList;

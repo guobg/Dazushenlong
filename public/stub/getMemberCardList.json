@@ -1,0 +1,36 @@
+{
+  "statusCode": "200",
+  "responseCode": "000",
+  "responseMsg": "请求成功",
+  "responseBody": {
+    "memberCards": [
+      {
+        "memberCardId": "00001",
+        "memberCardName": "普通会员卡",
+        "discount": 0
+      },
+      {
+        "memberCardId": "00002",
+        "memberCardName": "银卡会员卡",
+        "discount": 10
+      },
+      {
+        "memberCardId": "00003",
+        "memberCardName": "金卡会员卡",
+        "discount": 20
+      },
+      {
+        "memberCardId": "00004",
+        "memberCardName": "白金卡会员卡",
+        "discount": 25
+      },
+      {
+        "memberCardId": "00005",
+        "memberCardName": "钻石卡会员卡",
+        "discount": 30
+      }
+    ],
+    "totalNumber": 15,
+    "remarks": null
+  }
+}

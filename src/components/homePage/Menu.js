@@ -23,6 +23,14 @@ const keyPathMapping = [
     {
         "key": '3',
         "path": '/home/Member'
+    },
+    {
+        "key": '4',
+        "path": '/home/MemberCard'
+    },
+    {
+        "key": '5',
+        "path": '/home/Schedule'
     }
 ];
 
@@ -58,7 +66,26 @@ class HomeMenu extends Component {
                         />
                     </span>
                 </Menu.Item>
-
+                <Menu.Item key="4">
+                    <Link to="/home/MemberCard"/>
+                    <Icon type="pie-chart"/>
+                    <span>
+                        <FormattedMessage
+                            id='membershipCard'
+                            defaultMessage='Membership Card'
+                        />
+                    </span>
+                </Menu.Item>
+                <Menu.Item key="5">
+                    <Link to="/home/Schedule"/>
+                    <Icon type="pie-chart"/>
+                    <span>
+                        <FormattedMessage
+                            id='schedule'
+                            defaultMessage='Schedule'
+                        />
+                    </span>
+                </Menu.Item>
                 <SubMenu
                     key="sub1"
                     title={<span><Icon type="user"/><span>

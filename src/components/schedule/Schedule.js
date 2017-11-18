@@ -1,28 +1,28 @@
 import React, {Component} from 'react';
-import MemberList from './MemberList';
-import CreateMember from './CreateMember';
+import ScheduleList from './ScheduleList';
+import CreateSchedule from './CreateSchedule';
 import Image from '../common/Image';
 
 import {FormattedMessage} from 'react-intl';
 
-class Member extends Component {
+class Schedule extends Component {
 
     render() {
-        const {dispatch, member} = this.props;
+        const {dispatch, schedule} = this.props;
         return (
             <div className="work-content">
                 <div className="first-header">
                     <Image name="project"/>
                     <FormattedMessage
-                        id='member'
-                        defaultMessage='Member'
+                        id='schedule'
+                        defaultMessage='Schedule'
                     />
                 </div>
-                <MemberList dispatch={dispatch} member={member}/>
-                <CreateMember dispatch={dispatch}/>
+                <ScheduleList dispatch={dispatch} schedule={schedule}/>
+                <CreateSchedule dispatch={dispatch}/>
             </div>
         );
     }
 }
 
-export default Member;
+export default Schedule;

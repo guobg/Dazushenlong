@@ -66,8 +66,8 @@ class MVDatePicker extends Component {
     };
 
     render() {
-        const {label, required, checked, range, defaultValue} = this.props;
-        const dateFormat = 'YYYY/MM/DD';
+        const {label, required, checked, range, showTime, defaultValue} = this.props;
+        const dateFormat = showTime ? 'YYYY-MM-DD HH:mm' : 'YYYY/MM/DD';
         return (
             <div className="components-item item-horizontal align-right">
                 <div className='field-title'>
@@ -80,10 +80,14 @@ class MVDatePicker extends Component {
                 <div className="input-content">
                     {
                         range ? <RangePicker
+                            format={dateFormat}
                             onChange={this.dateChange}
+                            showTime={showTime}
                             className={required && (checked || this.state.selfChecked) && this.state.isEmpty ? "components-error" : ""}
                             defaultValue={(defaultValue && defaultValue[0] && defaultValue[1]) ? [moment(defaultValue[0], dateFormat), moment(defaultValue[1], dateFormat)] : null}
                         /> : <DatePicker
+                            format={dateFormat}
+                            showTime={showTime}
                             className={required && (checked || this.state.selfChecked) && this.state.isEmpty ? "components-error" : ""}
                             onChange={this.dateChange}
                             defaultValue={defaultValue ? moment(defaultValue, dateFormat) : null}/>
@@ -98,7 +102,8 @@ MVDatePicker.propTypes = {
     label: PropTypes.string,
     required: PropTypes.bool,
     checked: PropTypes.bool,
-    range: PropTypes.bool
+    range: PropTypes.bool,
+    showTime: PropTypes.bool
 };
 
 export default MVDatePicker;

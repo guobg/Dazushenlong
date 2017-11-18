@@ -14,7 +14,7 @@ function member(state = {
         case UPDATE_MEMBER:
             let temp2 = {...state};
             temp2.members.some((member) => {
-                if (member.staffId === action.member.staffId) {
+                if (member.memberId === action.member.memberId) {
                     Object.assign(member, action.member);
                     return true;
                 }

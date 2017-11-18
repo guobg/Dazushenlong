@@ -7,15 +7,31 @@ if (isProduction) {
         login: gateWay + '8080/login',
         retrieveStaff: gateWay + '8080/rtrvStaffList',
         getMemberList: gateWay + '8080/getMemberList',
-        createMember: gateWay + '8080/createMember'
+        createMember: gateWay + '8080/createMember',
+        updateMember: gateWay + '8080/updateMember',
+        getMemberCardList: gateWay + '8080/getMemberCardList',
+        createMemberCard: gateWay + '8080/createMemberCard',
+        updateMemberCard: gateWay + '8080/updateMemberCard',
+        deleteMemberCard: gateWay + '8080/deleteMemberCard',
+        getScheduleList: gateWay + '8080/getScheduleList',
+        createSchedule: gateWay + '8080/createSchedule',
+        updateSchedule: gateWay + '8080/updateSchedule'
     };
 } else {
     const gateWay = "http://192.168.0.107:";
     url = {
-        login: gateWay + 'login',
+        login: gateWay + '8080/login',
         retrieveStaff: gateWay + '8080/rtrvStaffList',
         getMemberList: gateWay + '8080/getMemberList',
-        createMember: gateWay + '8080/createMember'
+        createMember: gateWay + '8080/createMember',
+        updateMember: gateWay + '8080/updateMember',
+        getMemberCardList: gateWay + '8080/getMemberCardList',
+        createMemberCard: gateWay + '8080/createMemberCard',
+        updateMemberCard: gateWay + '8080/updateMemberCard',
+        deleteMemberCard: gateWay + '8080/deleteMemberCard',
+        getScheduleList: gateWay + '8080/getScheduleList',
+        createSchedule: gateWay + '8080/createSchedule',
+        updateSchedule: gateWay + '8080/updateSchedule'
     };
 }
 

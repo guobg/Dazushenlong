@@ -77,6 +77,19 @@ const en_US = {
     "Open Store": "Open Store",
     "Member": "Member",
     "Member Level": "Member Level",
-    "Balance": "Balance"
+    "Balance": "Balance",
+    editMember: "Edit Member",
+    memberType: "Member Type",
+    membershipCard: "Membership Card",
+    "Membership Card ID": "Membership Card ID",
+    "Membership Card Name": "Membership Card Name",
+    "Discount": "Discount",
+    createMemberCard: "Create Membership Card",
+    schedule: "Schedule",
+    "Schedule Time": "Schedule Time",
+    "Remark": "Remark",
+    resume: "Resume",
+    createSchedule: "Create Schedule",
+    editSchedule: "Edit Schedule"
 };
 export default en_US;

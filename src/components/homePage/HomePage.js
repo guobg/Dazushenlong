@@ -4,6 +4,8 @@ import Employee from '../../containers/employee_container';
 import Department from '../../containers/department_container';
 import CommonHeader from '../../containers/header_container';
 import Member from '../../containers/member_container';
+import MemberCard from '../../containers/memberCard_container';
+import Schedule from '../../containers/schedule_container';
 
 import {Layout, BackTop} from 'antd';
 import {
@@ -20,6 +22,14 @@ const routes = [
         path: '/home/Member',
         exact: true,
         main: Member
+    },
+    {
+        path: '/home/MemberCard',
+        main: MemberCard
+    },
+    {
+        path: '/home/Schedule',
+        main: Schedule
     },
     {
         path: '/home/Employee',

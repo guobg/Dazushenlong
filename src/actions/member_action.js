@@ -83,10 +83,10 @@ function updatedMember(member) {
 export function updateMember(member, callback) {
     return dispatch => {
         StaticLoad.show("updateMember");
-        post(url.updateMemberDetail, member)
+        post(url.updateMember, member)
             .then((res) => {
                 StaticLoad.remove("updateMember");
-                dispatch(updatedMember(res.responseBody.staffInfo));
+                dispatch(updatedMember(member));
                 callback();
             })
             .catch((error) => {

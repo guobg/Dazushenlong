@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {Button, Modal} from 'semantic-ui-react';
 import {FormattedMessage} from 'react-intl';
-import EditMemberInfo from './EditMemberInfo';
-import {updateMember} from '../../actions/member_action';
+import MemberCardInfo from './MemberCardInfo';
+import {updateMemberCard} from '../../actions/memberCard_action';
 
-class EditMember extends Component {
-    state = {modalOpen: false, memberInfo: {}};
+class EditMemberCard extends Component {
+    state = {modalOpen: false, memberCardInfo: {}};
 
     componentWillUpdate() {
         this.fixBody();
@@ -20,22 +20,22 @@ class EditMember extends Component {
         if (anotherModal > 0) document.body.classList.add('scrolling', 'dimmable', 'dimmed');
     };
 
-    openModal = (member) => {
+    openModal = (memberCard) => {
         this.setState({
             modalOpen: true,
-            memberInfo: member
+            memberCardInfo: memberCard
         })
     };
 
     closeModal = () => this.setState({modalOpen: false});
 
-    updateMemberInfo = () => {
-        let memberInfo = this.memberInfoNode.getInfo();
-        this.props.dispatch(updateMember(memberInfo, this.closeModal));
+    updateMemberCardInfo = () => {
+        let memberCardInfo = this.memberCardInfoNode.getInfo();
+        this.props.dispatch(updateMemberCard(memberCardInfo, this.closeModal));
     };
 
     render() {
-        const {modalOpen, memberInfo} = this.state;
+        const {modalOpen, memberCardInfo} = this.state;
         return (
             <div>
                 <Modal
@@ -44,14 +44,14 @@ class EditMember extends Component {
                     open={modalOpen}>
                     <Modal.Header>
                         <FormattedMessage
-                            id='editMember'
-                            defaultMessage='Edit Member'
+                            id='editMemberCard'
+                            defaultMessage='Edit MemberCard'
                         />
                     </Modal.Header>
                     <Modal.Content>
-                        <EditMemberInfo
-                            info={memberInfo}
-                            ref={node => this.memberInfoNode = node}/>
+                        <MemberCardInfo
+                            info={memberCardInfo}
+                            ref={node => this.memberCardInfoNode = node}/>
                     </Modal.Content>
                     <Modal.Actions>
                         <Button className="cancel-button" onClick={() => this.closeModal()}>
@@ -60,7 +60,7 @@ class EditMember extends Component {
                                 defaultMessage='Cancel'
                             />
                         </Button>
-                        <Button className="confirm-button" onClick={() => this.updateMemberInfo()}>
+                        <Button className="confirm-button" onClick={() => this.updateMemberCardInfo()}>
                             <FormattedMessage
                                 id='confirm'
                                 defaultMessage='Confirm'
@@ -73,4 +73,4 @@ class EditMember extends Component {
     }
 }
 
-export default EditMember;
+export default EditMemberCard;
