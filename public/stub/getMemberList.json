@@ -1,0 +1,63 @@
+{
+  "statusCode": "200",
+  "responseCode": "000",
+  "responseMsg": "请求成功",
+  "responseBody": {
+    "members": [
+      {
+        "memberId": "H00001",
+        "memberLevel": "1",
+        "name": "Frank",
+        "phone": "12345678910",
+        "birthday": "1990-07-01",
+        "points": 4800,
+        "balance": 500,
+        "rechargeRecord": 26,
+        "consumptionRecord": 30,
+        "stagnationStatus": 2,
+        "openStore": "陕西省西安市雁塔区XXXX门店"
+      },
+      {
+        "memberId": "H00002",
+        "memberLevel": "2",
+        "name": "Bob",
+        "phone": "12345678910",
+        "birthday": "1990-07-01",
+        "points": 4800,
+        "balance": 500,
+        "rechargeRecord": 26,
+        "consumptionRecord": 30,
+        "stagnationStatus": 2,
+        "openStore": "陕西省西安市雁塔区XXXX门店"
+      },
+      {
+        "memberId": "H00003",
+        "memberLevel": "5",
+        "name": "Darcy",
+        "phone": "12345678910",
+        "birthday": "1990-07-01",
+        "points": 4800,
+        "balance": 500,
+        "rechargeRecord": 26,
+        "consumptionRecord": 30,
+        "stagnationStatus": 2,
+        "openStore": "陕西省西安市雁塔区XXXX门店"
+      },
+      {
+        "memberId": "H00004",
+        "memberLevel": "1",
+        "name": "吴海涛",
+        "phone": "12345678910",
+        "birthday": "1990-07-01",
+        "points": 4800,
+        "balance": 500,
+        "rechargeRecord": 26,
+        "consumptionRecord": 30,
+        "stagnationStatus": 2,
+        "openStore": "陕西省西安市雁塔区XXXX门店"
+      }
+    ],
+    "totalNumber": 25,
+    "remarks": null
+  }
+}

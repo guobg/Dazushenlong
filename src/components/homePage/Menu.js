@@ -19,10 +19,14 @@ const keyPathMapping = [
         "key": '2',
         "path": '/home/Department',
         "hostKey": "sub1"
+    },
+    {
+        "key": '3',
+        "path": '/home/Member'
     }
 ];
 
-let defaultKey = '1', hostKey;
+let defaultKey = '3', hostKey;
 
 class HomeMenu extends Component {
 
@@ -44,6 +48,16 @@ class HomeMenu extends Component {
             <Menu theme="dark" defaultSelectedKeys={[defaultKey]}
                   defaultOpenKeys={[hostKey]}
                   mode="inline">
+                <Menu.Item key="3">
+                    <Link to="/home/Member"/>
+                    <Icon type="pie-chart"/>
+                    <span>
+                        <FormattedMessage
+                            id='Member'
+                            defaultMessage='Member'
+                        />
+                    </span>
+                </Menu.Item>
 
                 <SubMenu
                     key="sub1"

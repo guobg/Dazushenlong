@@ -62,8 +62,21 @@ const en_US = {
     "Address": "Address",
     "Emergency Contact Name": "Emergency Contact Name",
     "Emergency Contact Phone": "Emergency Contact Phone",
-    basicInfo:"Basic Info",
+    basicInfo: "Basic Info",
     postInfo: "Post Info",
-    Range: "Range"
+    Range: "Range",
+    member: "Member",
+    createMember: "Create Member",
+    Name: "Name",
+    "Recharge Package": "Recharge Package",
+    "ID": "ID",
+    "Points": "Points",
+    "Recharge Record": "Recharge Record",
+    "Consumption Record": "Consumption Record",
+    "Stagnation Status": "Stagnation Status",
+    "Open Store": "Open Store",
+    "Member": "Member",
+    "Member Level": "Member Level",
+    "Balance": "Balance"
 };
 export default en_US;

@@ -3,6 +3,7 @@ import Menu from './Menu';
 import Employee from '../../containers/employee_container';
 import Department from '../../containers/department_container';
 import CommonHeader from '../../containers/header_container';
+import Member from '../../containers/member_container';
 
 import {Layout, BackTop} from 'antd';
 import {
@@ -16,8 +17,12 @@ const {Header, Content, Sider} = Layout;
 
 const routes = [
     {
-        path: '/home/Employee',
+        path: '/home/Member',
         exact: true,
+        main: Member
+    },
+    {
+        path: '/home/Employee',
         main: Employee
     },
     {
@@ -72,7 +77,7 @@ class HomePage extends Component {
                         <BackTop/>
                         <Switch>
                             <Route exact path="/home" render={() => (
-                                <Redirect to="/home/Employee"/>
+                                <Redirect to="/home/Member"/>
                             )}/>
                             {routes.map((route, index) => (
                                 // Render more <Route>s with the same paths as

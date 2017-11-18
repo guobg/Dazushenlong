@@ -680,6 +680,7 @@ img.ui.image.mv-image {
 
 .ui.selection.dropdown .menu {
     border-radius: 0 0 4px 4px;
+    max-height: 224px !important;
 }
 
 .select-top-position > .ui.selection.dropdown .menu {

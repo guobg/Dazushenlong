@@ -1,0 +1,87 @@
+{
+  "statusCode": "200",
+  "responseCode": "000",
+  "responseMsg": "请求成功",
+  "responseBody": {
+    "staffs": [
+      {
+        "uuId": 2,
+        "staffId": "E2",
+        "account": "Frank",
+        "name": "吴海涛",
+        "avatar": "http://192.168.0.254:8080/mdvn-file-papi/776c0a6b-8975-48e6-b561-b75ad5626434114482528123381.JPG",
+        "gender": "M",
+        "creatorId": "E1",
+        "phone": "12345678910",
+        "status": "active",
+        "address": "陕西省西安市雁塔区唐延路35号",
+        "birthday": "1990-01-01",
+        "emergencyName": "李XX",
+        "emergencyPhone": "10987654321"
+      },
+      {
+        "uuId": 3,
+        "staffId": "E3",
+        "account": "Darcy",
+        "name": "姚启晨",
+        "avatar": "http://192.168.0.254:8080/mdvn-file-papi/8d39e77c-10f8-4a3a-ad0e-ff5b326f2671114842724943480.jpg",
+        "gender": "M",
+        "creatorId": "E1",
+        "phone": "12345678910",
+        "status": "active",
+        "address": "陕西省西安市雁塔区唐延路35号",
+        "birthday": "1990-01-01",
+        "emergencyName": "李XX",
+        "emergencyPhone": "10987654321"
+      },
+      {
+        "uuId": 4,
+        "staffId": "E4",
+        "account": "Bob",
+        "name": "郭宝刚",
+        "avatar": "http://192.168.0.254:8080/mdvn-file-papi/86401de3-2350-4fd1-a45b-e5c869dc447e114864202603439.jpg",
+        "gender": "M",
+        "creatorId": "E1",
+        "phone": "12345678910",
+        "status": "active",
+        "address": "陕西省西安市雁塔区唐延路35号",
+        "birthday": "1990-01-01",
+        "emergencyName": "李XX",
+        "emergencyPhone": "10987654321"
+      },
+      {
+        "uuId": 5,
+        "staffId": "E5",
+        "account": "Migan",
+        "name": "王明刚",
+        "avatar": "http://192.168.0.254:8080/mdvn-file-papi/85252bf5-74c7-4f4a-99d9-bd2e6b3e25d7114329110864896.jpg \r\n",
+        "gender": "M",
+        "creatorId": "E1",
+        "phone": "12345678910",
+        "status": "active",
+        "address": "陕西省西安市雁塔区唐延路35号",
+        "birthday": "1990-01-01",
+        "emergencyName": "李XX",
+        "emergencyPhone": "10987654321"
+      },
+      {
+        "uuId": 6,
+        "staffId": "E6",
+        "account": "Wangjw",
+        "name": "王佳雯",
+        "avatar": "http://192.168.0.254:8080/mdvn-file-papi/85252bf5-74c7-4f4a-99d9-bd2e6b3e25d7114329110864896.jpg \r\n",
+        "deptId": "D2",
+        "gender": "F",
+        "creatorId": "E1",
+        "phone": "12345678910",
+        "status": "active",
+        "address": "陕西省西安市雁塔区唐延路35号",
+        "birthday": "1990-01-01",
+        "emergencyName": "李XX",
+        "emergencyPhone": "10987654321"
+      }
+    ],
+    "totalNumber": 5,
+    "remarks": null
+  }
+}

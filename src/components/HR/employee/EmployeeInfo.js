@@ -81,7 +81,7 @@ class EmployeeInfo extends Component {
                            defaultValue={info.name}
                            readOnly={isEdit}
                     />
-                    <Select options={contingencyOptions} label="Gender"
+                    <Select options={genderOptions} label="Gender"
                             ref={node => this.genderNode = node}
                             defaultValue={info.gender}
                     />

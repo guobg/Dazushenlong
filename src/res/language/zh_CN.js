@@ -59,8 +59,21 @@ const zh_CN = {
     "Address": "居住地址",
     "Emergency Contact Name": "紧急联系人姓名",
     "Emergency Contact Phone": "经济联系人电话",
-    basicInfo:"基本信息",
+    basicInfo: "基本信息",
     postInfo: "岗位信息",
-    Range: "班次"
+    Range: "班次",
+    member: "会员",
+    createMember: "新增会员",
+    Name: "姓名",
+    "Recharge Package": "充值套餐",
+    "ID": "ID",
+    "Points": "积分",
+    "Recharge Record": "充值记录",
+    "Consumption Record": "消费记录",
+    "Stagnation Status": "呆滞状态",
+    "Open Store": "办理门店",
+    "Member": "会员",
+    "Member Level": "会员级别",
+    "Balance": "余额"
 };
 export default zh_CN;

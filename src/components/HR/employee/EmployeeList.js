@@ -19,21 +19,13 @@ class EmployeeList extends Component {
         this.props.dispatch(getEmployeeList(page, pageSize));
     }
 
-    getChecklistDesc = (result, key) => {
+    getListDesc = (result, key) => {
         if (key === "gender" && !isEmpty(result[key])) {
             return getDesc(genderOptions, result[key]);
         }
 
         if (key === 'status' && !isEmpty(result[key])) {
             return getDesc(staffStatusOptions, result[key]);
-        }
-
-        if (key === 'deptId' && !isEmpty(result[key])) {
-            return getDesc(this.props.department, result[key]) || 'N/A';
-        }
-
-        if (key === 'positionId' && !isEmpty(result.deptId) && !isEmpty(result[key])) {
-            return this.getPositionDesc(result.deptId, result[key]);
         }
 
         if (isEmpty(result[key])) {
@@ -94,7 +86,7 @@ class EmployeeList extends Component {
                                         checklistKey.map((key, j) => {
                                             return <Table.Cell
                                                 key={i + "_" + j}>
-                                                {this.getChecklistDesc(result, key)}
+                                                {this.getListDesc(result, key)}
                                             </Table.Cell>
                                         })
                                     }

@@ -10,11 +10,11 @@ class Employee extends Component {
     state = {department: []};
 
     componentWillMount() {
-        getAllDepartment((department) => {
+        /*getAllDepartment((department) => {
             this.setState({
                 department: department
             })
-        })
+        })*/
     }
 
     render() {

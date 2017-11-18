@@ -97,21 +97,22 @@ class MVSelect extends Component {
     };
 
     getPositionFlag = (options) => {
-        if (!options || options.length === 0) return false;
+        const optionPanel = $(".menu", $(this.dropDownNode.ref));
+        if (!optionPanel[0]) return false;
+        if (!options || options.length === 0) {
+            optionPanel[0].style.top = '100%';
+            return false;
+        }
         const optionCont = options.length > 6 ? 6 : options.length;
         const optionsHeight = 37 * optionCont;
         const dropDownPosition = this.dropDownNode.ref.getBoundingClientRect();
-        const hostPanel = $(".ui.active.modal");
-        if (!hostPanel[0]) return false;
+        const hostPanel = $("body");
         const hostPanelPosition = hostPanel[0].getBoundingClientRect();
-        if (dropDownPosition.bottom + optionsHeight > hostPanelPosition.bottom) {
-            const optionPanel = $(".menu", $(this.dropDownNode.ref));
-            if (optionPanel[0]) {
-                optionPanel[0].style.top = -optionsHeight - 2 + "px";
-                return true;
-            }
-            return false;
+        if (dropDownPosition.bottom + optionsHeight > hostPanelPosition.height) {
+            optionPanel[0].style.top = -optionsHeight - 1 + "px";
+            return true;
         }
+        optionPanel[0].style.top = '100%';
         return false;
     };
 
