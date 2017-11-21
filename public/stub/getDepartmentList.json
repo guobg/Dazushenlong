@@ -1,0 +1,112 @@
+{
+  "statusCode": "200",
+  "responseCode": "000",
+  "responseMsg": "SUCCESS",
+  "responseBody": {
+    "totalPage": 1,
+    "departmentList": [
+      {
+        "uuId": 1,
+        "id": "D1",
+        "name": "产品部",
+        "isDeleted": 0,
+        "createTime": 1509595355000,
+        "positions": [
+          {
+            "departmentId": "D1",
+            "id": 8,
+            "name": "Product Manager",
+            "isDeleted": 0
+          },
+          {
+            "departmentId": "D1",
+            "id": 9,
+            "name": "Software Tester",
+            "isDeleted": 0
+          }
+        ]
+      },
+      {
+        "uuId": 2,
+        "id": "D2",
+        "name": "设计部",
+        "isDeleted": 0,
+        "createTime": 1509595365000,
+        "positions": [
+          {
+            "departmentId": "D2",
+            "id": 7,
+            "name": "UX Designer",
+            "isDeleted": 0
+          }
+        ]
+      },
+      {
+        "uuId": 3,
+        "id": "D3",
+        "name": "研发部",
+        "isDeleted": 0,
+        "createTime": 1509595438000,
+        "positions": [
+          {
+            "departmentId": "D3",
+            "id": 1,
+            "name": "Beck-End Developer（Php）",
+            "isDeleted": 0
+          },
+          {
+            "departmentId": "D3",
+            "id": 2,
+            "name": "Beck-End Developer（Java）",
+            "isDeleted": 0
+          },
+          {
+            "departmentId": "D3",
+            "id": 3,
+            "name": "Project Manager",
+            "isDeleted": 0
+          },
+          {
+            "departmentId": "D3",
+            "id": 4,
+            "name": "Architect",
+            "isDeleted": 0
+          },
+          {
+            "departmentId": "D3",
+            "id": 5,
+            "name": "Front-End Developer（Web App）",
+            "isDeleted": 0
+          },
+          {
+            "departmentId": "D3",
+            "id": 6,
+            "name": "Front-End Developer（Mobile App）",
+            "isDeleted": 0
+          }
+        ]
+      },
+      {
+        "uuId": 4,
+        "id": "D4",
+        "name": "品控部",
+        "isDeleted": 0,
+        "createTime": 1511229457000,
+        "positions": [
+          {
+            "departmentId": "D4",
+            "id": 10,
+            "name": "白盒测试员",
+            "isDeleted": 0
+          },
+          {
+            "departmentId": "D4",
+            "id": 11,
+            "name": "黑盒测试员",
+            "isDeleted": 0
+          }
+        ]
+      }
+    ]
+  }
+}

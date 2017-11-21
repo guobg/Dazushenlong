@@ -23,14 +23,15 @@ class Employee extends Component {
         return (
             <div className="work-content">
                 <div className="first-header">
-                    <Image name="project"/>
+                    <Image name="employee"/>
                     <FormattedMessage
                         id='employeeTitle'
                         defaultMessage='Employee'
                     />
                 </div>
-                <EmployeeList dispatch={dispatch} employee={employee} department={department}/>
                 <CreateEmployee dispatch={dispatch} department={department}/>
+                <EmployeeList dispatch={dispatch} employee={employee} department={department}/>
+
             </div>
         );
     }

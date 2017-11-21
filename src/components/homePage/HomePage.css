@@ -119,6 +119,10 @@ i.icon.remove-position-button {
     color: #333333;
 }
 
+.modal-title-border {
+    border-bottom: 1px solid rgba(34, 36, 38, .15) !important;
+}
+
 .ui.modal > .content {
     padding: 0 20px;
 }
@@ -158,4 +162,41 @@ i.icon.remove-position-button {
 
 .table-action-cell {
     display: flex;
+    justify-content: center;
+}
+
+.add-department-content {
+    display: flex;
+}
+
+.add-department-content > .full-width {
+    padding: 0;
+    margin: 0;
+    flex: 1;
+}
+
+.table-action-edit {
+    font-size: 12px;
+    color: #577ca6;
+    cursor: pointer;
+}
+
+.table-action-delete {
+    font-size: 12px;
+    color: #c35f57;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.create-button.ui.button {
+    background-color: #577ca6;
+    border: 2px solid #3d5f91;
+    color: #fffefe;
+    position: absolute;
+    right: 0;
+    top: -50px;
+}
+
+.model-main-container {
+    position: relative;
 }

@@ -43,41 +43,56 @@ class DepartmentInfo extends Component {
         const {positions} = this.state;
         return (
             <Modal.Content>
-                <Input label="Department Name"
-                       ref={node => this.nameNode = node}
-                       defaultValue={info.name}
-                />
-                <Divider/>
-                {
-                    positions.map((item, i) => {
-                        return <div key={i} style={{display: 'flex'}}>
-                            <Input
-                                label="Position Name"
-                                onChange={(value) => {
-                                    item.name = value;
-                                    this.setState({
-                                        positions: positions
-                                    })
-                                }}
-                                value={item.name}
-                                style={{flex: 1}}
-                            />
-                            {positions.length > 1 ? <Icon name="trash"
-                                                          className={"remove-position-button pointer-cursor"}
-                                                          onClick={() => this.removePosition(item)}
-                            /> : null}
-                        </div>
-                    })
-                }
-                <Divider/>
-                <Button className="create-position-button" compact basic
-                        onClick={() => this.createPosition()}>
-                    <Icon name="plus circle"/>
-                    <FormattedMessage
-                        id='createPosition'
-                        defaultMessage='Create Position'
+                <div className="model-container">
+                    <Input label="Department Name"
+                           ref={node => this.nameNode = node}
+                           defaultValue={info.name}
                     />
-                </Button>
+                    <div className="components-item item-horizontal align-right">
+                        <div className="field-title">
+                            <FormattedMessage
+                                id='Position'
+                                defaultMessage='Position'
+                            />
+                        </div>
+                        <div className="input-content">
+                            <Button className="confirm-button "
+                                    onClick={() => this.createPosition()}>
+                                <FormattedMessage
+                                    id='createPosition'
+                                    defaultMessage='Create Position'
+                                />
+                            </Button>
+                        </div>
+                    </div>
+                    {
+                        positions.map((item, i) => {
+                            return <div key={i} className="components-item item-horizontal align-right">
+                                <div className="input-content add-department-content">
+                                    <Input
+                                        onChange={(value) => {
+                                            item.name = value;
+                                            this.setState({
+                                                positions: positions
+                                            })
+                                        }}
+                                        value={item.name}
+                                        fullWidth={true}
+                                    />
+                                    {positions.length > 1 ?
+                                        <Button className="delete-button"
+                                                onClick={() => this.removePosition(item)}>
+                                            <FormattedMessage
+                                                id='delete'
+                                                defaultMessage='Delete'
+                                            />
+                                        </Button>
+                                        : null}
+                                </div>
+                            </div>
+                        })
+                    }
+                </div>
             </Modal.Content>
         );
     }

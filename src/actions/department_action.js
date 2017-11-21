@@ -22,7 +22,7 @@ function retrievedDepartmentList(departments) {
 
 export function getDepartmentList(page, pageSize) {
     return dispatch => {
-        post(url.rtrvDepartmentList, {
+        post(url.getDepartmentList, {
             page: page,
             pageSize: pageSize
         })
@@ -48,7 +48,7 @@ export function createDepartment(department, callback) {
         post(url.createDepartment, department)
             .then((res) => {
                 StaticLoad.remove("createDepartment");
-                dispatch(createdDepartment(res.responseBody));
+                dispatch(createdDepartment(department));
                 callback();
             })
             .catch((error) => {
@@ -69,7 +69,7 @@ export function updateDepartment(department, callback) {
         post(url.updateDepartment, department)
             .then((res) => {
                 StaticLoad.remove("updateDepartment");
-                dispatch(updatedDepartment(res.responseBody));
+                dispatch(updatedDepartment(department));
                 callback();
             })
             .catch((error) => {

@@ -20,9 +20,11 @@ class DepartmentList extends Component {
 
     getChecklistDesc = (result, key) => {
         if (key === "positions" && result[key] && result[key].length > 0) {
-            return result[key].map((item) => {
-                return item.name + "/ ";
+            let tempStr = "";
+            result[key].map((item) => {
+                tempStr += item.name + "/ ";
             });
+            return tempStr.substr(0, tempStr.length - 2);
         }
 
         if (isEmpty(result[key])) {
@@ -43,12 +45,12 @@ class DepartmentList extends Component {
         const {department, dispatch} = this.props;
         return (
             <div>
-                <Table striped>
+                <Table textAlign="center">
                     <Table.Header>
                         <Table.Row>
                             {
                                 header.map((result, i) => {
-                                    return <Table.HeaderCell className="checklist-table-cell-length" key={i}>
+                                    return <Table.HeaderCell key={i}>
                                         {result ? <FormattedMessage
                                             id={result}
                                         /> : ""}
@@ -70,19 +72,19 @@ class DepartmentList extends Component {
                                             </Table.Cell>
                                         })
                                     }
-                                    <Table.Cell className="checklist-action-cell">
-                                        <Button primary size="small" onClick={() => this.edit(result)}>
+                                    <Table.Cell className="table-action-cell">
+                                        <div className="table-action-edit" onClick={() => this.edit(result)}>
                                             <FormattedMessage
                                                 id='edit'
                                                 defaultMessage='Edit'
                                             />
-                                        </Button>
-                                        <Button color='red' size="small" onClick={() => this.remove(result)}>
+                                        </div>
+                                        <div className="table-action-delete" onClick={() => this.remove(result)}>
                                             <FormattedMessage
                                                 id='delete'
                                                 defaultMessage='Delete'
                                             />
-                                        </Button>
+                                        </div>
                                     </Table.Cell>
                                 </Table.Row>
                             })
@@ -92,7 +94,6 @@ class DepartmentList extends Component {
                         <Table.Row>
                             <Table.HeaderCell colSpan={header.length}>
                                 <Pagination defaultCurrent={1} total={department.totalElements}
-                                            showQuickJumper
                                             onChange={(page, pageSize) => this.pageChange(page, pageSize)}/>
                             </Table.HeaderCell>
                         </Table.Row>

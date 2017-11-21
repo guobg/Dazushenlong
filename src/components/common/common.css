@@ -79,6 +79,7 @@
 
 .align-right {
     justify-content: flex-end;
+    padding-right: 10%;
 }
 
 /*.ui.selection.dropdown {
@@ -426,7 +427,7 @@ img.ui.image.logon-back-image {
 .input-content.ui.form,
 .input-content.ui.selection.dropdown,
 .input-content.ui.input {
-    width: 70%;
+    width: 80%;
 }
 
 .full-width.ui.selection.dropdown,
@@ -590,6 +591,11 @@ img.ui.image.mv-image {
 .ui.button {
     padding: 10px 14px;
     font-size: 14px;
+}
+
+.ui.table {
+    margin: 0;
+    border-radius: 0;
 }
 
 .ui.table tbody .discussion-row td {

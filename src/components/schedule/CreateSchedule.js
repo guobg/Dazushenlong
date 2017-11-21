@@ -32,7 +32,7 @@ class CreateSchedule extends Component {
                         closeOnRootNodeClick={false}
                         open={modalOpen}
                         size='large'>
-                        <Modal.Header>
+                        <Modal.Header className="modal-title-border">
                             <FormattedMessage
                                 id='createSchedule'
                                 defaultMessage='Create Schedule'

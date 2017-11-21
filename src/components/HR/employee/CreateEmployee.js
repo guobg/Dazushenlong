@@ -20,42 +20,40 @@ class CreateEmployee extends Component {
         const {department} = this.props;
         const {modalOpen} = this.state;
         return (
-            <div className="project-content">
-                <div>
-                    <Button color='blue' onClick={() => this.openModal()}>
+            <div className="model-main-container">
+                <Button className="create-button" onClick={() => this.openModal()}>
+                    + <FormattedMessage
+                    id='createEmployee'
+                    defaultMessage='Create Employee'
+                />
+                </Button>
+                <Modal
+                    closeOnEscape={false}
+                    closeOnRootNodeClick={false}
+                    open={modalOpen}
+                    size='large'>
+                    <Modal.Header>
                         <FormattedMessage
                             id='createEmployee'
                             defaultMessage='Create Employee'
                         />
-                    </Button>
-                    <Modal
-                        closeOnEscape={false}
-                        closeOnRootNodeClick={false}
-                        open={modalOpen}
-                        size='large'>
-                        <Modal.Header>
+                    </Modal.Header>
+                    <EmployeeInfo ref={(node) => this.employeeInfoNode = node} department={department}/>
+                    <Modal.Actions>
+                        <Button className="cancel-button" onClick={() => this.closeModal()}>
                             <FormattedMessage
-                                id='createEmployee'
-                                defaultMessage='Create Employee'
+                                id='cancel'
+                                defaultMessage='Cancel'
                             />
-                        </Modal.Header>
-                        <EmployeeInfo ref={(node) => this.employeeInfoNode = node} department={department}/>
-                        <Modal.Actions>
-                            <Button className="cancel-button" onClick={() => this.closeModal()}>
-                                <FormattedMessage
-                                    id='cancel'
-                                    defaultMessage='Cancel'
-                                />
-                            </Button>
-                            <Button className="confirm-button" onClick={() => this.newEmployee()}>
-                                <FormattedMessage
-                                    id='confirm'
-                                    defaultMessage='Confirm'
-                                />
-                            </Button>
-                        </Modal.Actions>
-                    </Modal>
-                </div>
+                        </Button>
+                        <Button className="confirm-button" onClick={() => this.newEmployee()}>
+                            <FormattedMessage
+                                id='confirm'
+                                defaultMessage='Confirm'
+                            />
+                        </Button>
+                    </Modal.Actions>
+                </Modal>
             </div>
         );
     }

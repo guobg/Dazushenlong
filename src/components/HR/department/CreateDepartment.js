@@ -3,6 +3,7 @@ import {Modal, Button} from 'semantic-ui-react';
 import DepartmentInfo from './DepartmentInfo';
 import {FormattedMessage} from 'react-intl';
 import {createDepartment} from '../../../actions/department_action';
+import MVImage from "../../common/Image";
 
 class CreateDepartment extends Component {
     state = {modalOpen: false};
@@ -19,42 +20,41 @@ class CreateDepartment extends Component {
     render() {
         const {modalOpen} = this.state;
         return (
-            <div className="project-content">
-                <div>
-                    <Button color='blue' onClick={() => this.openModal()}>
+            <div className="model-main-container">
+                <Button className="create-button" onClick={() => this.openModal()}>
+                    + <FormattedMessage
+                    id='createDepartment'
+                    defaultMessage='Create Department'
+                />
+                </Button>
+                <Modal
+                    closeOnEscape={false}
+                    closeOnRootNodeClick={false}
+                    open={modalOpen}
+                    size='large'>
+                    <Modal.Header className="modal-title-border">
+                        <MVImage name="project"/>
                         <FormattedMessage
                             id='createDepartment'
                             defaultMessage='Create Department'
                         />
-                    </Button>
-                    <Modal
-                        closeOnEscape={false}
-                        closeOnRootNodeClick={false}
-                        open={modalOpen}
-                        size='large'>
-                        <Modal.Header>
+                    </Modal.Header>
+                    <DepartmentInfo ref={(node) => this.departmentInfoNode = node}/>
+                    <Modal.Actions>
+                        <Button className="cancel-button" onClick={() => this.closeModal()}>
                             <FormattedMessage
-                                id='createDepartment'
-                                defaultMessage='Create Department'
+                                id='cancel'
+                                defaultMessage='Cancel'
                             />
-                        </Modal.Header>
-                        <DepartmentInfo ref={(node) => this.departmentInfoNode = node}/>
-                        <Modal.Actions>
-                            <Button className="cancel-button" onClick={() => this.closeModal()}>
-                                <FormattedMessage
-                                    id='cancel'
-                                    defaultMessage='Cancel'
-                                />
-                            </Button>
-                            <Button className="confirm-button" onClick={() => this.newDepartment()}>
-                                <FormattedMessage
-                                    id='confirm'
-                                    defaultMessage='Confirm'
-                                />
-                            </Button>
-                        </Modal.Actions>
-                    </Modal>
-                </div>
+                        </Button>
+                        <Button className="confirm-button" onClick={() => this.newDepartment()}>
+                            <FormattedMessage
+                                id='confirm'
+                                defaultMessage='Confirm'
+                            />
+                        </Button>
+                    </Modal.Actions>
+                </Modal>
             </div>
         );
     }

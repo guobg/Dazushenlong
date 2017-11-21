@@ -63,7 +63,7 @@ class EmployeeList extends Component {
         const {employee, dispatch, department} = this.props;
         return (
             <div>
-                <Table striped>
+                <Table textAlign="center">
                     <Table.Header>
                         <Table.Row>
                             {
@@ -91,18 +91,18 @@ class EmployeeList extends Component {
                                         })
                                     }
                                     <Table.Cell className="table-action-cell">
-                                        <Button primary onClick={() => this.edit(result)}>
+                                        <div className="table-action-edit" onClick={() => this.edit(result)}>
                                             <FormattedMessage
                                                 id='edit'
                                                 defaultMessage='Edit'
                                             />
-                                        </Button>
-                                        <Button color='red' onClick={() => this.remove(result)}>
+                                        </div>
+                                        <div className="table-action-delete" onClick={() => this.remove(result)}>
                                             <FormattedMessage
                                                 id='delete'
                                                 defaultMessage='Delete'
                                             />
-                                        </Button>
+                                        </div>
                                     </Table.Cell>
                                 </Table.Row>
                             })
@@ -112,7 +112,6 @@ class EmployeeList extends Component {
                         <Table.Row>
                             <Table.HeaderCell colSpan={header.length}>
                                 <Pagination defaultCurrent={1} total={employee.totalElements}
-                                            showQuickJumper
                                             onChange={(page, pageSize) => this.pageChange(page, pageSize)}/>
                             </Table.HeaderCell>
                         </Table.Row>
