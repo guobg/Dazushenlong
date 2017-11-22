@@ -7,8 +7,8 @@ import {deleteEmployee, getEmployeeList} from '../../../actions/employee_action'
 import {genderOptions, staffStatusOptions} from '../../../res/data/dataOptions';
 import EditEmployee from './EditEmployee';
 
-const header = ["Employee ID", "Employee Name", "Gender", "Birthday", "Phone", "Entry Time", "Working age", "Department", "Post", "Address", "Emergency Contact Name", "Emergency Contact Phone", "Status", "Action"];
-const checklistKey = ["staffId", "name", "gender", "birthday", "phone", "entryTime", "workingAge", "department", "post", "address", "emergencyName", "emergencyPhone", "status"];
+const header = ["Employee ID", "Employee Name", "Gender", "Birthday", "Phone", "Employ Date", "Working age", "Department", "Post", "Address", "Emergency Contact Name", "Emergency Contact Phone", "Status", "Action"];
+const checklistKey = ["staffId", "name", "gender", "birthday", "phone", "employDate", "workingAge", "department", "post", "address", "emergencyName", "emergencyPhone", "status"];
 
 class EmployeeList extends Component {
     componentDidMount() {
@@ -26,6 +26,14 @@ class EmployeeList extends Component {
 
         if (key === 'status' && !isEmpty(result[key])) {
             return getDesc(staffStatusOptions, result[key]);
+        }
+
+        if (key === 'department' && !isEmpty(result[key])) {
+            return getDesc(this.props.department, result[key]) || 'N/A';
+        }
+
+        if (key === 'post' && !isEmpty(result.department) && !isEmpty(result[key])) {
+            return this.getPositionDesc(result.department, result[key]);
         }
 
         if (isEmpty(result[key])) {
@@ -56,7 +64,7 @@ class EmployeeList extends Component {
     };
 
     edit = (result) => {
-        this.editEmployeeNode.openModal(result.staffId)
+        this.editEmployeeNode.openModal(result)
     };
 
     render() {
@@ -112,6 +120,7 @@ class EmployeeList extends Component {
                         <Table.Row>
                             <Table.HeaderCell colSpan={header.length}>
                                 <Pagination defaultCurrent={1} total={employee.totalElements}
+                                            showQuickJumper
                                             onChange={(page, pageSize) => this.pageChange(page, pageSize)}/>
                             </Table.HeaderCell>
                         </Table.Row>

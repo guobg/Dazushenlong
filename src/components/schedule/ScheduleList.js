@@ -42,7 +42,7 @@ class ScheduleList extends Component {
         const {schedule, dispatch} = this.props;
         return (
             <div>
-                <Table striped>
+                <Table textAlign="center">
                     <Table.Header>
                         <Table.Row>
                             {

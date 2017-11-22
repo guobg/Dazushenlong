@@ -94,6 +94,7 @@ class DepartmentList extends Component {
                         <Table.Row>
                             <Table.HeaderCell colSpan={header.length}>
                                 <Pagination defaultCurrent={1} total={department.totalElements}
+                                            showQuickJumper
                                             onChange={(page, pageSize) => this.pageChange(page, pageSize)}/>
                             </Table.HeaderCell>
                         </Table.Row>

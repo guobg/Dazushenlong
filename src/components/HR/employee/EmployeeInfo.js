@@ -5,11 +5,14 @@ import Input from '../../common/Input';
 import Select from '../../common/Select';
 import DatePicker from '../../common/DatePicker';
 import Image from '../../common/Image';
+import TextArea from '../../common/TextArea';
 import {
     genderOptions,
     staffStatusOptions,
     positionLevelOptions,
-    contingencyOptions
+    contingencyOptions,
+    marriageOptions,
+    educationOptions
 } from '../../../res/data/dataOptions';
 
 class EmployeeInfo extends Component {
@@ -28,10 +31,14 @@ class EmployeeInfo extends Component {
             phone: this.phoneNode.getWrappedInstance().getValue(),
             birthday: this.birthdayNode.getValue(),
             entryTime: this.entryTimeNode.getValue(),
+            marriage: this.marriageNode.getWrappedInstance().getValue(),
             address: this.addressNode.getWrappedInstance().getValue(),
             emergencyName: this.emergencyNameNode.getWrappedInstance().getValue(),
             emergencyPhone: this.emergencyPhoneNode.getWrappedInstance().getValue(),
+            educationLevel: this.educationLevelNode.getWrappedInstance().getValue(),
             range: this.rangeNode.getWrappedInstance().getValue(),
+            skill: this.skillNode.getWrappedInstance().getValue(),
+            remark: this.remarkNode.getWrappedInstance().getValue(),
             status: this.props.isEdit ? this.statusNode.getWrappedInstance().getValue() : "active"
         }
     };
@@ -88,9 +95,10 @@ class EmployeeInfo extends Component {
                     <DatePicker label="Birthday"
                                 ref={node => this.birthdayNode = node}
                                 defaultValue={info.birthday}/>
-                    <DatePicker label="Entry Time"
-                                ref={node => this.entryTimeNode = node}
-                                defaultValue={info.entryTime}/>
+                    <Select options={marriageOptions} label="Marriage"
+                            ref={node => this.marriageNode = node}
+                            defaultValue={info.marriage}
+                    />
                     <Input label="Phone"
                            ref={node => this.phoneNode = node}
                            defaultValue={info.phone}
@@ -107,6 +115,10 @@ class EmployeeInfo extends Component {
                            ref={node => this.emergencyPhoneNode = node}
                            defaultValue={info.emergencyPhone}
                     />
+                    <Select options={educationOptions} label="Education Level"
+                            ref={node => this.educationLevelNode = node}
+                            defaultValue={info.educationLevel}
+                    />
                 </div>
 
                 <div className="modal-description">
@@ -119,6 +131,9 @@ class EmployeeInfo extends Component {
                     </div>
                 </div>
                 <div className="model-container">
+                    <DatePicker label="Employ Date"
+                                ref={node => this.entryTimeNode = node}
+                                defaultValue={info.entryTime}/>
                     <Select options={this.getDepartmentOption()} label="Department"
                             ref={node => this.departmentNode = node}
                             onChange={(selectedDepartment) => {
@@ -146,6 +161,26 @@ class EmployeeInfo extends Component {
                                       ref={node => this.statusNode = node}
                                       defaultValue={info.status}
                     /> : null}
+                </div>
+
+                <div className="modal-description">
+                    <div className="modal-header">
+                        <Image name="optional_info"/>
+                        <FormattedMessage
+                            id='otherInfo'
+                            defaultMessage='Other Info'
+                        />
+                    </div>
+                </div>
+                <div className="model-container">
+                    <Input label="Skill"
+                           ref={node => this.skillNode = node}
+                           defaultValue={info.skill}
+                    />
+                    <TextArea label="Remark"
+                              ref={node => this.remarkNode = node}
+                              defaultValue={info.remark}
+                    />
                 </div>
             </Modal.Content>
         );

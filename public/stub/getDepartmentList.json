@@ -3,7 +3,7 @@
   "responseCode": "000",
   "responseMsg": "SUCCESS",
   "responseBody": {
-    "totalPage": 1,
+    "totalPage": 18,
     "departmentList": [
       {
         "uuId": 1,

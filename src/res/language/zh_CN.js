@@ -53,7 +53,7 @@ const zh_CN = {
     noOptions: '没有可选项',
     selectHolder: "请选择",
     "Birthday": "生日",
-    "Entry Time": "入职时间",
+    "Employ Date": "聘用日期",
     "Working age": "工龄",
     "Post": "岗位",
     "Address": "居住地址",
@@ -61,6 +61,7 @@ const zh_CN = {
     "Emergency Contact Phone": "经济联系人电话",
     basicInfo: "基本信息",
     postInfo: "岗位信息",
+    otherInfo: "其他信息",
     Range: "班次",
     member: "会员",
     createMember: "新增会员",
@@ -85,8 +86,14 @@ const zh_CN = {
     schedule: "预定",
     "Schedule Time": "预定时间",
     "Remark": "备注",
+    "Skill": "技能特点",
     resume: "恢复",
     createSchedule: "新增预定",
-    editSchedule: "修改预定"
+    editSchedule: "修改预定",
+    "Education Level": "教育程度",
+    "Marriage": "婚姻状况",
+    unmarried: "未婚",
+    married: "已婚",
+    divorce: "离异"
 };
 export default zh_CN;

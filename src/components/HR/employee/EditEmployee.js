@@ -20,10 +20,11 @@ class EditEmployee extends Component {
         if (anotherModal > 0) document.body.classList.add('scrolling', 'dimmable', 'dimmed');
     };
 
-    openModal = (staffId) => {
-        this.props.dispatch(rtrvStaffDetail(staffId, function (employee) {
+    openModal = (staff) => {
+        /*this.props.dispatch(rtrvStaffDetail(staffId, function (employee) {
             this.setState({modalOpen: true, employeeInfo: employee});
-        }.bind(this)));
+        }.bind(this)));*/
+        this.setState({modalOpen: true, employeeInfo: staff});
     };
 
     closeModal = () => this.setState({modalOpen: false});

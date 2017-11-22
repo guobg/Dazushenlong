@@ -44,7 +44,7 @@ class MemberList extends Component {
         const {member, dispatch} = this.props;
         return (
             <div>
-                <Table striped>
+                <Table textAlign="center">
                     <Table.Header>
                         <Table.Row>
                             {

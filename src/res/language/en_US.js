@@ -56,7 +56,7 @@ const en_US = {
     noOptions: 'No Options',
     selectHolder: "Please Select",
     "Birthday": "Birthday",
-    "Entry Time": "Entry Time",
+    "Employ Date": "Employ Date",
     "Working age": "Working age",
     "Post": "Post",
     "Address": "Address",
@@ -64,6 +64,7 @@ const en_US = {
     "Emergency Contact Phone": "Emergency Contact Phone",
     basicInfo: "Basic Info",
     postInfo: "Post Info",
+    otherInfo: "Other Info",
     Range: "Range",
     member: "Member",
     createMember: "Create Member",
@@ -88,8 +89,14 @@ const en_US = {
     schedule: "Schedule",
     "Schedule Time": "Schedule Time",
     "Remark": "Remark",
+    "Skill": "Skill",
     resume: "Resume",
     createSchedule: "Create Schedule",
-    editSchedule: "Edit Schedule"
+    editSchedule: "Edit Schedule",
+    "Education Level": "Education Level",
+    "Marriage": "Marriage",
+    unmarried: "Unmarried",
+    married: "Married",
+    divorce: "Divorce"
 };
 export default en_US;

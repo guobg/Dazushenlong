@@ -88,12 +88,11 @@ function updatedEmployee(employee) {
 
 export function updateEmployee(employee, callback) {
     return dispatch => {
-        const params = convertEditEmployeeToServer(employee);
         StaticLoad.show("updateEmployee");
-        post(url.updateStaffDetail, params)
+        post(url.updateStaffDetail, {})
             .then((res) => {
                 StaticLoad.remove("updateEmployee");
-                dispatch(updatedEmployee(res.responseBody.staffInfo));
+                dispatch(updatedEmployee(employee));
                 callback();
             })
             .catch((error) => {
