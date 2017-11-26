@@ -23,15 +23,27 @@ class MVDatePicker extends Component {
         if ((range && (isEmpty(inputValue[0]) || isEmpty(inputValue[1])))
             || (!range && isEmpty(inputValue))
         ) {
-            this.setState({
-                isEmpty: true,
-                selfChecked: true
-            })
+            if (!this.state.isEmpty) {
+                this.setState({
+                    isEmpty: true
+                })
+            }
+            if (!this.state.selfChecked) {
+                this.setState({
+                    selfChecked: true
+                })
+            }
         } else {
-            this.setState({
-                isEmpty: false,
-                selfChecked: true
-            })
+            if (this.state.isEmpty) {
+                this.setState({
+                    isEmpty: false
+                })
+            }
+            if (!this.state.selfChecked) {
+                this.setState({
+                    selfChecked: true
+                })
+            }
         }
 
         this.setState({
@@ -42,13 +54,18 @@ class MVDatePicker extends Component {
     checkDefaultValue = () => {
         const {defaultValue} = this.props;
         if (isEmpty(defaultValue)) {
-            this.setState({
-                isEmpty: true
-            })
+            if (!this.state.isEmpty) {
+                this.setState({
+                    isEmpty: true
+                });
+            }
+
         } else {
-            this.setState({
-                isEmpty: false
-            })
+            if (this.state.isEmpty) {
+                this.setState({
+                    isEmpty: false
+                })
+            }
         }
 
         this.setState({
@@ -57,6 +74,9 @@ class MVDatePicker extends Component {
     };
 
     getValue = () => {
+        this.setState({
+            selfChecked: true
+        });
         return this.state.returnValue;
     };
 
@@ -66,8 +86,8 @@ class MVDatePicker extends Component {
     };
 
     render() {
-        const {label, required, checked, range, showTime, defaultValue} = this.props;
-        const dateFormat = showTime ? 'YYYY-MM-DD HH:mm' : 'YYYY/MM/DD';
+        const {label, required, range, defaultValue} = this.props;
+        const dateFormat = 'YYYY/MM/DD';
         return (
             <div className="components-item item-horizontal align-right">
                 <div className='field-title'>
@@ -80,15 +100,11 @@ class MVDatePicker extends Component {
                 <div className="input-content">
                     {
                         range ? <RangePicker
-                            format={dateFormat}
                             onChange={this.dateChange}
-                            showTime={showTime}
-                            className={required && (checked || this.state.selfChecked) && this.state.isEmpty ? "components-error" : ""}
+                            className={required && this.state.selfChecked && this.state.isEmpty ? "components-error" : ""}
                             defaultValue={(defaultValue && defaultValue[0] && defaultValue[1]) ? [moment(defaultValue[0], dateFormat), moment(defaultValue[1], dateFormat)] : null}
                         /> : <DatePicker
-                            format={dateFormat}
-                            showTime={showTime}
-                            className={required && (checked || this.state.selfChecked) && this.state.isEmpty ? "components-error" : ""}
+                            className={required && this.state.selfChecked && this.state.isEmpty ? "components-error" : ""}
                             onChange={this.dateChange}
                             defaultValue={defaultValue ? moment(defaultValue, dateFormat) : null}/>
                     }
@@ -101,9 +117,7 @@ class MVDatePicker extends Component {
 MVDatePicker.propTypes = {
     label: PropTypes.string,
     required: PropTypes.bool,
-    checked: PropTypes.bool,
-    range: PropTypes.bool,
-    showTime: PropTypes.bool
+    range: PropTypes.bool
 };
 
 export default MVDatePicker;

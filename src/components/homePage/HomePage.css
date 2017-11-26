@@ -1,7 +1,3 @@
-.sider-menu {
-    margin-bottom: 48px;
-}
-
 .main-content {
     margin-left: 200px;
 }
@@ -199,4 +195,73 @@ i.icon.remove-position-button {
 
 .model-main-container {
     position: relative;
+}
+
+.sider-menu {
+    position: fixed;
+    flex: 0 0 150px !important;
+    max-width: 150px !important;
+    min-width: 150px !important;
+    width: 150px !important;
+    top: 0;
+    bottom: 0;
+}
+
+.ant-layout-sider.sider-menu {
+    background: linear-gradient(to bottom, #22315b, #577ca6);;
+}
+
+.sider-menu .ant-menu-dark {
+    background: transparent;
+}
+
+.sider-menu .ant-menu-dark .ant-menu-sub {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.sider-menu .ant-menu-inline .ant-menu-item,
+.sider-menu .ant-menu-inline .ant-menu-submenu-title {
+    padding-left: 16px !important;
+}
+
+.ant-menu.ant-menu-dark .ant-menu-item-selected {
+    background-color: #d4865b;
+}
+
+.menu_icon_text {
+    display: flex;
+    align-items: center;
+}
+
+.sider-menu .ant-menu-inline .ant-menu-sub .ant-menu-item {
+    padding-left: 46px !important;
+}
+
+.ant-layout-content {
+    position: relative;
+    margin-left: 150px;
+    margin-top: 64px;
+}
+
+.ant-layout-header {
+    position: fixed;
+    left: 150px;
+    right: 0;
+    top: 0;
+    z-index: 3;
+    background: #ffffff;
+    padding: 0 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+}
+
+.menu-user-avatar.ui.avatar.image {
+    width: 80px;
+    height: 80px;
+    margin: 35px;
+}
+
+.log-out-button {
+    font-size: 16px;
+    color: #000000;
+    cursor: pointer;
 }

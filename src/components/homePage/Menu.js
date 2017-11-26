@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom';
 import {FormattedMessage} from 'react-intl';
 import createHistory from 'history/createBrowserHistory';
+import Image from '../common/Image';
 
 const history = createHistory();
 const location = history.location;
@@ -12,25 +13,25 @@ const SubMenu = Menu.SubMenu;
 const keyPathMapping = [
     {
         "key": '1',
-        "path": '/home/Employee',
+        "path": '/home/employee',
         "hostKey": "sub1"
     },
     {
         "key": '2',
-        "path": '/home/Department',
+        "path": '/home/department',
         "hostKey": "sub1"
     },
     {
         "key": '3',
-        "path": '/home/Member'
+        "path": '/home/member'
     },
     {
         "key": '4',
-        "path": '/home/MemberCard'
+        "path": '/home/memberCard'
     },
     {
         "key": '5',
-        "path": '/home/Schedule'
+        "path": '/home/schedule'
     }
 ];
 
@@ -57,8 +58,8 @@ class HomeMenu extends Component {
                   defaultOpenKeys={[hostKey]}
                   mode="inline">
                 <Menu.Item key="3">
-                    <Link to="/home/Member"/>
-                    <Icon type="pie-chart"/>
+                    <Link to="/home/member"/>
+                    <Image name="menu_project"/>
                     <span>
                         <FormattedMessage
                             id='Member'
@@ -67,8 +68,8 @@ class HomeMenu extends Component {
                     </span>
                 </Menu.Item>
                 <Menu.Item key="4">
-                    <Link to="/home/MemberCard"/>
-                    <Icon type="pie-chart"/>
+                    <Link to="/home/memberCard"/>
+                    <Image name="menu_model"/>
                     <span>
                         <FormattedMessage
                             id='membershipCard'
@@ -77,8 +78,8 @@ class HomeMenu extends Component {
                     </span>
                 </Menu.Item>
                 <Menu.Item key="5">
-                    <Link to="/home/Schedule"/>
-                    <Icon type="pie-chart"/>
+                    <Link to="/home/schedule"/>
+                    <Image name="menu_hr"/>
                     <span>
                         <FormattedMessage
                             id='schedule'
@@ -88,20 +89,20 @@ class HomeMenu extends Component {
                 </Menu.Item>
                 <SubMenu
                     key="sub1"
-                    title={<span><Icon type="user"/><span>
+                    title={<span><Image name="menu_personal"/><span>
                         <FormattedMessage
                             id='hr'
                             defaultMessage='HR'
                         />
                     </span></span>}
                 >
-                    <Menu.Item key="1"><Link to="/home/Employee">
+                    <Menu.Item key="1"><Link to="/home/employee">
                         <FormattedMessage
                             id='employee'
                             defaultMessage='Employee'
                         />
                     </Link></Menu.Item>
-                    <Menu.Item key="2"><Link to="/home/Department">
+                    <Menu.Item key="2"><Link to="/home/department">
                         <FormattedMessage
                             id='department'
                             defaultMessage='Department'

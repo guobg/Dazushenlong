@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import Menu from './Menu';
+import {Image} from 'semantic-ui-react';
 import Employee from '../../containers/employee_container';
 import Department from '../../containers/department_container';
 import CommonHeader from '../../containers/header_container';
 import Member from '../../containers/member_container';
 import MemberCard from '../../containers/memberCard_container';
 import Schedule from '../../containers/schedule_container';
-
+import {getUser} from '../../util/UserStore';
 import {Layout, BackTop} from 'antd';
 import {
     Route,
@@ -19,39 +20,31 @@ const {Header, Content, Sider} = Layout;
 
 const routes = [
     {
-        path: '/home/Member',
+        path: '/home/member',
         exact: true,
         main: Member
     },
     {
-        path: '/home/MemberCard',
+        path: '/home/memberCard',
         main: MemberCard
     },
     {
-        path: '/home/Schedule',
+        path: '/home/schedule',
         main: Schedule
     },
     {
-        path: '/home/Employee',
+        path: '/home/employee',
         main: Employee
     },
     {
-        path: '/home/Department',
+        path: '/home/department',
         main: Department
     }
 ];
 
 class HomePage extends Component {
     state = {
-        collapsed: false,
         minHeight: '0px'
-    };
-
-    onCollapse = (collapsed) => {
-        this.setState({collapsed});
-        let e = document.createEvent("Event");
-        e.initEvent("resize", true, true);
-        window.dispatchEvent(e);
     };
 
     componentWillMount() {
@@ -74,20 +67,19 @@ class HomePage extends Component {
     render() {
         return (
             <Layout>
-                <Header><CommonHeader/></Header>
                 <Layout>
-                    <Sider collapsible
-                           collapsed={this.state.collapsed}
-                           onCollapse={this.onCollapse}
-                           className="sider-menu"
+                    <Sider
+                        className="sider-menu"
                     >
+                        <Image className="menu-user-avatar" src={getUser().avatar} avatar/>
                         <Menu/>
                     </Sider>
+                    <Header><CommonHeader/></Header>
                     <Content style={{minHeight: this.state.minHeight, overflowY: 'hidden'}}>
                         <BackTop/>
                         <Switch>
                             <Route exact path="/home" render={() => (
-                                <Redirect to="/home/Member"/>
+                                <Redirect to="/home/member"/>
                             )}/>
                             {routes.map((route, index) => (
                                 // Render more <Route>s with the same paths as

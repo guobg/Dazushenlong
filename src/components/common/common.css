@@ -386,6 +386,27 @@
     width: 2em;
 }
 
+.common-header {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    line-height: 1;
+}
+
+.header-product {
+    font-size: 24px;
+    color: #577ca6;
+    font-weight: bold;
+}
+
+.header-name {
+    font-size: 14px;
+    color: #999999;
+    margin-right: 40px;
+}
+
 .ui.center.aligned.header.common-header {
     width: 100%;
     height: 100%;

@@ -31,19 +31,19 @@ class MVSelect extends Component {
     checkDefaultValue = () => {
         const {defaultValue} = this.props;
         if (isEmpty(defaultValue)) {
-            this.setState({
-                isEmpty: true
-            })
+            if (!this.state.isEmpty) {
+                this.setState({
+                    isEmpty: true
+                });
+            }
+
         } else {
-            this.setState({
-                isEmpty: false
-            })
+            if (this.state.isEmpty) {
+                this.setState({
+                    isEmpty: false
+                })
+            }
         }
-
-        this.setState({
-            returnValue: defaultValue
-        });
-
     };
 
     checkValue = (event, data) => {
@@ -52,15 +52,27 @@ class MVSelect extends Component {
         if (this.state.returnValue === inputValue) return;
 
         if (isEmpty(inputValue)) {
-            this.setState({
-                isEmpty: true,
-                selfChecked: true
-            })
+            if (!this.state.isEmpty) {
+                this.setState({
+                    isEmpty: true
+                })
+            }
+            if (!this.state.selfChecked) {
+                this.setState({
+                    selfChecked: true
+                })
+            }
         } else {
-            this.setState({
-                isEmpty: false,
-                selfChecked: true
-            })
+            if (this.state.isEmpty) {
+                this.setState({
+                    isEmpty: false
+                })
+            }
+            if (!this.state.selfChecked) {
+                this.setState({
+                    selfChecked: true
+                })
+            }
         }
 
         this.setState({
@@ -73,10 +85,16 @@ class MVSelect extends Component {
     };
 
     getValue = () => {
+        this.setState({
+            selfChecked: true
+        });
         return this.state.returnValue;
     };
 
     getFullValue = () => {
+        this.setState({
+            selfChecked: true
+        });
         const {options, multiple} = this.props;
         let returnOption = [];
         if (multiple) {
@@ -121,7 +139,7 @@ class MVSelect extends Component {
             ...this.props
         };
         const {
-            label, options, required, checked, search, fullWidth, addOther,
+            label, options, required, search, fullWidth, addOther,
             multiple, placeHolder, defaultValue, disabled
         } = this.props;
         const {formatMessage} = this.props.intl;
@@ -180,7 +198,7 @@ class MVSelect extends Component {
                           multiple={multiple}
                           selection
                           options={selectOptions}
-                          className={fullWidth ? "full-width" : "input-content" + " " + (required && (checked || this.state.selfChecked) && this.state.isEmpty ? "components-error" : "")}
+                          className={fullWidth ? "full-width" : "input-content" + " " + (required && this.state.selfChecked && this.state.isEmpty ? "components-error" : "")}
                           onChange={(event, data) => {
                               this.checkValue(event, data)
                           }}
@@ -198,7 +216,6 @@ MVSelect.propTypes = {
     label: PropTypes.string,
     options: PropTypes.array,
     required: PropTypes.bool,
-    checked: PropTypes.bool,
     placeHolder: PropTypes.string,
     search: PropTypes.bool,
     multiple: PropTypes.bool,
