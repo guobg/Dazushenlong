@@ -1,12 +1,13 @@
 import createHistory from 'history/createBrowserHistory';
 import errorMsg from '../res/data/errorMessage.json';
+import $ from 'jquery';
 
 const history = createHistory();
 
 // Get the current location.
 const location = history.location;
 
-const isDummy = true;
+const isDummy = false;
 
 function request(method, url, body) {
     if (isDummy) {
@@ -36,13 +37,15 @@ function request(method, url, body) {
         }
 
         return fetch(url, {
-            method: 'POST',
+            method: method,
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json, text/javascript, */*',
                 'Accept': 'application/json',
                 'Access-Control-Allow-Origin': '*',
-                'Access-Token': sessionStorage.getItem('access_token') || ''
+                'Access-Control-Allow-Credentials': true,
+                'Cookie': 'client_secret=NjkyZGQxODc4MzhhOGZiZTFmM2ViNDhlZjZiNjgxMDU'
             },
+            credentials: 'include',
             body
         })
             .then((res) => {

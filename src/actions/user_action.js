@@ -3,6 +3,7 @@ import StaticLoad from '../components/common/Loading';
 import StaticDialog from '../components/common/Dialog';
 import {url} from '../util/ServiceUrl';
 import {setUser, removeUser} from '../util/UserStore';
+import {setAccessCookie} from '../util/CookieUtil';
 /*
  * action 类型
  */
@@ -16,6 +17,7 @@ export const REMOVE_USER = 'REMOVE_USER';
 
 function setUserInfo(userInfo) {
     setUser(userInfo);
+    setAccessCookie(userInfo.access_token);
     return {type: SET_USER, userInfo}
 }
 
@@ -29,7 +31,7 @@ export function logon(user, callback) {
         StaticLoad.show("logon");
         post(url.login, user)
             .then((res) => {
-                dispatch(setUserInfo({staffInfo: res.responseBody}));
+                dispatch(setUserInfo(res.data));
                 StaticLoad.remove("logon");
                 callback();
             })

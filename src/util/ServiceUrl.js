@@ -4,7 +4,7 @@ const isProduction = true;
 if (isProduction) {
     const gateWay = "http://47.100.100.211:";
     url = {
-        login: gateWay + '8080/login',
+        login: 'http://www.biuu.xyz/inside/docs/api_test',
         retrieveStaff: gateWay + '8080/rtrvStaffList',
         createStaff: gateWay + '8080/createStaff',
         deleteStaff: gateWay + '8080/deleteStaff',
