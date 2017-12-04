@@ -97,6 +97,9 @@ const en_US = {
     "Marriage": "Marriage",
     unmarried: "Unmarried",
     married: "Married",
-    divorce: "Divorce"
+    divorce: "Divorce",
+    editPosition: "Edit Position",
+    createPositionLevel: "Create Position Level",
+    IDCard: "ID Card"
 };
 export default en_US;

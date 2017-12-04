@@ -1,0 +1,83 @@
+{
+  "statusCode": "200",
+  "responseCode": "000",
+  "responseMsg": "SUCCESS",
+  "responseBody": {
+    "totalPage": 18,
+    "positionList": [
+      {
+        "id": "D1",
+        "name": "技师",
+        "createTime": 1509595355000,
+        "levels": [
+          {
+            "positionId": "D1",
+            "id": 8,
+            "name": "初级"
+          },
+          {
+            "positionId": "D1",
+            "id": 9,
+            "name": "高级"
+          }
+        ]
+      },
+      {
+        "id": "D2",
+        "name": "前台",
+        "createTime": 1509595365000,
+        "levels": []
+      },
+      {
+        "id": "D3",
+        "name": "保洁",
+        "createTime": 1509595438000,
+        "levels": [
+          {
+            "positionId": "D3",
+            "id": 1,
+            "name": "初级"
+          },
+          {
+            "positionId": "D3",
+            "id": 2,
+            "name": "中级"
+          },
+          {
+            "positionId": "D3",
+            "id": 3,
+            "name": "高级"
+          }
+        ]
+      },
+      {
+        "uuId": 4,
+        "id": "D4",
+        "name": "管理",
+        "createTime": 1511229457000,
+        "levels": [
+          {
+            "positionId": "D4",
+            "id": 10,
+            "name": "一级"
+          },
+          {
+            "positionId": "D4",
+            "id": 11,
+            "name": "二级"
+          },
+          {
+            "positionId": "D4",
+            "id": 12,
+            "name": "三级"
+          },
+          {
+            "positionId": "D4",
+            "id": 13,
+            "name": "四级"
+          }
+        ]
+      }
+    ]
+  }
+}

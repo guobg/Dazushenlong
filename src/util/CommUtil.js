@@ -126,3 +126,24 @@ export const arrOrder = (arr, indicator = 'key') => {
     });
     return arr;
 };
+
+export const checkValid = (info) => {
+    let flag = true;
+    Object.values(info).some((result) => {
+        if (result && result.error) {
+            flag = false;
+            return true
+        }
+    });
+    return flag;
+};
+
+export const getDataInfo = (info) => {
+    for (let key in info) {
+        //只遍历对象自身的属性，而不包含继承于原型链上的属性。
+        if (info.hasOwnProperty(key) === true) {
+            if (info[key] && info[key].hasOwnProperty('componentValue')) info[key] = info[key].componentValue;
+        }
+    }
+    return info;
+};

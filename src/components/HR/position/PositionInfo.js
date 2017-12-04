@@ -1,93 +1,88 @@
 import React, {Component} from 'react';
-import {Icon, Modal, Divider, Button} from 'semantic-ui-react';
+import {Modal, Button} from 'semantic-ui-react';
 import {FormattedMessage} from 'react-intl';
 import Input from '../../common/Input';
 import _ from 'lodash';
 import {getTimeAndRandom} from '../../../util/CommUtil';
 
-class DepartmentInfo extends Component {
+class PositionInfo extends Component {
     state = {
-        positions: this.props.info && this.props.info.positions ?
-            _.cloneDeep(this.props.info.positions) :
-            [{
-                key: getTimeAndRandom(),
-                name: ''
-            }]
+        levels: this.props.info && this.props.info.levels ?
+            _.cloneDeep(this.props.info.levels) :
+            []
     };
 
     getInfo = () => {
         return {
             name: this.nameNode.getWrappedInstance().getValue(),
-            positions: this.state.positions
+            levels: this.state.levels
         }
     };
 
     createPosition = () => {
-        let tempPositions = this.state.positions;
+        let tempPositions = this.state.levels;
         tempPositions.push({key: getTimeAndRandom(), name: ''});
         this.setState({
-            positions: tempPositions
+            levels: tempPositions
         })
     };
 
     removePosition = (position) => {
-        let tempPositions = this.state.positions;
+        let tempPositions = this.state.levels;
         tempPositions.splice(tempPositions.indexOf(position), 1);
         this.setState({
-            positions: tempPositions
+            levels: tempPositions
         })
     };
 
     render() {
         const {info = {}} = this.props;
-        const {positions} = this.state;
+        const {levels} = this.state;
         return (
             <Modal.Content>
                 <div className="model-container">
-                    <Input label="Department Name"
+                    <Input label="Position Name"
                            ref={node => this.nameNode = node}
                            defaultValue={info.name}
                     />
                     <div className="components-item item-horizontal align-right">
                         <div className="field-title">
                             <FormattedMessage
-                                id='Position'
-                                defaultMessage='Position'
+                                id='Position Level'
+                                defaultMessage='Position Level'
                             />
                         </div>
                         <div className="input-content">
                             <Button className="confirm-button "
                                     onClick={() => this.createPosition()}>
                                 <FormattedMessage
-                                    id='createPosition'
-                                    defaultMessage='Create Position'
+                                    id='createPositionLevel'
+                                    defaultMessage='Create Position Level'
                                 />
                             </Button>
                         </div>
                     </div>
                     {
-                        positions.map((item, i) => {
+                        levels.map((item, i) => {
                             return <div key={i} className="components-item item-horizontal align-right">
                                 <div className="input-content add-department-content">
                                     <Input
                                         onChange={(value) => {
                                             item.name = value;
                                             this.setState({
-                                                positions: positions
+                                                levels: levels
                                             })
                                         }}
                                         value={item.name}
                                         fullWidth={true}
                                     />
-                                    {positions.length > 1 ?
-                                        <Button className="delete-button"
-                                                onClick={() => this.removePosition(item)}>
-                                            <FormattedMessage
-                                                id='delete'
-                                                defaultMessage='Delete'
-                                            />
-                                        </Button>
-                                        : null}
+                                    <Button className="delete-button"
+                                            onClick={() => this.removePosition(item)}>
+                                        <FormattedMessage
+                                            id='delete'
+                                            defaultMessage='Delete'
+                                        />
+                                    </Button>
                                 </div>
                             </div>
                         })
@@ -98,4 +93,4 @@ class DepartmentInfo extends Component {
     }
 }
 
-export default DepartmentInfo;
+export default PositionInfo;

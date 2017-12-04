@@ -172,13 +172,13 @@ i.icon.remove-position-button {
 }
 
 .table-action-edit {
-    font-size: 12px;
+    font-size: 14px;
     color: #577ca6;
     cursor: pointer;
 }
 
 .table-action-delete {
-    font-size: 12px;
+    font-size: 14px;
     color: #c35f57;
     margin-left: 20px;
     cursor: pointer;
@@ -263,5 +263,86 @@ i.icon.remove-position-button {
 .log-out-button {
     font-size: 16px;
     color: #000000;
+    cursor: pointer;
+}
+
+.org-tree {
+    width: 310px;
+    border-right: 1px solid #dddddd;
+}
+
+.org-tree ul {
+    padding-left: 20px;
+}
+
+.org-tree ul li > div {
+    padding: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.org-name {
+    padding-left: 15px;
+}
+
+.org-selected {
+    background-color: #666666;
+}
+
+.org-expand-icon {
+    cursor: pointer;
+    position: absolute;
+    padding: 5px;
+    margin-left: -8px;
+    font-size: 18px;
+    transform: rotate(0deg);
+    transition: All 0.3s ease-in-out;
+}
+
+.org-expanded.org-expand-icon {
+    transform: rotate(90deg);
+    transition: All 0.3s ease-in-out;
+}
+
+.add-org-icon {
+    position: absolute;
+    right: 20px;
+    color: #ffffff;
+    font-size: 23px;
+    transform: rotate(0deg);
+    transition: All 0.3s ease-in-out;
+}
+
+.remove-org-icon.add-org-icon {
+    transform: rotate(45deg);
+    transition: All 0.3s ease-in-out;
+}
+
+.org-item:hover {
+    background-color: #8a8a8a;
+}
+
+.org-tree .add-org-box {
+    cursor: default;
+    padding: 5px 0 0 45px;
+    display: flex;
+}
+
+.org-container {
+    border-top: 1px solid #dddddd;
+    display: flex;
+}
+
+.org-info {
+    flex: 1;
+}
+
+.org-info-detail {
+    padding: 10px 20px;
+}
+
+.org-nav-button {
+    padding: 10px 0;
+    margin-left: 20px;
     cursor: pointer;
 }

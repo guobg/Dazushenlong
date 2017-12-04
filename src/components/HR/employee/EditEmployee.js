@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import {Button, Modal} from 'semantic-ui-react';
 import {FormattedMessage} from 'react-intl';
 import EmployeeInfo from './EmployeeInfo';
-import {updateEmployee, rtrvStaffDetail} from '../../../actions/employee_action';
+import {updateEmployee} from '../../../actions/employee_action';
+import {checkValid, getDataInfo} from '../../../util/CommUtil';
 
 class EditEmployee extends Component {
     state = {modalOpen: false, employeeInfo: {}};
@@ -31,13 +32,17 @@ class EditEmployee extends Component {
 
     updateEmployeeInfo = () => {
         let employeeInfo = this.employeeInfoNode.getInfo();
-        employeeInfo.id = this.state.employeeInfo.id;
-        this.props.dispatch(updateEmployee(employeeInfo, this.closeModal));
+        let flag = checkValid(employeeInfo);
+        if (flag) {
+            employeeInfo = getDataInfo(employeeInfo);
+            employeeInfo.id = this.state.employeeInfo.id;
+            this.props.dispatch(updateEmployee(employeeInfo, this.closeModal));
+        }
     };
 
     render() {
         const {modalOpen, employeeInfo} = this.state;
-        const {department} = this.props;
+        const {position} = this.props;
         return (
             <div>
                 <Modal
@@ -52,7 +57,7 @@ class EditEmployee extends Component {
                     </Modal.Header>
                     <Modal.Content>
                         <EmployeeInfo isEdit={true} info={employeeInfo} ref={node => this.employeeInfoNode = node}
-                                      department={department}/>
+                                      position={position}/>
                     </Modal.Content>
                     <Modal.Actions>
                         <Button className="cancel-button" onClick={() => this.closeModal()}>

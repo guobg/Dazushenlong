@@ -94,6 +94,9 @@ const zh_CN = {
     "Marriage": "婚姻状况",
     unmarried: "未婚",
     married: "已婚",
-    divorce: "离异"
+    divorce: "离异",
+    editPosition: "修改职位",
+    createPositionLevel: "创建职级",
+    IDCard: "身份证"
 };
 export default zh_CN;

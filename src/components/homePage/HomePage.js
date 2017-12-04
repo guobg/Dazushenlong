@@ -2,11 +2,12 @@ import React, {Component} from 'react';
 import Menu from './Menu';
 import {Image} from 'semantic-ui-react';
 import Employee from '../../containers/employee_container';
-import Department from '../../containers/department_container';
+import Organization from '../../containers/organization_container';
 import CommonHeader from '../../containers/header_container';
 import Member from '../../containers/member_container';
 import MemberCard from '../../containers/memberCard_container';
 import Schedule from '../../containers/schedule_container';
+import Position from '../../containers/position_container';
 import {getUser} from '../../util/UserStore';
 import {Layout, BackTop} from 'antd';
 import {
@@ -37,8 +38,12 @@ const routes = [
         main: Employee
     },
     {
-        path: '/home/department',
-        main: Department
+        path: '/home/organization',
+        main: Organization
+    },
+    {
+        path: '/home/position',
+        main: Position
     }
 ];
 

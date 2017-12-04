@@ -109,3 +109,53 @@ export function convertDepartmentToLocal(res) {
 
     return department;
 }
+
+export function convertOrgToLocal(res) {
+    let org = {
+        name: res.name,
+        expand: true,
+        key: '0'
+    };
+    getSubOrg(org, res.children);
+    return org;
+}
+
+function getSubOrg(org, subOrg) {
+    if (subOrg && subOrg.length > 0) {
+        org.children = [];
+        subOrg.map((item, i) => {
+            let subOrgItem = {
+                key: org.key + "-" + i,
+                name: item.name,
+                expand: false
+            };
+            getSubOrg(subOrgItem, item.children);
+            org.children.push(subOrgItem);
+        })
+    }
+}
+
+export function convertPositionToLocal(res) {
+    let position = [];
+    if (res && res.length > 0) {
+        res.map((item) => {
+            let tempPosition = {
+                value: item.id,
+                text: item.name,
+                levels: []
+            };
+
+            if (item.levels && item.levels.length > 0) {
+                item.levels.map((position) => {
+                    tempPosition.levels.push({
+                        value: position.id,
+                        text: position.name
+                    })
+                })
+            }
+            position.push(tempPosition)
+        })
+    }
+
+    return position;
+}

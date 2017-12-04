@@ -1,30 +1,34 @@
 import React, {Component} from 'react';
-import {Table, Button} from 'semantic-ui-react';
+import {Table} from 'semantic-ui-react';
 import {Pagination} from 'antd';
 import {isEmpty} from '../../../util/CommUtil';
 import {FormattedMessage} from 'react-intl';
-import {deleteDepartment, getDepartmentList} from '../../../actions/department_action';
-import EditDepartment from './EditDepartment';
+import {deletePosition, getPositionList} from '../../../actions/position_action';
+import EditPosition from './EditPosition';
 
-const header = ["Department ID", "Department Name", "Position", "Action"];
-const checklistKey = ["id", "name", "positions"];
+const header = ["ID", "Position Name", "Position Level", "Action"];
+const checklistKey = ["id", "name", "levels"];
 
-class DepartmentList extends Component {
+class PositionList extends Component {
     componentDidMount() {
-        this.props.dispatch(getDepartmentList(1, 10));
+        this.props.dispatch(getPositionList(1, 10));
     };
 
     pageChange(page, pageSize) {
-        this.props.dispatch(getDepartmentList(page, pageSize));
+        this.props.dispatch(getPositionList(page, pageSize));
     }
 
     getChecklistDesc = (result, key) => {
-        if (key === "positions" && result[key] && result[key].length > 0) {
-            let tempStr = "";
-            result[key].map((item) => {
-                tempStr += item.name + "/ ";
-            });
-            return tempStr.substr(0, tempStr.length - 2);
+        if (key === "levels") {
+            if (result[key] && result[key].length > 0) {
+                let tempStr = "";
+                result[key].map((item) => {
+                    tempStr += item.name + "/ ";
+                });
+                return tempStr.substr(0, tempStr.length - 2);
+            } else {
+                return 'N/A';
+            }
         }
 
         if (isEmpty(result[key])) {
@@ -34,15 +38,15 @@ class DepartmentList extends Component {
     };
 
     remove = (result) => {
-        this.props.dispatch(deleteDepartment(result))
+        this.props.dispatch(deletePosition(result))
     };
 
     edit = (result) => {
-        this.editDepartmentNode.openModal(result)
+        this.editPositionNode.openModal(result)
     };
 
     render() {
-        const {department, dispatch} = this.props;
+        const {position, dispatch} = this.props;
         return (
             <div>
                 <Table textAlign="center">
@@ -62,7 +66,7 @@ class DepartmentList extends Component {
 
                     <Table.Body>
                         {
-                            department.departments.map((result, i) => {
+                            position.positions.map((result, i) => {
                                 return <Table.Row key={i}>
                                     {
                                         checklistKey.map((key, j) => {
@@ -93,17 +97,16 @@ class DepartmentList extends Component {
                     <Table.Footer>
                         <Table.Row>
                             <Table.HeaderCell colSpan={header.length}>
-                                <Pagination defaultCurrent={1} total={department.totalElements}
-                                            showQuickJumper
+                                <Pagination defaultCurrent={1} total={position.totalElements}
                                             onChange={(page, pageSize) => this.pageChange(page, pageSize)}/>
                             </Table.HeaderCell>
                         </Table.Row>
                     </Table.Footer>
                 </Table>
-                <EditDepartment dispatch={dispatch} ref={node => this.editDepartmentNode = node}/>
+                <EditPosition dispatch={dispatch} ref={node => this.editPositionNode = node}/>
             </div>
         );
     }
 }
 
-export default DepartmentList;
+export default PositionList;

@@ -24,9 +24,10 @@ function retrievedEmployeeList(employees) {
     return {type: GET_EMPLOYEE_LIST, employees}
 }
 
-export function getEmployeeList(page, pageSize) {
+export function getEmployeeList(orgName, page, pageSize) {
     return dispatch => {
         post(url.retrieveStaff, {
+            orgName: orgName,
             page: page,
             pageSize: pageSize
         })

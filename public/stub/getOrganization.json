@@ -1,0 +1,27 @@
+{
+  "statusCode": "200",
+  "responseCode": "000",
+  "responseMsg": "SUCCESS",
+  "responseBody": {
+    "name": "大足神龙",
+    "children": [
+      {
+        "name": "客服部",
+        "children": [
+          {
+            "name": "客服一部"
+          },
+          {
+            "name": "客服二部"
+          }
+        ]
+      },
+      {
+        "name": "技师部"
+      },
+      {
+        "name": "管理部"
+      }
+    ]
+  }
+}

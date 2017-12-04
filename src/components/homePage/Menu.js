@@ -18,7 +18,7 @@ const keyPathMapping = [
     },
     {
         "key": '2',
-        "path": '/home/department',
+        "path": '/home/organization',
         "hostKey": "sub1"
     },
     {
@@ -32,6 +32,11 @@ const keyPathMapping = [
     {
         "key": '5',
         "path": '/home/schedule'
+    },
+    {
+        "key": '6',
+        "path": '/home/position',
+        "hostKey": "sub1"
     }
 ];
 
@@ -102,10 +107,16 @@ class HomeMenu extends Component {
                             defaultMessage='Employee'
                         />
                     </Link></Menu.Item>
-                    <Menu.Item key="2"><Link to="/home/department">
+                    <Menu.Item key="2"><Link to="/home/organization">
                         <FormattedMessage
                             id='department'
                             defaultMessage='Department'
+                        />
+                    </Link></Menu.Item>
+                    <Menu.Item key="6"><Link to="/home/position">
+                        <FormattedMessage
+                            id='Position'
+                            defaultMessage='Position'
                         />
                     </Link></Menu.Item>
                 </SubMenu>

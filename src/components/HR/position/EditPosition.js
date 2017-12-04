@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import {Button, Modal} from 'semantic-ui-react';
 import {FormattedMessage} from 'react-intl';
-import DepartmentInfo from './DepartmentInfo';
-import {updateDepartment} from '../../../actions/department_action';
+import PositionInfo from './PositionInfo';
+import {updatePosition} from '../../../actions/position_action';
 import Image from '../../common/Image';
+import {checkValid, getDataInfo} from '../../../util/CommUtil';
 
-class EditDepartment extends Component {
-    state = {modalOpen: false, departmentInfo: {}};
+class EditPosition extends Component {
+    state = {modalOpen: false, positionInfo: {}};
 
     componentWillUpdate() {
         this.fixBody();
@@ -21,18 +22,22 @@ class EditDepartment extends Component {
         if (anotherModal > 0) document.body.classList.add('scrolling', 'dimmable', 'dimmed');
     };
 
-    openModal = (departmentInfo) => this.setState({modalOpen: true, departmentInfo: departmentInfo});
+    openModal = (positionInfo) => this.setState({modalOpen: true, positionInfo: positionInfo});
 
     closeModal = () => this.setState({modalOpen: false});
 
-    updateDepartmentDetail = () => {
-        let departmentInfo = this.departmentInfoNode.getInfo();
-        departmentInfo.id = this.state.departmentInfo.id;
-        this.props.dispatch(updateDepartment(departmentInfo, this.closeModal));
+    updatePositionDetail = () => {
+        let positionInfo = this.positionInfoNode.getInfo();
+        let flag = checkValid(positionInfo);
+        if (flag) {
+            positionInfo = getDataInfo(positionInfo);
+            positionInfo.id = this.state.positionInfo.id;
+            this.props.dispatch(updatePosition(positionInfo, this.closeModal));
+        }
     };
 
     render() {
-        const {modalOpen, departmentInfo} = this.state;
+        const {modalOpen, positionInfo} = this.state;
         return (
             <div>
                 <Modal
@@ -42,12 +47,12 @@ class EditDepartment extends Component {
                     <Modal.Header className="modal-title-border">
                         <Image name="project"/>
                         <FormattedMessage
-                            id='editDepartment'
-                            defaultMessage='Edit Department'
+                            id='editPosition'
+                            defaultMessage='Edit Position'
                         />
                     </Modal.Header>
                     <Modal.Content>
-                        <DepartmentInfo info={departmentInfo} ref={node => this.departmentInfoNode = node}/>
+                        <PositionInfo info={positionInfo} ref={node => this.positionInfoNode = node}/>
                     </Modal.Content>
                     <Modal.Actions>
                         <Button className="cancel-button" onClick={() => this.closeModal()}>
@@ -56,7 +61,7 @@ class EditDepartment extends Component {
                                 defaultMessage='Cancel'
                             />
                         </Button>
-                        <Button className="confirm-button" onClick={() => this.updateDepartmentDetail()}>
+                        <Button className="confirm-button" onClick={() => this.updatePositionDetail()}>
                             <FormattedMessage
                                 id='confirm'
                                 defaultMessage='Confirm'
@@ -69,4 +74,4 @@ class EditDepartment extends Component {
     }
 }
 
-export default EditDepartment;
+export default EditPosition;

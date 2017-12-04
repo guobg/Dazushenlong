@@ -3,6 +3,7 @@ import {Modal, Button} from 'semantic-ui-react';
 import EmployeeInfo from './EmployeeInfo';
 import {FormattedMessage} from 'react-intl';
 import {createEmployee} from '../../../actions/employee_action';
+import {checkValid, getDataInfo} from '../../../util/CommUtil';
 
 class CreateEmployee extends Component {
     state = {modalOpen: false};
@@ -13,11 +14,15 @@ class CreateEmployee extends Component {
 
     newEmployee = () => {
         let employeeInfo = this.employeeInfoNode.getInfo();
-        this.props.dispatch(createEmployee(employeeInfo, this.closeModal));
+        let flag = checkValid(employeeInfo);
+        if (flag) {
+            employeeInfo = getDataInfo(employeeInfo);
+            this.props.dispatch(createEmployee(employeeInfo, this.closeModal));
+        }
     };
 
     render() {
-        const {department} = this.props;
+        const {position} = this.props;
         const {modalOpen} = this.state;
         return (
             <div className="model-main-container">
@@ -38,7 +43,7 @@ class CreateEmployee extends Component {
                             defaultMessage='Create Employee'
                         />
                     </Modal.Header>
-                    <EmployeeInfo ref={(node) => this.employeeInfoNode = node} department={department}/>
+                    <EmployeeInfo ref={(node) => this.employeeInfoNode = node} position={position}/>
                     <Modal.Actions>
                         <Button className="cancel-button" onClick={() => this.closeModal()}>
                             <FormattedMessage

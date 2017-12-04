@@ -1,25 +1,25 @@
 import React, {Component} from 'react';
 import EmployeeList from './EmployeeList';
 import CreateEmployee from './CreateEmployee';
-import {getAllDepartment} from '../../../util/Service';
+import {getAllPosition} from '../../../util/Service';
 import Image from '../../common/Image';
 
 import {FormattedMessage} from 'react-intl';
 
 class Employee extends Component {
-    state = {department: []};
+    state = {position: []};
 
     componentWillMount() {
-        getAllDepartment((department) => {
+        getAllPosition((position) => {
             this.setState({
-                department: department
+                position: position
             })
         })
     }
 
     render() {
         const {dispatch, employee} = this.props;
-        const {department} = this.state;
+        const {position} = this.state;
         return (
             <div className="work-content">
                 <div className="first-header">
@@ -29,8 +29,8 @@ class Employee extends Component {
                         defaultMessage='Employee'
                     />
                 </div>
-                <CreateEmployee dispatch={dispatch} department={department}/>
-                <EmployeeList dispatch={dispatch} employee={employee} department={department}/>
+                <CreateEmployee dispatch={dispatch} position={position}/>
+                <EmployeeList dispatch={dispatch} employee={employee} position={position}/>
             </div>
         );
     }

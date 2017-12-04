@@ -1,7 +1,7 @@
 import {post} from './request';
 import {
     convertStaffOptionToLocal,
-    convertDepartmentToLocal
+    convertPositionToLocal
 } from '../util/Convert';
 import {url} from './ServiceUrl';
 
@@ -15,12 +15,11 @@ export function retrieveStaff(callback) {
         });
 }
 
-export function getAllDepartment(callback) {
-    post(url.getDepartmentList, {}
-    )
+export function getAllPosition(callback) {
+    post(url.getPositionList, {})
         .then((res) => {
-            const department = convertDepartmentToLocal(res.responseBody.departmentList);
-            callback(department);
+            const position = convertPositionToLocal(res.responseBody.positionList);
+            callback(position);
         })
         .catch((error) => {
             console.info(error);

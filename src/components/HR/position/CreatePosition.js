@@ -1,20 +1,25 @@
 import React, {Component} from 'react';
 import {Modal, Button} from 'semantic-ui-react';
-import DepartmentInfo from './DepartmentInfo';
+import PositionInfo from './PositionInfo';
 import {FormattedMessage} from 'react-intl';
-import {createDepartment} from '../../../actions/department_action';
+import {createPosition} from '../../../actions/position_action';
 import MVImage from "../../common/Image";
+import {checkValid, getDataInfo} from '../../../util/CommUtil';
 
-class CreateDepartment extends Component {
+class CreatePosition extends Component {
     state = {modalOpen: false};
 
     openModal = () => this.setState({modalOpen: true});
 
     closeModal = () => this.setState({modalOpen: false});
 
-    newDepartment = () => {
-        let departmentInfo = this.departmentInfoNode.getInfo();
-        this.props.dispatch(createDepartment(departmentInfo, this.closeModal));
+    newPosition = () => {
+        let positionInfo = this.positionInfoNode.getInfo();
+        let flag = checkValid(positionInfo);
+        if (flag) {
+            positionInfo = getDataInfo(positionInfo);
+            this.props.dispatch(createPosition(positionInfo, this.closeModal));
+        }
     };
 
     render() {
@@ -23,8 +28,8 @@ class CreateDepartment extends Component {
             <div className="model-main-container">
                 <Button className="create-button" onClick={() => this.openModal()}>
                     + <FormattedMessage
-                    id='createDepartment'
-                    defaultMessage='Create Department'
+                    id='createPosition'
+                    defaultMessage='Create Position'
                 />
                 </Button>
                 <Modal
@@ -35,11 +40,11 @@ class CreateDepartment extends Component {
                     <Modal.Header className="modal-title-border">
                         <MVImage name="project"/>
                         <FormattedMessage
-                            id='createDepartment'
-                            defaultMessage='Create Department'
+                            id='createPosition'
+                            defaultMessage='Create Position'
                         />
                     </Modal.Header>
-                    <DepartmentInfo ref={(node) => this.departmentInfoNode = node}/>
+                    <PositionInfo ref={(node) => this.positionInfoNode = node}/>
                     <Modal.Actions>
                         <Button className="cancel-button" onClick={() => this.closeModal()}>
                             <FormattedMessage
@@ -47,7 +52,7 @@ class CreateDepartment extends Component {
                                 defaultMessage='Cancel'
                             />
                         </Button>
-                        <Button className="confirm-button" onClick={() => this.newDepartment()}>
+                        <Button className="confirm-button" onClick={() => this.newPosition()}>
                             <FormattedMessage
                                 id='confirm'
                                 defaultMessage='Confirm'
@@ -60,4 +65,4 @@ class CreateDepartment extends Component {
     }
 }
 
-export default CreateDepartment;
+export default CreatePosition;

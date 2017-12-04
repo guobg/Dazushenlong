@@ -36,7 +36,6 @@ class MVSelect extends Component {
                     isEmpty: true
                 });
             }
-
         } else {
             if (this.state.isEmpty) {
                 this.setState({
@@ -44,6 +43,10 @@ class MVSelect extends Component {
                 })
             }
         }
+
+        this.setState({
+            returnValue: defaultValue
+        });
     };
 
     checkValue = (event, data) => {
@@ -88,13 +91,13 @@ class MVSelect extends Component {
         this.setState({
             selfChecked: true
         });
-        return this.state.returnValue;
+        return {
+            error: this.state.isEmpty && this.props.required,
+            componentValue: this.state.returnValue
+        }
     };
 
     getFullValue = () => {
-        this.setState({
-            selfChecked: true
-        });
         const {options, multiple} = this.props;
         let returnOption = [];
         if (multiple) {
@@ -104,7 +107,10 @@ class MVSelect extends Component {
         } else {
             returnOption = getOption(options, this.state.returnValue);
         }
-        return returnOption;
+        return {
+            error: this.state.isEmpty && this.props.required,
+            componentValue: returnOption
+        }
     };
 
     checkPosition = (options) => {
@@ -115,6 +121,7 @@ class MVSelect extends Component {
     };
 
     getPositionFlag = (options) => {
+        if (!this.dropDownNode) return;
         const optionPanel = $(".menu", $(this.dropDownNode.ref));
         if (!optionPanel[0]) return false;
         if (!options || options.length === 0) {
@@ -148,6 +155,7 @@ class MVSelect extends Component {
         }
 
         let selectOptions = _.cloneDeep(options);
+
 
         if (addOther && selectOptions.length > 0) {
             selectOptions.push({
@@ -219,8 +227,10 @@ MVSelect.propTypes = {
     placeHolder: PropTypes.string,
     search: PropTypes.bool,
     multiple: PropTypes.bool,
+    horizontal: PropTypes.bool,
     onChange: PropTypes.func,
     disabled: PropTypes.bool,
+    subSelect: PropTypes.bool,
     fullWidth: PropTypes.bool
 };
 

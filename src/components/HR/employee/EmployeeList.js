@@ -7,8 +7,8 @@ import {deleteEmployee, getEmployeeList} from '../../../actions/employee_action'
 import {genderOptions, staffStatusOptions} from '../../../res/data/dataOptions';
 import EditEmployee from './EditEmployee';
 
-const header = ["Employee ID", "Employee Name", "Gender", "Birthday", "Phone", "Employ Date", "Working age", "Department", "Post", "Address", "Emergency Contact Name", "Emergency Contact Phone", "Status", "Action"];
-const checklistKey = ["staffId", "name", "gender", "birthday", "phone", "employDate", "workingAge", "department", "post", "address", "emergencyName", "emergencyPhone", "status"];
+const header = ["Employee ID", "Employee Name", "Gender", "Birthday", "Phone", "Employ Date", "Department", "Position", "Address", "Action"];
+const checklistKey = ["staffId", "name", "gender", "birthday", "phone", "entryTime", "organization", "position", "address"];
 
 class EmployeeList extends Component {
     componentDidMount() {
@@ -28,35 +28,14 @@ class EmployeeList extends Component {
             return getDesc(staffStatusOptions, result[key]);
         }
 
-        if (key === 'department' && !isEmpty(result[key])) {
-            return getDesc(this.props.department, result[key]) || 'N/A';
-        }
-
-        if (key === 'post' && !isEmpty(result.department) && !isEmpty(result[key])) {
-            return this.getPositionDesc(result.department, result[key]);
+        if (key === 'position' && !isEmpty(result[key])) {
+            return getDesc(this.props.position, result[key]) || 'N/A';
         }
 
         if (isEmpty(result[key])) {
             return 'N/A';
         }
         return result[key];
-    };
-
-    getPositionDesc = (deptId, positionId) => {
-        const {department} = this.props;
-        let desc = 'N/A';
-        department.some((item) => {
-            if (item.value === deptId) {
-                item.positions.some((position) => {
-                    if (position.value === positionId) {
-                        desc = position.text;
-                        return true;
-                    }
-                });
-                return true;
-            }
-        });
-        return desc;
     };
 
     remove = (result) => {
@@ -68,7 +47,7 @@ class EmployeeList extends Component {
     };
 
     render() {
-        const {employee, dispatch, department} = this.props;
+        const {employee, dispatch, position} = this.props;
         return (
             <div>
                 <Table textAlign="center">
@@ -120,13 +99,12 @@ class EmployeeList extends Component {
                         <Table.Row>
                             <Table.HeaderCell colSpan={header.length}>
                                 <Pagination defaultCurrent={1} total={employee.totalElements}
-                                            showQuickJumper
                                             onChange={(page, pageSize) => this.pageChange(page, pageSize)}/>
                             </Table.HeaderCell>
                         </Table.Row>
                     </Table.Footer>
                 </Table>
-                <EditEmployee dispatch={dispatch} ref={node => this.editEmployeeNode = node} department={department}/>
+                <EditEmployee dispatch={dispatch} ref={node => this.editEmployeeNode = node} position={position}/>
             </div>
         );
     }
