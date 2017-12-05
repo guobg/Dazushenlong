@@ -3,8 +3,6 @@ import {Button, Image, Message, Input} from 'semantic-ui-react';
 import {injectIntl, FormattedMessage} from 'react-intl';
 import {messages} from '../../res/language/defineMessages';
 import {isEmpty} from '../../util/CommUtil';
-import {setAccessCookie, setCookie} from '../../util/CookieUtil';
-import $ from 'jquery';
 
 let userName;
 let passWord;
@@ -14,63 +12,8 @@ class Logon extends Component {
         selfChecked: false
     };
 
-    componentWillMount() {
-        setAccessCookie('MjQzZjgzZWU4NTJlM2JkN2FhYWE1NWFjMDRjMjBlOWY');
-        setCookie('client_secret', 'NjkyZGQxODc4MzhhOGZiZTFmM2ViNDhlZjZiNjgxMDU');
-    }
-
     logonService() {
-        let data = {
-            action: 'login',
-            user_name: '15612341234',
-            user_pwd: '123456..',
-            is_remember: 0
-        };
-        //debugger;
-        /*$.post(
-            'http://www.biuu.xyz/apiv1.json?service=account.web_login',
-            data,
-            function (res) {
-                console.info(res)
-            }, 'json');*/
-        $.ajax({
-            type: "POST",
-            url: "http://www.biuu.xyz/apiv1.json?service=account.web_login",
-            dataType: 'json',
-            data: data,
-            xhrFields: {
-                withCredentials: true
-            },
-            //crossDomain: true,
-            success: function (res) {
-                console.info(res)
-            },
-            error: function () {
-            }
-        })
-
-        /*let formData = new FormData();
-        formData.append('action', 'login');
-        formData.append('user_name', '15612341234');
-        formData.append('user_pwd', '123456..');
-        formData.append('is_remember', 0);
-
-        fetch("http://www.biuu.xyz/apiv1.json?service=account.web_login", {
-            method: 'POST',
-            credentials: "include",
-            body: formData
-        })
-            .then((res) => {
-                console.info(res)
-            })
-            .then(res => {
-                console.info(res)
-            })
-            .catch(error => {
-                console.info(error)
-            });*/
-
-        /*const {userLogon, history} = this.props;
+        const {userLogon, history} = this.props;
         const user = {
             action: 'login',
             user_name: userName.inputRef.value,
@@ -84,7 +27,7 @@ class Logon extends Component {
         const callback = () => {
             history.push('/home')
         };
-        userLogon(user, callback);*/
+        userLogon(user, callback);
     }
 
     render() {

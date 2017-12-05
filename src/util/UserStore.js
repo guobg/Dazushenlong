@@ -21,5 +21,5 @@ export function removeUser() {
 }
 
 export function getStaffId() {
-    return getUser().staffId;
+    return getUser().user_id;
 }

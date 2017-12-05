@@ -4,7 +4,7 @@ const isProduction = true;
 if (isProduction) {
     const gateWay = "http://47.100.100.211:";
     url = {
-        login: 'http://www.biuu.xyz/inside/docs/api_test',
+        login: 'http://www.biuu.xyz/apiv1.json?service=account.web_login',
         retrieveStaff: gateWay + '8080/rtrvStaffList',
         createStaff: gateWay + '8080/createStaff',
         deleteStaff: gateWay + '8080/deleteStaff',
@@ -23,7 +23,7 @@ if (isProduction) {
         createDepartment: gateWay + '8080/createDepartment',
         updateDepartment: gateWay + '8080/updateDepartment',
         deleteDepartment: gateWay + '8080/deleteDepartment',
-        getOrganization: gateWay + '8080/getOrganization',
+        getOrganization: 'http://www.biuu.xyz/apiv2.json?service=department.get_dept_list',
         getPositionList: gateWay + '8080/getPositionList',
         createPosition: gateWay + '8080/createPosition',
         updatePosition: gateWay + '8080/updatePosition',

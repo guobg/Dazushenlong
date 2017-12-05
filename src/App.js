@@ -10,6 +10,7 @@ import {
 } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 import {checkUser} from './util/UserStore';
+import {setCookie} from './util/CookieUtil';
 
 const history = createHistory();
 
@@ -17,6 +18,7 @@ class App extends Component {
     constructor() {
         super();
         checkUser(history);
+        setCookie('client_secret', 'NjkyZGQxODc4MzhhOGZiZTFmM2ViNDhlZjZiNjgxMDU');
     }
 
     render() {

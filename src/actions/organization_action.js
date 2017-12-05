@@ -21,11 +21,10 @@ function setOrganization(organization) {
 export function getOrganization() {
     return dispatch => {
         //StaticLoad.show("getOrganization");
-        post(url.getOrganization, {})
+        post(url.getOrganization, {is_tree: 1})
             .then((res) => {
                 //StaticLoad.remove("getOrganization");
-                const org = convertOrgToLocal(res.responseBody);
-                dispatch(setOrganization(org));
+                dispatch(setOrganization(res.data));
             })
             .catch((error) => {
                 //StaticLoad.remove("getOrganization");

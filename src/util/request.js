@@ -9,7 +9,7 @@ const location = history.location;
 
 const isDummy = false;
 
-function request(method, url, body) {
+export function request(method, url, body) {
     if (isDummy) {
         const fileName = url.substr(url.lastIndexOf("/") + 1);
         return fetch('/stub/' + fileName + '.json')
@@ -33,13 +33,95 @@ function request(method, url, body) {
                 url += '/' + paramsArray.join('/')
             }
         } else {
-            body = body && JSON.stringify(body);
+            //body = body && JSON.stringify(body);
         }
 
-        return fetch(url, {
+        let promise = new Promise(function (resolve, reject) {
+            $.ajax({
+                type: "POST",
+                url: url,
+                dataType: 'json',
+                data: body,
+                xhrFields: {
+                    withCredentials: true
+                },
+                success: (res => {
+                    let errorInfo = _respHandle(res);
+                    return errorInfo ? reject(errorInfo) : resolve(res);
+                }),
+                error: (error => {
+                    let errorInfo = _errorHandle(error);
+                    return reject(errorInfo);
+                })
+            })
+        });
+        promise.catch(function (error) {
+            return Promise.reject(error);
+        });
+        return promise;
+
+        /*return $.ajax({
+            type: method,
+            url: url,
+            dataType: 'json',
+            data: body,
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            success: (res => {
+                let errorInfo = _respHandle(res);
+                return errorInfo ? Promise.reject(errorInfo) : Promise.resolve(res);
+            }),
+            error: (error => {
+                let errorInfo = _errorHandle(error);
+                return Promise.reject(errorInfo);
+            })
+        })*/
+
+        /*let formData = new FormData();
+        formData.append('action', 'login');
+        formData.append('user_name', '15612341234');
+        formData.append('user_pwd', '123456..');
+        formData.append('is_remember', 0);
+
+        return fetch("http://www.biuu.xyz/apiv1.json?service=account.web_login", {
+            method: 'POST',
+            credentials: "include",
+            body: formData
+        })
+            .then((res) => {
+                if (res.status === 401) {
+                    let redirect = '';
+                    if (location.pathname !== "/login" && location.pathname !== "/") {
+                        redirect = location.pathname + location.search;
+                        redirect = '/login?language=login&redirect_uri=' + encodeURIComponent(redirect);
+                    }
+
+                    let url = redirect ? redirect : '/login';
+                    history.push(url);
+                    return Promise.reject('Unauthorized.');
+                } else {
+                    const token = res.headers.get('access-token');
+                    if (token) {
+                        sessionStorage.setItem('access_token', token);
+                    }
+                    return res.json();
+                }
+            })
+            .then((res => {
+                let errorInfo = _respHandle(res);
+                return errorInfo ? Promise.reject(errorInfo) : Promise.resolve(res);
+            }))
+            .catch(error => {
+                let errorInfo = _errorHandle(error);
+                return Promise.reject(errorInfo);
+            });*/
+
+        /*return fetch(url, {
             method: method,
             headers: {
-                'Content-Type': 'application/json, text/javascript, */*',
+                'Content-Type': 'application/json, text/javascript, *!/!*',
                 'Accept': 'application/json',
                 'Access-Control-Allow-Origin': '*',
                 'Access-Control-Allow-Credentials': true,
@@ -74,33 +156,33 @@ function request(method, url, body) {
             .catch(error => {
                 let errorInfo = _errorHandle(error);
                 return Promise.reject(errorInfo);
-            });
+            });*/
     }
 
 }
 
 function _respHandle(res) {
-    if (res.responseCode !== "000") {
+    if (res.ret !== 0) {
         return {
-            'responseCode': res.responseCode,
-            'message': errorMsg[res.responseCode] || res.responseMsg || errorMsg.default
+            'responseCode': res.ret,
+            'message': errorMsg[res.ret] || res.msg || errorMsg.default
         }
     }
     return null;
 }
 
 function _errorHandle(error) {
-    if (error.responseCode && error.message) {
+    if (error.ret && error.msg) {
         return {
-            'responseCode': error.responseCode,
-            'message': error.message
+            'responseCode': error.ret,
+            'message': error.msg
         };
     }
 
-    if (error.message) {
+    if (error.msg) {
         return {
             'responseCode': 'A001',
-            'message': error.message
+            'message': error.msg
         }
     }
 

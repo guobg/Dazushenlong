@@ -18,17 +18,17 @@ class DepartmentTree extends Component {
 
     getComponent = (data) => {
         const {selectedKey, addKey} = this.state;
-        if (data.children && data.children.length > 0) {
+        if (data.items && data.items.length > 0) {
             return <ul style={{display: data.expand ? 'block' : 'none'}}
                 /*className={data.expand ? "expand-visible" : "expand-invisible"}*/>
-                {data.children.map((item) => {
-                    return <li key={item.key}>
+                {data.items.map((item) => {
+                    return <li key={item.id}>
                         <div
                             onClick={() => {
                                 this.selectItem(item)
                             }}
-                            className={(selectedKey === item.key ? "org-selected " : "") + "org-item display-flex"}>
-                            {item.children && item.children.length > 0 ?
+                            className={(selectedKey === item.id ? "org-selected " : "") + "org-item display-flex"}>
+                            {item.items && item.items.length > 0 ?
                                 <div className={(item.expand ? "org-expanded " : "") + "org-expand-icon"}
                                      onClick={(event) => {
                                          this.toggleExpand(event, item)
@@ -37,15 +37,15 @@ class DepartmentTree extends Component {
                                 </div> : null}
                             <div className="org-name"> {item.name}</div>
                             {
-                                selectedKey === item.key ? <div
-                                    className={(addKey === item.key ? "remove-org-icon " : "") + "add-org-icon"}
+                                selectedKey === item.id ? <div
+                                    className={(addKey === item.id ? "remove-org-icon " : "") + "add-org-icon"}
                                     onClick={(event) => {
                                         this.showAddOrg(event, item)
                                     }}>+</div> : null
                             }
                         </div>
                         {
-                            selectedKey === item.key && addKey === item.key ?
+                            selectedKey === item.id && addKey === item.id ?
                                 <div className="add-org-box">
                                     <Input autoFocus={true} ref={node => this.showAddOrgInputNode = node}/>
                                     <Button className="confirm-button"
@@ -68,9 +68,9 @@ class DepartmentTree extends Component {
     };
 
     selectItem = (item) => {
-        if (item.key === this.state.selectedKey) return;
+        if (item.id === this.state.selectedKey) return;
         this.setState({
-            selectedKey: item.key,
+            selectedKey: item.id,
             selectOrg: item,
             addKey: ''
         })
@@ -84,7 +84,7 @@ class DepartmentTree extends Component {
             })
         } else {
             this.setState({
-                addKey: item.key
+                addKey: item.id
             })
         }
     };
@@ -98,7 +98,7 @@ class DepartmentTree extends Component {
             const lastKey = item.children[item.children.length - 1].key;
             nextNumber = Number(lastKey.substr(lastKey.lastIndexOf("-") + 1, lastKey.length)) + 1;
         }
-        const orgKey = item.key + "-" + nextNumber;
+        const orgKey = item.id + "-" + nextNumber;
         item.children ? item.children.push({
             key: orgKey,
             name: orgName
@@ -122,13 +122,14 @@ class DepartmentTree extends Component {
     setAfterRemove = (hostOrg) => {
         this.setState({
             selectOrg: hostOrg,
-            selectedKey: hostOrg.key
+            selectedKey: hostOrg.id
         })
     };
 
     render() {
         const {organization} = this.props;
         const {selectedKey, addKey, selectOrg} = this.state;
+        organization.expand = true;
         return (
             <div className="work-content">
                 <div className="first-header">
@@ -145,8 +146,8 @@ class DepartmentTree extends Component {
                                 <div onClick={() => {
                                     this.selectItem(organization)
                                 }}
-                                     className={(selectedKey === organization.key ? "org-selected " : "") + "org-item display-flex"}>
-                                    {organization.children && organization.children.length > 0 ?
+                                     className={(selectedKey === organization.id ? "org-selected " : "") + "org-item display-flex"}>
+                                    {organization.items && organization.items.length > 0 ?
                                         <div
                                             className={(organization.expand ? "org-expanded " : "") + "org-expand-icon"}
                                             onClick={(event) => {
@@ -156,7 +157,7 @@ class DepartmentTree extends Component {
                                         </div> : null}
                                     <div className="org-name"> {organization.name}</div>
                                     {
-                                        selectedKey === organization.key ? <div
+                                        selectedKey === organization.id ? <div
                                             className={(addKey === organization.key ? "remove-org-icon " : "") + "add-org-icon"}
                                             onClick={(event) => {
                                                 this.showAddOrg(event, organization)
@@ -164,7 +165,7 @@ class DepartmentTree extends Component {
                                     }
                                 </div>
                                 {
-                                    selectedKey === organization.key && addKey === organization.key ?
+                                    selectedKey === organization.id && addKey === organization.id ?
                                         <div className="add-org-box">
                                             <Input autoFocus={true}
                                                    ref={node => this.showAddOrgInputNode = node}/>
