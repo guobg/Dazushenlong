@@ -22,7 +22,7 @@ class CreateEmployee extends Component {
     };
 
     render() {
-        const {position} = this.props;
+        const {position, organization} = this.props;
         const {modalOpen} = this.state;
         return (
             <div className="model-main-container">
@@ -43,7 +43,8 @@ class CreateEmployee extends Component {
                             defaultMessage='Create Employee'
                         />
                     </Modal.Header>
-                    <EmployeeInfo ref={(node) => this.employeeInfoNode = node} position={position}/>
+                    <EmployeeInfo ref={(node) => this.employeeInfoNode = node} position={position}
+                                  organization={organization}/>
                     <Modal.Actions>
                         <Button className="cancel-button" onClick={() => this.closeModal()}>
                             <FormattedMessage

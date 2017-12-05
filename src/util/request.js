@@ -38,7 +38,7 @@ export function request(method, url, body) {
 
         let promise = new Promise(function (resolve, reject) {
             $.ajax({
-                type: "POST",
+                type: method,
                 url: url,
                 dataType: 'json',
                 data: body,

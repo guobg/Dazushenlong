@@ -17,7 +17,6 @@ export const REMOVE_USER = 'REMOVE_USER';
 
 function setUserInfo(userInfo) {
     setUser(userInfo);
-    setAccessCookie(userInfo.access_token);
     return {type: SET_USER, userInfo}
 }
 
@@ -32,6 +31,7 @@ export function logon(user, callback) {
         post(url.login, user)
             .then((res) => {
                 dispatch(setUserInfo(res.data));
+                setAccessCookie(res.data.access_token);
                 StaticLoad.remove("logon");
                 callback();
             })
