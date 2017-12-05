@@ -46,6 +46,7 @@ class CommonHeader extends Component {
                 </div>
                 <div className="display-flex">
                     <div className="header-name">
+                        {getUser().user_name}
                     </div>
                     <div className="log-out-button" onClick={() => this.userLogOut()}>
                         <FormattedMessage
