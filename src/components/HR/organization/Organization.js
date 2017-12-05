@@ -78,7 +78,7 @@ class DepartmentTree extends Component {
 
     showAddOrg = (event, item) => {
         event.stopPropagation();
-        if (this.state.addKey) {
+        if (this.state.addKey !== '') {
             this.setState({
                 addKey: ''
             })

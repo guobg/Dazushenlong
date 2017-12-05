@@ -275,6 +275,10 @@ i.icon.remove-position-button {
     padding-left: 20px;
 }
 
+.org-tree ul:first-child {
+    padding-left: 0;
+}
+
 .org-tree ul li > div {
     padding: 10px;
     cursor: pointer;

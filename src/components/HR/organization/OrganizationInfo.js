@@ -6,6 +6,7 @@ import {FormattedMessage} from 'react-intl';
 import {deleteEmployee, getEmployeeList} from '../../../actions/employee_action';
 import {genderOptions, staffStatusOptions} from '../../../res/data/dataOptions';
 import StaticDialog from '../../common/Dialog';
+import Confirm from '../../common/Confirm';
 
 const header = ["Employee ID", "Employee Name", "Gender", "Phone", "Post", "Status", "Action"];
 const checklistKey = ["staffId", "name", "gender", "phone", "post", "status"];
@@ -66,7 +67,17 @@ class OrgEmployeeList extends Component {
             StaticDialog.show("removeOrg-error", '', '该组织下有组织');
             return;
         }
-        removeOrg && removeOrg(org);
+        let param = {
+            id: "removeOrg-confirm",
+            message: <FormattedMessage
+                id='delete'
+                defaultMessage='Delete'
+            />,
+            confirmHandle: () => {
+                removeOrg && removeOrg(org);
+            }
+        };
+        Confirm.show(param);
     };
 
     render() {
