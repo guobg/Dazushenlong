@@ -24,6 +24,8 @@ if (isProduction) {
         updateDepartment: gateWay + '8080/updateDepartment',
         deleteDepartment: gateWay + '8080/deleteDepartment',
         getOrganization: 'http://www.biuu.xyz/apiv2.json?service=department.get_dept_list',
+        createOrganization: 'http://www.biuu.xyz/apiv2.json?service=department.create_dept',
+        removeOrganization: 'http://www.biuu.xyz/apiv2.json?service=department.delete_dept_by_id',
         getPositionList: gateWay + '8080/getPositionList',
         createPosition: gateWay + '8080/createPosition',
         updatePosition: gateWay + '8080/updatePosition',

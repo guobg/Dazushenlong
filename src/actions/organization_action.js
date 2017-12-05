@@ -29,28 +29,55 @@ export function getOrganization() {
             .catch((error) => {
                 //StaticLoad.remove("getOrganization");
                 StaticDialog.show("getOrganization-error", error.responseCode, error.message);
-                console.info(error);
             });
     }
 }
 
 export function removeOrganization(org, removeOrg, callback) {
     return dispatch => {
-        removeOrgFunc(org, removeOrg);
-        dispatch(setOrganization(org));
-        callback(returnOrg);
+        StaticLoad.show("createOrg");
+        post(url.removeOrganization, {
+            dept_id: removeOrg.id
+        })
+            .then((res) => {
+                StaticLoad.remove("createOrg");
+                if (res.data) {
+                    removeOrgFunc(org, removeOrg);
+                    dispatch(setOrganization(org));
+                    callback(returnOrg);
+                }
+            })
+            .catch((error) => {
+                StaticLoad.remove("createOrg");
+                StaticDialog.show("createOrg-error", error.responseCode, error.message);
+            });
     }
 }
 
 function removeOrgFunc(hostOrg, org) {
-    if (hostOrg.children && hostOrg.children.length > 0) {
-        if (hostOrg.children.indexOf(org) === -1) {
-            hostOrg.children.map((item) => {
+    if (hostOrg.items && hostOrg.items.length > 0) {
+        if (hostOrg.items.indexOf(org) === -1) {
+            hostOrg.items.map((item) => {
                 removeOrgFunc(item, org)
             })
         } else {
-            hostOrg.children.splice(hostOrg.children.indexOf(org), 1);
+            hostOrg.items.splice(hostOrg.items.indexOf(org), 1);
             returnOrg = hostOrg;
         }
+    }
+}
+
+export function createOrg(param, callback) {
+    return dispatch => {
+        StaticLoad.show("createOrg");
+        post(url.createOrganization, param)
+            .then((res) => {
+                StaticLoad.remove("createOrg");
+                callback(res.data);
+            })
+            .catch((error) => {
+                StaticLoad.remove("createOrg");
+                StaticDialog.show("createOrg-error", error.responseCode, error.message);
+            });
     }
 }

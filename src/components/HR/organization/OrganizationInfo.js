@@ -56,13 +56,13 @@ class OrgEmployeeList extends Component {
     };
 
     removeOrg = (org) => {
-        if (org.key === "0") return;
+        if (org.id === 0) return;
         const {employee, removeOrg} = this.props;
         if (employee.employees && employee.employees.length > 0) {
             StaticDialog.show("removeOrg-error", '', '该组织内有成员');
             return;
         }
-        if (org.children && org.children.length > 0) {
+        if (org.items && org.items.length > 0) {
             StaticDialog.show("removeOrg-error", '', '该组织下有组织');
             return;
         }
@@ -73,7 +73,7 @@ class OrgEmployeeList extends Component {
         const {employee, org} = this.props;
         return (
             <div>
-                {org.key === "0" ? null : <div className="org-navigator display-flex">
+                {org.id === 0 ? null : <div className="org-navigator display-flex">
                     <div className="org-nav-button">权限设置</div>
                     <div className="org-nav-button" onClick={() => {
                         this.removeOrg(org)

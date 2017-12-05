@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Input, Button} from 'semantic-ui-react';
 import Image from '../../common/Image';
 import {FormattedMessage} from 'react-intl';
-import {getOrganization, removeOrganization} from '../../../actions/organization_action';
+import {getOrganization, removeOrganization, createOrg} from '../../../actions/organization_action';
 import OrganizationInfo from '../../../containers/orgInfo_container';
 
 class DepartmentTree extends Component {
@@ -93,13 +93,19 @@ class DepartmentTree extends Component {
         let orgName = this.showAddOrgInputNode.inputRef.value;
         if (!orgName || !orgName.trim()) return;
         orgName = orgName.trim();
-        let nextNumber = 0;
+        /*let nextNumber = 0;
         if (item.children && item.children.length > 0) {
             const lastKey = item.children[item.children.length - 1].key;
             nextNumber = Number(lastKey.substr(lastKey.lastIndexOf("-") + 1, lastKey.length)) + 1;
         }
-        const orgKey = item.id + "-" + nextNumber;
-        item.children ? item.children.push({
+        const orgKey = item.id + "-" + nextNumber;*/
+        this.props.dispatch(createOrg({
+            name: orgName,
+            parent_id: item.id
+        }, (org) => this.addedOrg(item, org)));
+
+
+        /*item.children ? item.children.push({
             key: orgKey,
             name: orgName
         }) : item.children = [{
@@ -109,6 +115,14 @@ class DepartmentTree extends Component {
 
         item.expand = true;
 
+        this.setState({
+            addKey: ''
+        })*/
+    };
+
+    addedOrg = (parentOrg, org) => {
+        parentOrg.items ? parentOrg.items.push(org) : parentOrg.items = [org];
+        parentOrg.expand = true;
         this.setState({
             addKey: ''
         })
@@ -158,7 +172,7 @@ class DepartmentTree extends Component {
                                     <div className="org-name"> {organization.name}</div>
                                     {
                                         selectedKey === organization.id ? <div
-                                            className={(addKey === organization.key ? "remove-org-icon " : "") + "add-org-icon"}
+                                            className={(addKey === organization.id ? "remove-org-icon " : "") + "add-org-icon"}
                                             onClick={(event) => {
                                                 this.showAddOrg(event, organization)
                                             }}>+</div> : null
