@@ -7,7 +7,7 @@ import OrganizationInfo from '../../../containers/orgInfo_container';
 
 class DepartmentTree extends Component {
     state = {
-        selectedKey: '0',
+        selectedKey: 0,
         addKey: '',
         selectOrg: null
     };
