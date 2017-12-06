@@ -17,26 +17,13 @@ export const convertStaffOptionToLocal = (res) => {
     return staffOption;
 };
 
-export function convertEmployeeToServer(employee) {
-    let params = {
-        creatorId: getStaffId(),
-        name: employee.name,
-        account: employee.logonName,
-        password: employee.initialPassword,
-        gender: employee.gender,
-        deptId: employee.department,
-        positionId: employee.position,
-        positionLvl: employee.positionLevel,
-        emailAddr: employee.mail,
-        phoneNum: employee.phone,
-        tagIds: [],
-        status: employee.status
-    };
+export function convertEmployeeToServer(params) {
+    if (params.birthday) {
+        params.birthday = new Date(params.birthday).getTime()
+    }
 
-    if (employee.skillTags && employee.skillTags.length > 0) {
-        employee.skillTags.map((tag) => {
-            params.tagIds.push(tag.tagId)
-        })
+    if (params.hire_date) {
+        params.hire_date = new Date(params.hire_date).getTime()
     }
 
     return params;
@@ -69,20 +56,15 @@ export function convertEditEmployeeToServer(employee) {
 }
 
 export function convertEmployeeToLocal(res) {
-    return {
-        staffId: res.staffInfo.staffId,
-        name: res.staffInfo.name,
-        logonName: res.staffInfo.account,
-        initialPassword: res.staffInfo.password,
-        gender: res.staffInfo.gender,
-        department: res.staffInfo.deptId,
-        position: res.staffInfo.positionId,
-        positionLevel: res.staffInfo.positionLvl,
-        mail: res.staffInfo.emailAddr,
-        phone: res.staffInfo.phoneNum,
-        skillTags: res.tags,
-        status: res.staffInfo.status
+    if (!isEmpty(res.birthday)) {
+        res.birthday = dateFormat(new Date(Number(res.birthday)), "yyyy-MM-dd");
     }
+
+    if (!isEmpty(res.hire_date)) {
+        res.hire_date = dateFormat(new Date(Number(res.hire_date)), "yyyy-MM-dd");
+    }
+
+    return res;
 }
 
 export function convertDepartmentToLocal(res) {

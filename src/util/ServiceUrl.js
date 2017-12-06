@@ -6,7 +6,7 @@ if (isProduction) {
     url = {
         login: 'http://www.biuu.xyz/apiv1.json?service=account.web_login',
         retrieveStaff: gateWay + '8080/rtrvStaffList',
-        createStaff: 'http://www.biuu.xyz/apiv2.json?service=company_user.save_company_user',
+        saveEmployee: 'http://www.biuu.xyz/apiv2.json?service=company_user.save_company_user',
         deleteStaff: gateWay + '8080/deleteStaff',
         updateStaffDetail: gateWay + '8080/updateStaffDetail',
         getMemberList: gateWay + '8080/getMemberList',

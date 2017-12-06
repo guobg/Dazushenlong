@@ -47,13 +47,15 @@ function createdEmployee(employee) {
     return {type: CREATE_EMPLOYEE, employee}
 }
 
-export function createEmployee(employee, callback) {
+export function saveEmployee(employee, callback) {
     return dispatch => {
         StaticLoad.show("createEmployee");
-        post(url.createStaff, employee)
+        const params = convertEmployeeToServer(employee);
+        post(url.saveEmployee, params)
             .then((res) => {
                 StaticLoad.remove("createEmployee");
-                dispatch(createdEmployee(res.data));
+                const resEmployee = convertEmployeeToLocal(res.data);
+                dispatch(createdEmployee(resEmployee));
                 callback();
             })
             .catch((error) => {

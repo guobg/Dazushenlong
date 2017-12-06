@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Modal, Button} from 'semantic-ui-react';
 import EmployeeInfo from './EmployeeInfo';
 import {FormattedMessage} from 'react-intl';
-import {createEmployee} from '../../../actions/employee_action';
+import {saveEmployee} from '../../../actions/employee_action';
 import {checkValid, getDataInfo} from '../../../util/CommUtil';
 
 class CreateEmployee extends Component {
@@ -17,7 +17,7 @@ class CreateEmployee extends Component {
         let flag = checkValid(employeeInfo);
         if (flag) {
             employeeInfo = getDataInfo(employeeInfo);
-            this.props.dispatch(createEmployee(employeeInfo, this.closeModal));
+            this.props.dispatch(saveEmployee(employeeInfo, this.closeModal));
         }
     };
 
