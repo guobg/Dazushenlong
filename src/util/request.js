@@ -1,6 +1,7 @@
 import createHistory from 'history/createBrowserHistory';
 import errorMsg from '../res/data/errorMessage.json';
 import $ from 'jquery';
+import {getAccessCookie} from './UserStore';
 
 const history = createHistory();
 
@@ -25,11 +26,13 @@ export function request(method, url, body) {
 
     } else {
         method = method.toUpperCase();
+        body.client_secret = 'NjkyZGQxODc4MzhhOGZiZTFmM2ViNDhlZjZiNjgxMDU';
+        getAccessCookie() ? body.access_token = getAccessCookie() : '';
         if (method === 'GET') {
             if (body) {
                 let paramsArray = [];
                 //拼接参数
-                Object.keys(body).forEach(key => paramsArray.push(body[key]))
+                Object.keys(body).forEach(key => paramsArray.push(body[key]));
                 url += '/' + paramsArray.join('/')
             }
         } else {
@@ -45,6 +48,7 @@ export function request(method, url, body) {
                 xhrFields: {
                     withCredentials: true
                 },
+                crossDomain: true,
                 success: (res => {
                     let errorInfo = _respHandle(res);
                     return errorInfo ? reject(errorInfo) : resolve(res);

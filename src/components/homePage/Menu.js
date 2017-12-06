@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Menu, Icon} from 'antd';
+import {Menu} from 'antd';
 import {
     Link
 } from 'react-router-dom';
@@ -8,7 +8,6 @@ import createHistory from 'history/createBrowserHistory';
 import Image from '../common/Image';
 
 const history = createHistory();
-const location = history.location;
 const SubMenu = Menu.SubMenu;
 const keyPathMapping = [
     {
@@ -27,7 +26,7 @@ const keyPathMapping = [
     },
     {
         "key": '4',
-        "path": '/home/memberCard'
+        "path": '/home/mCard'
     },
     {
         "key": '5',
@@ -45,6 +44,16 @@ let defaultKey = '3', hostKey;
 class HomeMenu extends Component {
 
     componentWillMount() {
+        this.resetMenu();
+    }
+
+    componentWillUpdate() {
+        this.resetMenu();
+    }
+
+    resetMenu = () => {
+        const history = createHistory();
+        const location = history.location;
         if (!location.pathname) {
             return;
         }
@@ -55,11 +64,11 @@ class HomeMenu extends Component {
                 return true;
             }
         });
-    }
+    };
 
     render() {
         return (
-            <Menu theme="dark" defaultSelectedKeys={[defaultKey]}
+            <Menu theme="dark" selectedKeys={[defaultKey]}
                   defaultOpenKeys={[hostKey]}
                   mode="inline">
                 <Menu.Item key="3">
@@ -73,7 +82,7 @@ class HomeMenu extends Component {
                     </span>
                 </Menu.Item>
                 <Menu.Item key="4">
-                    <Link to="/home/memberCard"/>
+                    <Link to="/home/mCard"/>
                     <Image name="menu_model"/>
                     <span>
                         <FormattedMessage

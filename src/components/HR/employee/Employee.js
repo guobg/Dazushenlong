@@ -25,7 +25,8 @@ class Employee extends Component {
                     />
                 </div>
                 <CreateEmployee dispatch={dispatch} position={position.positions} organization={organization}/>
-                <EmployeeList dispatch={dispatch} employee={employee} position={position.positions}/>
+                <EmployeeList dispatch={dispatch} employee={employee} position={position.positions}
+                              organization={organization}/>
             </div>
         );
     }

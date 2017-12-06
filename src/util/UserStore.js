@@ -11,9 +11,9 @@ export function getUser() {
 }
 
 export function checkUser(history) {
-    /*if (!getUser().staffId) {
+    if (!getUser().user_id) {
         history.push('/login')
-    }*/
+    }
 }
 
 export function removeUser() {
@@ -22,4 +22,8 @@ export function removeUser() {
 
 export function getStaffId() {
     return getUser().user_id;
+}
+
+export function getAccessCookie() {
+    return getUser().access_token;
 }

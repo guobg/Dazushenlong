@@ -717,3 +717,8 @@ img.ui.image.mv-image {
 .ant-calendar-picker {
     width: auto !important;
 }
+
+.baseline-flex {
+    align-items: baseline;
+    display: flex;
+}

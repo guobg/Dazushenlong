@@ -8,7 +8,7 @@ import {genderOptions, staffStatusOptions} from '../../../res/data/dataOptions';
 import EditEmployee from './EditEmployee';
 
 const header = ["Employee ID", "Employee Name", "Gender", "Birthday", "Phone", "Employ Date", "Department", "Position", "Address", "Action"];
-const checklistKey = ["staffId", "name", "gender", "birthday", "phone", "entryTime", "organization", "position", "address"];
+const checklistKey = ["user_id", "user_name", "user_gender", "birthday", "user_mobile", "hire_date", "department_id", "position_id", "address"];
 
 class EmployeeList extends Component {
     componentDidMount() {
@@ -28,9 +28,13 @@ class EmployeeList extends Component {
             return getDesc(staffStatusOptions, result[key]);
         }
 
-        if (key === 'position' && !isEmpty(result[key])) {
+        /*if (key === 'position' && !isEmpty(result[key])) {
             return getDesc(this.props.position, result[key]) || 'N/A';
         }
+
+        if (key === 'department_id' && !isEmpty(result[key])) {
+            return getDesc(this.props.organization, result[key]) || 'N/A';
+        }*/
 
         if (isEmpty(result[key])) {
             return 'N/A';
@@ -47,7 +51,7 @@ class EmployeeList extends Component {
     };
 
     render() {
-        const {employee, dispatch, position} = this.props;
+        const {employee, dispatch, position, organization} = this.props;
         return (
             <div>
                 <Table textAlign="center">
@@ -104,7 +108,8 @@ class EmployeeList extends Component {
                         </Table.Row>
                     </Table.Footer>
                 </Table>
-                <EditEmployee dispatch={dispatch} ref={node => this.editEmployeeNode = node} position={position}/>
+                <EditEmployee dispatch={dispatch} ref={node => this.editEmployeeNode = node}
+                              position={position} organization={organization}/>
             </div>
         );
     }

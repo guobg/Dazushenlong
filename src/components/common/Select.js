@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Dropdown} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import {isEmpty, getOption} from '../../util/CommUtil';
+import {isEmpty, getOption, getDesc} from '../../util/CommUtil';
 import {injectIntl, FormattedMessage} from 'react-intl';
 import {messages} from '../../res/language/defineMessages';
 import _ from 'lodash';

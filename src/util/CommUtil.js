@@ -24,6 +24,7 @@ export const isEmpty = (text) => {
 
 export const getDesc = (options, key) => {
     let desc = "";
+    if (!options || !(options instanceof Array)) return desc;
     options.some((option) => {
         if (option.value === key) {
             desc = option.text;

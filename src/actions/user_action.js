@@ -3,7 +3,7 @@ import StaticLoad from '../components/common/Loading';
 import StaticDialog from '../components/common/Dialog';
 import {url} from '../util/ServiceUrl';
 import {setUser, removeUser} from '../util/UserStore';
-import {setAccessCookie} from '../util/CookieUtil';
+import {setAccessCookie,getCookie} from '../util/CookieUtil';
 /*
  * action 类型
  */
@@ -31,7 +31,7 @@ export function logon(user, callback) {
         post(url.login, user)
             .then((res) => {
                 dispatch(setUserInfo(res.data));
-                setAccessCookie(res.data.access_token);
+                /*setAccessCookie(res.data.access_token);*/
                 StaticLoad.remove("logon");
                 callback();
             })

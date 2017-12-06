@@ -90,7 +90,7 @@ class MVTextArea extends Component {
             props.ref = this.setWrappedInstance;
         }
         return (
-            <div className="components-item item-horizontal align-right">
+            <div className="components-item item-horizontal align-right baseline-flex">
                 <div className='field-title'>
                     <div className={required ? "input-label" : null}>
                         <FormattedMessage

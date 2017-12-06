@@ -5,7 +5,7 @@ import {FormattedMessage} from 'react-intl';
 import {getOrganization, removeOrganization, createOrg} from '../../../actions/organization_action';
 import OrganizationInfo from '../../../containers/orgInfo_container';
 
-class DepartmentTree extends Component {
+class Organization extends Component {
     state = {
         selectedKey: 0,
         addKey: '',
@@ -143,7 +143,6 @@ class DepartmentTree extends Component {
     render() {
         const {organization} = this.props;
         const {selectedKey, addKey, selectOrg} = this.state;
-        organization.expand = true;
         return (
             <div className="work-content">
                 <div className="first-header">
@@ -203,4 +202,4 @@ class DepartmentTree extends Component {
     }
 }
 
-export default DepartmentTree;
+export default Organization;

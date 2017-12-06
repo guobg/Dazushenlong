@@ -24,6 +24,7 @@ export function getOrganization() {
         post(url.getOrganization, {is_tree: 1})
             .then((res) => {
                 //StaticLoad.remove("getOrganization");
+                res.data.expand = true;
                 dispatch(setOrganization(res.data));
             })
             .catch((error) => {

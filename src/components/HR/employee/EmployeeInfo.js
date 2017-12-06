@@ -12,6 +12,7 @@ import {
     marriageOptions,
     educationOptions
 } from '../../../res/data/dataOptions';
+import OrganizationTree from './OrganizationTree';
 
 class EmployeeInfo extends Component {
     state = {
@@ -20,20 +21,21 @@ class EmployeeInfo extends Component {
 
     getInfo = () => {
         return {
-            staffId: this.props.isEdit ? this.props.info.staffId : '',
-            name: this.nameNode.getWrappedInstance().getValue(),
-            gender: this.genderNode.getWrappedInstance().getValue(),
-            idCard: this.idCardNode.getWrappedInstance().getValue(),
-            position: this.positionNode.getWrappedInstance().getValue(),
-            positionLevel: this.positionLevelNode ? this.positionLevelNode.getWrappedInstance().getValue() : '',
-            phone: this.phoneNode.getWrappedInstance().getValue(),
+            user_id: this.props.isEdit ? this.props.info.user_id : '',
+            user_name: this.nameNode.getWrappedInstance().getValue(),
+            user_gender: this.genderNode.getWrappedInstance().getValue(),
+            id_card_no: this.idCardNode.getWrappedInstance().getValue(),
+            position_id: this.positionNode.getWrappedInstance().getValue(),
+            position_level_id: this.positionLevelNode ? this.positionLevelNode.getWrappedInstance().getValue() : '',
+            user_mobile: this.phoneNode.getWrappedInstance().getValue(),
             birthday: this.birthdayNode.getValue(),
-            entryTime: this.entryTimeNode.getValue(),
-            marriage: this.marriageNode.getWrappedInstance().getValue(),
+            hire_date: this.entryTimeNode.getValue(),
+            is_married_id: this.marriageNode.getWrappedInstance().getValue(),
             address: this.addressNode.getWrappedInstance().getValue(),
-            educationLevel: this.educationLevelNode.getWrappedInstance().getValue(),
+            education_level_id: this.educationLevelNode.getWrappedInstance().getValue(),
             skill: this.skillNode.getWrappedInstance().getValue(),
-            remark: this.remarkNode.getWrappedInstance().getValue()
+            remark: this.remarkNode.getWrappedInstance().getValue(),
+            department_id: this.orgNode.getValue()
         }
     };
 
@@ -61,9 +63,8 @@ class EmployeeInfo extends Component {
         return options;
     };
 
-
     render() {
-        const {info = {}, isEdit} = this.props;
+        const {info = {}, isEdit, organization = {}} = this.props;
         const {selectedPosition} = this.state;
         const positionLevelOption = this.getPositionLevelOption(selectedPosition);
         return (
@@ -80,13 +81,13 @@ class EmployeeInfo extends Component {
                 <div className="model-container">
                     <Input label="Employee Name"
                            ref={node => this.nameNode = node}
-                           defaultValue={info.name}
+                           defaultValue={info.user_name}
                            readOnly={isEdit}
                            required={true}
                     />
                     <Select options={genderOptions} label="Gender"
                             ref={node => this.genderNode = node}
-                            defaultValue={info.gender}
+                            defaultValue={info.user_gender}
                             required={true}
                     />
                     <DatePicker label="Birthday"
@@ -95,17 +96,17 @@ class EmployeeInfo extends Component {
                                 required={true}/>
                     <Select options={marriageOptions} label="Marriage"
                             ref={node => this.marriageNode = node}
-                            defaultValue={info.marriage}
+                            defaultValue={info.is_married_id}
                             required={true}
                     />
                     <Input label="IDCard"
                            ref={node => this.idCardNode = node}
-                           defaultValue={info.idCard}
+                           defaultValue={info.id_card_no}
                            required={true}
                     />
                     <Input label="Phone"
                            ref={node => this.phoneNode = node}
-                           defaultValue={info.phone}
+                           defaultValue={info.user_mobile}
                            required={true}
                     />
                     <Input label="Address"
@@ -114,7 +115,7 @@ class EmployeeInfo extends Component {
                     />
                     <Select options={educationOptions} label="Education Level"
                             ref={node => this.educationLevelNode = node}
-                            defaultValue={info.educationLevel}
+                            defaultValue={info.education_level_id}
                     />
                 </div>
 
@@ -130,22 +131,26 @@ class EmployeeInfo extends Component {
                 <div className="model-container">
                     <DatePicker label="Employ Date"
                                 ref={node => this.entryTimeNode = node}
-                                defaultValue={info.entryTime}/>
+                                defaultValue={info.hire_date}/>
+                    <OrganizationTree ref={node => this.orgNode = node}
+                                      organization={organization}
+                                      label="Department"
+                                      defaultValue={info.department_id}
+                    />
                     <Select options={this.getPositionOption()}
                             label="Position"
                             ref={node => this.positionNode = node}
-                            defaultValue={info.position}
+                            defaultValue={info.position_id}
                             onChange={(selectedPosition) => {
                                 this.setState({
                                     selectedPosition: selectedPosition
                                 })
                             }}
-                            required={true}
                     />
                     {selectedPosition && positionLevelOption.length > 0 ?
                         <Select options={positionLevelOption} label="Position Level"
                                 ref={node => this.positionLevelNode = node}
-                                defaultValue={info.positionLevel}
+                                defaultValue={info.position_level_id}
                                 required={true}
                         /> : null}
                 </div>

@@ -26,7 +26,7 @@ const routes = [
         main: Member
     },
     {
-        path: '/home/memberCard',
+        path: '/home/mCard',
         main: MemberCard
     },
     {

@@ -12,7 +12,7 @@ export function setAccessCookie(value) {
     setCookie(ACCESS_TOKEN, value);
 }
 
-function getCookie(c_name) {
+export function getCookie(c_name) {
     if (document.cookie.length > 0) {
         let c_start = document.cookie.indexOf(c_name + "=");
         if (c_start !== -1) {

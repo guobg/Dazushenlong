@@ -42,7 +42,7 @@ class EditEmployee extends Component {
 
     render() {
         const {modalOpen, employeeInfo} = this.state;
-        const {position} = this.props;
+        const {position, organization} = this.props;
         return (
             <div>
                 <Modal
@@ -57,7 +57,7 @@ class EditEmployee extends Component {
                     </Modal.Header>
                     <Modal.Content>
                         <EmployeeInfo isEdit={true} info={employeeInfo} ref={node => this.employeeInfoNode = node}
-                                      position={position}/>
+                                      position={position} organization={organization}/>
                     </Modal.Content>
                     <Modal.Actions>
                         <Button className="cancel-button" onClick={() => this.closeModal()}>

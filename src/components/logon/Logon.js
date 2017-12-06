@@ -25,7 +25,7 @@ class Logon extends Component {
         });
         if (isEmpty(user.user_name) || isEmpty(user.user_pwd)) return;
         const callback = () => {
-            history.push('/home')
+            history.push('/home');
         };
         userLogon(user, callback);
     }

@@ -53,7 +53,7 @@ export function createEmployee(employee, callback) {
         post(url.createStaff, employee)
             .then((res) => {
                 StaticLoad.remove("createEmployee");
-                dispatch(createdEmployee(employee));
+                dispatch(createdEmployee(res.data));
                 callback();
             })
             .catch((error) => {

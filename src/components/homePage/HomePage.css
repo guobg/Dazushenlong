@@ -350,3 +350,12 @@ i.icon.remove-position-button {
     margin-left: 20px;
     cursor: pointer;
 }
+
+.org-tree-select .org-tree {
+    width: auto;
+    border: none;
+}
+
+.org-check-box {
+    margin-left: 20px;
+}

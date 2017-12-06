@@ -69,10 +69,7 @@ class OrgEmployeeList extends Component {
         }
         let param = {
             id: "removeOrg-confirm",
-            message: <FormattedMessage
-                id='delete'
-                defaultMessage='Delete'
-            />,
+            message: '确认删除？',
             confirmHandle: () => {
                 removeOrg && removeOrg(org);
             }
