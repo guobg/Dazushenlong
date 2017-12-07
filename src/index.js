@@ -17,6 +17,9 @@ import configureStore from './store/configureStore';
 import 'classlist-polyfill';
 import {LocaleProvider} from 'antd';
 import enUS from 'antd/lib/locale-provider/en_US';
+import zhCN from 'antd/lib/locale-provider/zh_CN';
+import moment from 'moment';
+import 'moment/locale/zh-cn';
 
 const store = configureStore();
 
@@ -34,11 +37,14 @@ const chooseLocale = () => {
 const chooseLocaleForAntd = () => {
     switch (navigator.language.split('-')[0]) {
         case 'en':
+            moment.locale('en');
             return enUS;
         case 'zh':
-            return;
+            moment.locale('zh-cn');
+            return zhCN;
         default:
-            return en_US;
+            moment.locale('en');
+            return enUS;
     }
 };
 
