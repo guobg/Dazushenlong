@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 import {Button, Modal} from 'semantic-ui-react';
 import {FormattedMessage} from 'react-intl';
-import EmployeeInfo from './EmployeeInfo';
-import {saveEmployee} from '../../../actions/employee_action';
-import {checkValid, getDataInfo} from '../../../util/CommUtil';
+import ServiceItemInfo from './ServiceItemInfo';
+import {updateServiceItem} from '../../actions/serviceItem_action';
 
-class EditEmployee extends Component {
-    state = {modalOpen: false, employeeInfo: {}};
+class EditServiceItem extends Component {
+    state = {modalOpen: false, serviceItemInfo: {}};
 
     componentWillUpdate() {
         this.fixBody();
@@ -21,28 +20,22 @@ class EditEmployee extends Component {
         if (anotherModal > 0) document.body.classList.add('scrolling', 'dimmable', 'dimmed');
     };
 
-    openModal = (staff) => {
-        /*this.props.dispatch(rtrvStaffDetail(staffId, function (employee) {
-            this.setState({modalOpen: true, employeeInfo: employee});
-        }.bind(this)));*/
-        this.setState({modalOpen: true, employeeInfo: staff});
+    openModal = (serviceItem) => {
+        this.setState({
+            modalOpen: true,
+            serviceItemInfo: serviceItem
+        })
     };
 
     closeModal = () => this.setState({modalOpen: false});
 
-    updateEmployeeInfo = () => {
-        let employeeInfo = this.employeeInfoNode.getInfo();
-        let flag = checkValid(employeeInfo);
-        if (flag) {
-            employeeInfo = getDataInfo(employeeInfo);
-            employeeInfo.id = this.state.employeeInfo.id;
-            this.props.dispatch(saveEmployee(employeeInfo, this.closeModal));
-        }
+    updateServiceItemInfo = () => {
+        let serviceItemInfo = this.serviceItemInfoNode.getInfo();
+        this.props.dispatch(updateServiceItem(serviceItemInfo, this.closeModal));
     };
 
     render() {
-        const {modalOpen, employeeInfo} = this.state;
-        const {position, organization} = this.props;
+        const {modalOpen, serviceItemInfo} = this.state;
         return (
             <div>
                 <Modal
@@ -51,13 +44,14 @@ class EditEmployee extends Component {
                     open={modalOpen}>
                     <Modal.Header>
                         <FormattedMessage
-                            id='editEmployee'
-                            defaultMessage='Edit Employee'
+                            id='editServiceItem'
+                            defaultMessage='Edit ServiceItem'
                         />
                     </Modal.Header>
                     <Modal.Content>
-                        <EmployeeInfo isEdit={true} info={employeeInfo} ref={node => this.employeeInfoNode = node}
-                                      position={position} organization={organization}/>
+                        <ServiceItemInfo
+                            info={serviceItemInfo}
+                            ref={node => this.serviceItemInfoNode = node}/>
                     </Modal.Content>
                     <Modal.Actions>
                         <Button className="cancel-button" onClick={() => this.closeModal()}>
@@ -66,7 +60,7 @@ class EditEmployee extends Component {
                                 defaultMessage='Cancel'
                             />
                         </Button>
-                        <Button className="confirm-button" onClick={() => this.updateEmployeeInfo()}>
+                        <Button className="confirm-button" onClick={() => this.updateServiceItemInfo()}>
                             <FormattedMessage
                                 id='confirm'
                                 defaultMessage='Confirm'
@@ -79,4 +73,4 @@ class EditEmployee extends Component {
     }
 }
 
-export default EditEmployee;
+export default EditServiceItem;

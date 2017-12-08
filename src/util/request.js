@@ -8,7 +8,7 @@ const history = createHistory();
 // Get the current location.
 const location = history.location;
 
-const isDummy = false;
+const isDummy = true;
 
 export function request(method, url, body) {
     if (isDummy) {

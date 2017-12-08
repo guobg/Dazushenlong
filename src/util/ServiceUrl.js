@@ -1,11 +1,11 @@
 let url;
-const isProduction = true;
+const isProduction = false;
 
 if (isProduction) {
     const gateWay = "http://47.100.100.211:";
     url = {
         login: 'http://www.biuu.xyz/apiv1.json?service=account.web_login',
-        retrieveStaff: gateWay + '8080/rtrvStaffList',
+        getEmployeeList: 'http://www.biuu.xyz/apiv2.json?service=company_user.get_company_user_list',
         saveEmployee: 'http://www.biuu.xyz/apiv2.json?service=company_user.save_company_user',
         deleteStaff: gateWay + '8080/deleteStaff',
         updateStaffDetail: gateWay + '8080/updateStaffDetail',
@@ -35,7 +35,7 @@ if (isProduction) {
     const gateWay = "http://192.168.0.107:";
     url = {
         login: gateWay + '8080/login',
-        retrieveStaff: gateWay + '8080/rtrvStaffList',
+        getEmployeeList: gateWay + '8080/rtrvStaffList',
         createStaff: gateWay + '8080/createStaff',
         deleteStaff: gateWay + '8080/deleteStaff',
         updateStaffDetail: gateWay + '8080/updateStaffDetail',

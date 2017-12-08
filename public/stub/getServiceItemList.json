@@ -1,0 +1,56 @@
+{
+  "statusCode": "200",
+  "responseCode": "000",
+  "responseMsg": "请求成功",
+  "responseBody": {
+    "serviceItems": [
+      {
+        "serviceItemId": "Y0001",
+        "name": "Frank",
+        "phone": "12345678910",
+        "serviceItemTime": "2017-11-18 21:50",
+        "remark": "提前十分钟提醒",
+        "status": "active",
+        "memberLevel": "1"
+      },
+      {
+        "serviceItemId": "Y0002",
+        "name": "Bob",
+        "phone": "12345678910",
+        "serviceItemTime": "2017-11-18 21:50",
+        "remark": "提前十分钟提醒",
+        "status": "active",
+        "memberLevel": "1"
+      },
+      {
+        "serviceItemId": "Y0003",
+        "name": "Darcy",
+        "phone": "12345678910",
+        "serviceItemTime": "2017-11-18 21:50",
+        "remark": "提前十分钟提醒",
+        "status": "active",
+        "memberLevel": "1"
+      },
+      {
+        "serviceItemId": "Y0004",
+        "name": "Jack",
+        "phone": "12345678910",
+        "serviceItemTime": "2017-11-18 21:50",
+        "remark": "提前十分钟提醒",
+        "status": "active",
+        "memberLevel": "1"
+      },
+      {
+        "serviceItemId": "Y0005",
+        "name": "Todd",
+        "phone": "12345678910",
+        "serviceItemTime": "2017-11-18 21:50",
+        "remark": "提前十分钟提醒",
+        "status": "active",
+        "memberLevel": "1"
+      }
+    ],
+    "totalNumber": 11,
+    "remarks": null
+  }
+}

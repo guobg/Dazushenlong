@@ -67,31 +67,6 @@ export function convertEmployeeToLocal(res) {
     return res;
 }
 
-export function convertDepartmentToLocal(res) {
-    let department = [];
-    if (res && res.length > 0) {
-        res.map((item) => {
-            let tempDepartment = {
-                value: item.id,
-                text: item.name,
-                positions: []
-            };
-
-            if (item.positions && item.positions.length > 0) {
-                item.positions.map((position) => {
-                    tempDepartment.positions.push({
-                        value: position.id,
-                        text: position.name
-                    })
-                })
-            }
-            department.push(tempDepartment)
-        })
-    }
-
-    return department;
-}
-
 export function convertOrgToLocal(res) {
     let org = {
         name: res.name,

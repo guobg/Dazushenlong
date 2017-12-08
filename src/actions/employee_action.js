@@ -24,17 +24,16 @@ function retrievedEmployeeList(employees) {
     return {type: GET_EMPLOYEE_LIST, employees}
 }
 
-export function getEmployeeList(orgName, page, pageSize) {
+export function getEmployeeList(page, pageSize) {
     return dispatch => {
-        post(url.retrieveStaff, {
-            orgName: orgName,
-            page: page,
-            pageSize: pageSize
+        post(url.getEmployeeList, {
+            page_index: page,
+            page_size: pageSize
         })
             .then((res) => {
                 dispatch(retrievedEmployeeList({
-                    employees: res.responseBody.staffs,
-                    totalElements: res.responseBody.totalNumber
+                    employees: res.data.rows,
+                    totalElements: res.data.total
                 }));
             })
             .catch((error) => {

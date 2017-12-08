@@ -273,6 +273,7 @@ i.icon.remove-position-button {
 
 .org-tree ul {
     padding-left: 20px;
+    list-style: none;
 }
 
 .org-tree ul:first-child {
