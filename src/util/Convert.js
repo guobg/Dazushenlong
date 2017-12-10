@@ -19,11 +19,11 @@ export const convertStaffOptionToLocal = (res) => {
 
 export function convertEmployeeToServer(params) {
     if (params.birthday) {
-        params.birthday = new Date(params.birthday).getTime()
+        params.birthday = Math.round(new Date(params.birthday).getTime() / 1000).toString()
     }
 
     if (params.hire_date) {
-        params.hire_date = new Date(params.hire_date).getTime()
+        params.hire_date = Math.round(new Date(params.hire_date).getTime() / 1000).toString()
     }
 
     return params;
@@ -57,11 +57,21 @@ export function convertEditEmployeeToServer(employee) {
 
 export function convertEmployeeToLocal(res) {
     if (!isEmpty(res.birthday)) {
-        res.birthday = dateFormat(new Date(Number(res.birthday)), "yyyy-MM-dd");
+        res.birthday = dateFormat(new Date(Number(res.birthday) * 1000), "yyyy-MM-dd");
     }
 
     if (!isEmpty(res.hire_date)) {
-        res.hire_date = dateFormat(new Date(Number(res.hire_date)), "yyyy-MM-dd");
+        res.hire_date = dateFormat(new Date(Number(res.hire_date) * 1000), "yyyy-MM-dd");
+    }
+
+    return res;
+}
+
+export function convertEmployeeListToLocal(res) {
+    if (res.rows && res.rows.length > 0) {
+        res.rows.map((item) => {
+            convertEmployeeToLocal(item)
+        })
     }
 
     return res;

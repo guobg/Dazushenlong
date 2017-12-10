@@ -35,7 +35,7 @@ class EmployeeInfo extends Component {
             education_level_id: this.educationLevelNode.getWrappedInstance().getValue(),
             skill: this.skillNode.getWrappedInstance().getValue(),
             remark: this.remarkNode.getWrappedInstance().getValue(),
-            department_id: this.orgNode.getValue()
+            dept_id: this.orgNode.getValue()
         }
     };
 
@@ -135,7 +135,7 @@ class EmployeeInfo extends Component {
                     <OrganizationTree ref={node => this.orgNode = node}
                                       organization={organization}
                                       label="Department"
-                                      defaultValue={info.department_id}
+                                      defaultValue={info.dept_id}
                     />
                     <Select options={this.getPositionOption()}
                             label="Position"

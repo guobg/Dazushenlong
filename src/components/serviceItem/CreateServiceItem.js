@@ -3,6 +3,7 @@ import {Modal, Button} from 'semantic-ui-react';
 import ServiceItemInfo from './ServiceItemInfo';
 import {FormattedMessage} from 'react-intl';
 import {createServiceItem} from '../../actions/serviceItem_action';
+import {checkValid, getDataInfo} from '../../util/CommUtil';
 
 class CreateServiceItem extends Component {
     state = {modalOpen: false};
@@ -13,7 +14,11 @@ class CreateServiceItem extends Component {
 
     newServiceItem = () => {
         let serviceItemInfo = this.serviceItemInfoNode.getInfo();
-        this.props.dispatch(createServiceItem(serviceItemInfo, this.closeModal));
+        let flag = checkValid(serviceItemInfo);
+        if (flag) {
+            serviceItemInfo = getDataInfo(serviceItemInfo);
+            this.props.dispatch(createServiceItem(serviceItemInfo, this.closeModal));
+        }
     };
 
     render() {

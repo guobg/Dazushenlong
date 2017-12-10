@@ -100,6 +100,23 @@ const en_US = {
     divorce: "Divorce",
     editPosition: "Edit Position",
     createPositionLevel: "Create Position Level",
-    IDCard: "ID Card"
+    IDCard: "ID Card",
+    "Service Item Name": "Service Item Name",
+    "Unit": "Unit",
+    "Technician Number": "Technician Number",
+    "Is Count Time": "Is Count Time",
+    "Service Duration(Minute)": "Service Duration(Minute)",
+    "Unit Price": "Unit Price",
+    "Max Discount": "Max Discount",
+    "Can Call Clock": "Can Call Clock",
+    "Can Use Coupon": "Can Use Coupon",
+    "Count Person/Time": "Count Person/Time",
+    "Add Clock Count Person/Time": "Add Clock Count Person/Time",
+    "Unit Ratio": "Unit Ratio",
+    serviceItem: "Service Item",
+    createServiceItem: "Create Service Item",
+    editServiceItem: "Edit Service Item",
+    yes: "Yes",
+    no: "No"
 };
 export default en_US;

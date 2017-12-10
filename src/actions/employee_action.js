@@ -5,7 +5,7 @@ import {post, get} from '../util/request';
 import {
     convertEmployeeToServer,
     convertEmployeeToLocal,
-    convertEditEmployeeToServer
+    convertEmployeeListToLocal
 } from '../util/Convert';
 import StaticLoad from '../components/common/Loading';
 import StaticDialog from '../components/common/Dialog';
@@ -28,12 +28,14 @@ export function getEmployeeList(page, pageSize) {
     return dispatch => {
         post(url.getEmployeeList, {
             page_index: page,
-            page_size: pageSize
+            page_size: pageSize,
+            list_type: "full"
         })
             .then((res) => {
+            const employeeList = convertEmployeeListToLocal(res.data);
                 dispatch(retrievedEmployeeList({
-                    employees: res.data.rows,
-                    totalElements: res.data.total
+                    employees: employeeList.rows,
+                    totalElements: employeeList.total
                 }));
             })
             .catch((error) => {
@@ -91,10 +93,12 @@ function updatedEmployee(employee) {
 export function updateEmployee(employee, callback) {
     return dispatch => {
         StaticLoad.show("updateEmployee");
-        post(url.updateStaffDetail, {})
+        const params = convertEmployeeToServer(employee);
+        post(url.saveEmployee, params)
             .then((res) => {
                 StaticLoad.remove("updateEmployee");
-                dispatch(updatedEmployee(employee));
+                const resEmployee = convertEmployeeToLocal(res.data);
+                dispatch(updatedEmployee(resEmployee));
                 callback();
             })
             .catch((error) => {

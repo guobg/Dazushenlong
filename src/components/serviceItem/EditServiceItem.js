@@ -41,7 +41,8 @@ class EditServiceItem extends Component {
                 <Modal
                     closeOnEscape={false}
                     closeOnRootNodeClick={false}
-                    open={modalOpen}>
+                    open={modalOpen}
+                    size='large'>
                     <Modal.Header>
                         <FormattedMessage
                             id='editServiceItem'

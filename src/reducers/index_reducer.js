@@ -6,6 +6,8 @@ import member from './member_reducer';
 import memberCard from './memberCard_reducer';
 import schedule from './schedule_reducer';
 import position from './position_reducer';
+import serviceItem from './serviceItem_reducer';
+import commission from './commission_reducer';
 
 const mindvationApp = combineReducers({
     userInfo,
@@ -14,7 +16,9 @@ const mindvationApp = combineReducers({
     member,
     memberCard,
     schedule,
-    position
+    position,
+    serviceItem,
+    commission
 });
 
 export default mindvationApp;

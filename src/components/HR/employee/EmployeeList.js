@@ -8,7 +8,7 @@ import {genderOptions, staffStatusOptions} from '../../../res/data/dataOptions';
 import EditEmployee from './EditEmployee';
 
 const header = ["Employee ID", "Employee Name", "Gender", "Birthday", "Phone", "Employ Date", "Department", "Position", "Address", "Action"];
-const checklistKey = ["user_id", "user_name", "user_gender", "birthday", "user_mobile", "hire_date", "company_name", "position_id", "address"];
+const checklistKey = ["user_id", "user_name", "user_gender", "birthday", "user_mobile", "hire_date", "dept_name", "position_id", "address"];
 
 class EmployeeList extends Component {
     componentDidMount() {
@@ -20,13 +20,13 @@ class EmployeeList extends Component {
     }
 
     getListDesc = (result, key) => {
-        if (key === "gender" && !isEmpty(result[key])) {
+        if (key === "user_gender" && !isEmpty(result[key])) {
             return getDesc(genderOptions, result[key]);
         }
 
-        if (key === 'status' && !isEmpty(result[key])) {
+        /*if (key === 'status' && !isEmpty(result[key])) {
             return getDesc(staffStatusOptions, result[key]);
-        }
+        }*/
 
         /*if (key === 'position' && !isEmpty(result[key])) {
             return getDesc(this.props.position, result[key]) || 'N/A';

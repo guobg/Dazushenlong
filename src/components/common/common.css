@@ -466,9 +466,10 @@ img.ui.image.mv-image {
 }
 
 .field-title {
-    margin-right: 20px;
+    padding-right: 20px;
     font-size: 14px;
     color: #666666;
+    max-width: 20%;
 }
 
 .cancel-button.ui.button {

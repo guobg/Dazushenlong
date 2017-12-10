@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Button, Modal} from 'semantic-ui-react';
 import {FormattedMessage} from 'react-intl';
 import EmployeeInfo from './EmployeeInfo';
-import {saveEmployee} from '../../../actions/employee_action';
+import {updateEmployee} from '../../../actions/employee_action';
 import {checkValid, getDataInfo} from '../../../util/CommUtil';
 
 class EditEmployee extends Component {
@@ -36,7 +36,7 @@ class EditEmployee extends Component {
         if (flag) {
             employeeInfo = getDataInfo(employeeInfo);
             employeeInfo.id = this.state.employeeInfo.id;
-            this.props.dispatch(saveEmployee(employeeInfo, this.closeModal));
+            this.props.dispatch(updateEmployee(employeeInfo, this.closeModal));
         }
     };
 

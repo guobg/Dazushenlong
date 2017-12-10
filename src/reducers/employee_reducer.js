@@ -14,7 +14,7 @@ function employee(state = {
         case UPDATE_EMPLOYEE:
             let temp2 = {...state};
             temp2.employees.some((employee) => {
-                if (employee.staffId === action.employee.staffId) {
+                if (employee.user_id === action.employee.user_id) {
                     Object.assign(employee, action.employee);
                     return true;
                 }

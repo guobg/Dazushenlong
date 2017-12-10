@@ -78,12 +78,6 @@ export const genderOptions = [
             defaultMessage='Male'
         />,
         value: "M"
-    }, {
-        text: <FormattedMessage
-            id='other'
-            defaultMessage='Other'
-        />,
-        value: "O"
     }
 ];
 
@@ -138,19 +132,13 @@ export const marriageOptions = [
             id='unmarried'
             defaultMessage='Unmarried'
         />,
-        value: 'unmarried'
+        value: '0'
     }, {
         text: <FormattedMessage
             id='married'
             defaultMessage='Married'
         />,
-        value: 'married'
-    }, {
-        text: <FormattedMessage
-            id='divorce'
-            defaultMessage='Divorce'
-        />,
-        value: 'divorce'
+        value: '1'
     }
 ];
 
@@ -160,19 +148,13 @@ export const educationOptions = [
             id='unmarried'
             defaultMessage='Unmarried'
         />,
-        value: 'unmarried'
+        value: '0'
     }, {
         text: <FormattedMessage
             id='married'
             defaultMessage='Married'
         />,
-        value: 'married'
-    }, {
-        text: <FormattedMessage
-            id='divorce'
-            defaultMessage='Divorce'
-        />,
-        value: 'divorce'
+        value: '1'
     }
 ];
 

@@ -5,11 +5,18 @@ import {getDesc, isEmpty} from '../../util/CommUtil';
 import {FormattedMessage} from 'react-intl';
 import {deleteServiceItem, getServiceItemList} from '../../actions/serviceItem_action';
 import EditServiceItem from './EditServiceItem';
+import Commission from '../../containers/commission_container';
 
-const header = ["ID", "Name", "Phone", "ServiceItem Time", "Remark", "Status", "Member Level", "Action"];
-const checklistKey = ["serviceItemId", "name", "phone", "serviceItemTime", "remark", "status", "memberLevel"];
+const header = ["ID", "Service Item Name", "Unit", "Technician Number", "Is Count Time",
+    "Service Duration(Minute)", "Unit Price", "Max Discount", "Can Call Clock", "Can Use Coupon",
+    "Count Person/Time", "Add Clock Count Person/Time", "Unit Ratio", "Action"];
+const checklistKey = ["serviceItemId", "serviceItemName", "Unit", "technicianNumber", "isCountTime",
+    "serviceDuration", "UnitPrice", "maxDiscount", "canCallClock", "canUseCoupon", "countPersonTime",
+    "addClockCountPersonTime", "unitRatio"];
 
 class ServiceItemList extends Component {
+    state = {serviceItemId: ''};
+
     componentDidMount() {
         this.props.dispatch(getServiceItemList(1, 10));
     };
@@ -71,24 +78,26 @@ class ServiceItemList extends Component {
                                         })
                                     }
                                     <Table.Cell className="table-action-cell">
-                                        <Button primary onClick={() => this.edit(result)}>
+                                        <div className="table-action-edit" onClick={() => this.edit(result)}>
                                             <FormattedMessage
                                                 id='edit'
                                                 defaultMessage='Edit'
                                             />
-                                        </Button>
-                                        <Button color='red' onClick={() => this.remove(result)}>
+                                        </div>
+                                        <div className="table-action-edit" onClick={() => {
+                                            this.setState({serviceItemId: result.serviceItemId})
+                                        }}>
                                             <FormattedMessage
-                                                id='cancel'
-                                                defaultMessage='Cancel'
+                                                id='setCommission'
+                                                defaultMessage='Commission Setting'
                                             />
-                                        </Button>
-                                        <Button color='green' onClick={() => this.remove(result)}>
+                                        </div>
+                                        <div className="table-action-delete" onClick={() => this.remove(result)}>
                                             <FormattedMessage
-                                                id='resume'
-                                                defaultMessage='Resume'
+                                                id='delete'
+                                                defaultMessage='Delete'
                                             />
-                                        </Button>
+                                        </div>
                                     </Table.Cell>
                                 </Table.Row>
 
@@ -99,13 +108,15 @@ class ServiceItemList extends Component {
                         <Table.Row>
                             <Table.HeaderCell colSpan={header.length}>
                                 <Pagination defaultCurrent={1} total={serviceItem.totalElements}
-                                            showQuickJumper
                                             onChange={(page, pageSize) => this.pageChange(page, pageSize)}/>
                             </Table.HeaderCell>
                         </Table.Row>
                     </Table.Footer>
                 </Table>
                 <EditServiceItem ref={node => this.editServiceItemNode = node} dispatch={dispatch}/>
+                <div className="components-item">
+                    <Commission serviceItemId={this.state.serviceItemId}/>
+                </div>
             </div>
         );
     }

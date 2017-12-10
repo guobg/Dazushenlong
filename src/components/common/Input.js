@@ -160,7 +160,7 @@ MVInput.propTypes = {
     placeHolder: PropTypes.string,
     defaultValue: PropTypes.string,
     type: PropTypes.string,
-    step: PropTypes.string,
+    step: PropTypes.number,
     style: PropTypes.object,
     fullWidth: PropTypes.bool,
     action: PropTypes.object,

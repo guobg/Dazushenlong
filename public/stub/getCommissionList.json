@@ -1,0 +1,44 @@
+{
+  "statusCode": "200",
+  "responseCode": "000",
+  "responseMsg": "SUCCESS",
+  "responseBody": {
+    "commissions": [
+      {
+        "id": "C1",
+        "positionLevel": "初级技师",
+        "callClockCom": 25,
+        "arrClockCom": 25,
+        "basicTask": 10,
+        "stagedCommission": [
+          {
+            "stage": 1,
+            "min": 11,
+            "max": 20,
+            "commission": 30
+          },
+          {
+            "stage": 2,
+            "min": 21,
+            "max": 40,
+            "commission": 50
+          },
+          {
+            "stage": 3,
+            "min": 41,
+            "max": null,
+            "commission": 100
+          }
+        ]
+      },
+      {
+        "id": "C2",
+        "positionLevel": "中级技师"
+      },
+      {
+        "id": "C3",
+        "positionLevel": "高级技师"
+      }
+    ]
+  }
+}

@@ -29,7 +29,11 @@ if (isProduction) {
         getPositionList: gateWay + '8080/getPositionList',
         createPosition: gateWay + '8080/createPosition',
         updatePosition: gateWay + '8080/updatePosition',
-        deletePosition: gateWay + '8080/deletePosition'
+        deletePosition: gateWay + '8080/deletePosition',
+        getServiceItemList: gateWay + '8080/getServiceItemList',
+        createServiceItem: gateWay + '8080/createServiceItem',
+        updateServiceItem: gateWay + '8080/updateServiceItem',
+        getCommissionList: gateWay + '8080/getCommissionList'
     };
 } else {
     const gateWay = "http://192.168.0.107:";
@@ -57,7 +61,11 @@ if (isProduction) {
         getPositionList: gateWay + '8080/getPositionList',
         createPosition: gateWay + '8080/createPosition',
         updatePosition: gateWay + '8080/updatePosition',
-        deletePosition: gateWay + '8080/deletePosition'
+        deletePosition: gateWay + '8080/deletePosition',
+        getServiceItemList: gateWay + '8080/getServiceItemList',
+        createServiceItem: gateWay + '8080/createServiceItem',
+        updateServiceItem: gateWay + '8080/updateServiceItem',
+        getCommissionList: gateWay + '8080/getCommissionList'
     };
 }
 

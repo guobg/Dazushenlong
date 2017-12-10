@@ -97,6 +97,23 @@ const zh_CN = {
     divorce: "离异",
     editPosition: "修改职位",
     createPositionLevel: "创建职级",
-    IDCard: "身份证"
+    IDCard: "身份证",
+    "Service Item Name": "服务品项名称",
+    "Unit": "单位",
+    "Technician Number": "需技师数",
+    "Is Count Time": "是否计时",
+    "Service Duration(Minute)": "服务时长（分）",
+    "Unit Price": "单价",
+    "Max Discount": "最大折扣",
+    "Can Call Clock": "点排",
+    "Can Use Coupon": "可用抵扣券",
+    "Count Person/Time": "计算人/次",
+    "Add Clock Count Person/Time": "加钟算人/次",
+    "Unit Ratio": "单位比率",
+    serviceItem: "服务项目",
+    createServiceItem: "新增服务项目",
+    editServiceItem: "修改服务项目",
+    yes: "是",
+    no: "否"
 };
 export default zh_CN;
