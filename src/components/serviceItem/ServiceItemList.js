@@ -88,7 +88,7 @@ class ServiceItemList extends Component {
                                             this.setState({serviceItemId: result.serviceItemId})
                                         }}>
                                             <FormattedMessage
-                                                id='setCommission'
+                                                id='commissionSetting'
                                                 defaultMessage='Commission Setting'
                                             />
                                         </div>
@@ -114,9 +114,9 @@ class ServiceItemList extends Component {
                     </Table.Footer>
                 </Table>
                 <EditServiceItem ref={node => this.editServiceItemNode = node} dispatch={dispatch}/>
-                <div className="components-item">
+                {this.state.serviceItemId ? <div className="components-item">
                     <Commission serviceItemId={this.state.serviceItemId}/>
-                </div>
+                </div> : null}
             </div>
         );
     }

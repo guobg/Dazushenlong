@@ -180,7 +180,6 @@ i.icon.remove-position-button {
 .table-action-delete {
     font-size: 14px;
     color: #c35f57;
-    margin-left: 20px;
     cursor: pointer;
 }
 
@@ -359,4 +358,41 @@ i.icon.remove-position-button {
 
 .org-check-box {
     margin-left: 20px;
+}
+
+.stage-basic-task {
+    padding-bottom: 10px;
+}
+
+.stage-com-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #dddddd;
+}
+
+.stage-com-item:last-child {
+    border-bottom: none;
+}
+
+.stage-com-title {
+    margin-right: 10px;
+}
+
+.stage-com-text {
+    margin: 0 10px;
+}
+
+.stage-com-input {
+    margin: 0 10px;
+}
+
+.stage-com-line {
+    margin-bottom: 15px;
+}
+
+.table-action-cell > div {
+    margin-left: 20px;
+}
+
+.table-action-cell > div:first-child {
+    margin-left: 0;
 }

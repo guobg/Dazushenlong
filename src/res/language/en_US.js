@@ -117,6 +117,12 @@ const en_US = {
     createServiceItem: "Create Service Item",
     editServiceItem: "Edit Service Item",
     yes: "Yes",
-    no: "No"
+    no: "No",
+    "Basic Task": "Basic Task",
+    "Employee Position Level": "Employee Position Level",
+    "Call Clock Commission": "Call Clock Commission",
+    "Arrange Clock Commission": "Arrange Clock Commission",
+    commissionSetting: "Commission Setting",
+    stageSetting: "Stage Setting"
 };
 export default en_US;

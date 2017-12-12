@@ -33,7 +33,8 @@ if (isProduction) {
         getServiceItemList: gateWay + '8080/getServiceItemList',
         createServiceItem: gateWay + '8080/createServiceItem',
         updateServiceItem: gateWay + '8080/updateServiceItem',
-        getCommissionList: gateWay + '8080/getCommissionList'
+        getCommissionList: gateWay + '8080/getCommissionList',
+        updateCommission: gateWay + '8080/updateCommission'
     };
 } else {
     const gateWay = "http://192.168.0.107:";
@@ -65,7 +66,8 @@ if (isProduction) {
         getServiceItemList: gateWay + '8080/getServiceItemList',
         createServiceItem: gateWay + '8080/createServiceItem',
         updateServiceItem: gateWay + '8080/updateServiceItem',
-        getCommissionList: gateWay + '8080/getCommissionList'
+        getCommissionList: gateWay + '8080/getCommissionList',
+        updateCommission: gateWay + '8080/updateCommission'
     };
 }
 

@@ -158,7 +158,10 @@ MVInput.propTypes = {
     label: PropTypes.string,
     required: PropTypes.bool,
     placeHolder: PropTypes.string,
-    defaultValue: PropTypes.string,
+    defaultValue: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number
+    ]),
     type: PropTypes.string,
     step: PropTypes.number,
     style: PropTypes.object,

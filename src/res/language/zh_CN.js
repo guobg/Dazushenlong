@@ -114,6 +114,12 @@ const zh_CN = {
     createServiceItem: "新增服务项目",
     editServiceItem: "修改服务项目",
     yes: "是",
-    no: "否"
+    no: "否",
+    "Basic Task": "基础任务",
+    "Employee Position Level": "员工级别",
+    "Call Clock Commission": "点钟提成",
+    "Arrange Clock Commission": "排钟提成",
+    commissionSetting: "提成设置",
+    stageSetting: "阶梯设置"
 };
 export default zh_CN;

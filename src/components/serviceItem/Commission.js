@@ -2,9 +2,10 @@ import React, {Component} from 'react';
 import {Table, Modal, Button} from 'semantic-ui-react';
 import {isEmpty} from '../../util/CommUtil';
 import {FormattedMessage} from 'react-intl';
-import {getCommissionList} from '../../actions/commission_action';
+import {getCommissionList, updateCommission} from '../../actions/commission_action';
 import BasicCommission from './BasicCommission';
 import StagedCommission from './StagedCommission';
+import {checkValid, getDataInfo} from '../../util/CommUtil';
 
 const header = ["ID", "Employee Position Level", "Call Clock Commission", "Arrange Clock Commission", "Basic Task", "Action"];
 const checklistKey = ["id", "positionLevel", "callClockCom", "arrClockCom", "basicTask"];
@@ -15,6 +16,12 @@ class Commission extends Component {
         basicComModal: false,
         stagedComModal: false
     };
+
+    componentDidMount() {
+        const {serviceItemId} = this.props;
+        if (!serviceItemId) return;
+        this.props.dispatch(getCommissionList(serviceItemId));
+    }
 
     componentWillReceiveProps(nextProps) {
         const {serviceItemId} = nextProps;
@@ -36,8 +43,12 @@ class Commission extends Component {
     };
 
     updateBasicTask = () => {
-        this.basicComNode.getInfo();
-        this.closeBasicComModal();
+        let basicTaskInfo = this.basicComNode.getInfo();
+        let flag = checkValid(basicTaskInfo);
+        if (flag) {
+            basicTaskInfo = getDataInfo(basicTaskInfo);
+            this.props.dispatch(updateCommission(basicTaskInfo, this.closeBasicComModal));
+        }
     };
 
     closeStagedComModal = () => {
@@ -54,7 +65,8 @@ class Commission extends Component {
     };
 
     updateStagedCom = () => {
-        this.closeStagedComModal();
+        let StagedComInfo = this.StagedComNode.getInfo();
+        this.props.dispatch(updateCommission(StagedComInfo, this.closeStagedComModal));
     };
 
     getListDesc = (result, key) => {
