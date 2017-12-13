@@ -27,10 +27,10 @@ class CreatePosition extends Component {
         return (
             <div className="model-main-container">
                 <Button className="create-button" onClick={() => this.openModal()}>
-                    + <FormattedMessage
-                    id='createPosition'
-                    defaultMessage='Create Position'
-                />
+                    <FormattedMessage
+                        id='createPosition'
+                        defaultMessage='Create Position'
+                    />
                 </Button>
                 <Modal
                     closeOnEscape={false}

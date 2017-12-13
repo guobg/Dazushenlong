@@ -80,7 +80,7 @@ class Commission extends Component {
         const {commission} = this.props;
         const {selectedCom, basicComModal, stagedComModal} = this.state;
         return (
-            <div>
+            <div className="comm-list">
                 <Table textAlign="center">
                     <Table.Header>
                         <Table.Row>

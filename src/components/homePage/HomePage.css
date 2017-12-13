@@ -184,9 +184,9 @@ i.icon.remove-position-button {
 }
 
 .create-button.ui.button {
-    background-color: #577ca6;
-    border: 2px solid #3d5f91;
-    color: #fffefe;
+    background-color: #66a6ff;
+    border: 2px solid #4393fd;
+    color: #ffffff;
     position: absolute;
     right: 0;
     top: -50px;
@@ -198,16 +198,16 @@ i.icon.remove-position-button {
 
 .sider-menu {
     position: fixed;
-    flex: 0 0 150px !important;
-    max-width: 150px !important;
-    min-width: 150px !important;
-    width: 150px !important;
-    top: 0;
+    flex: 0 0 200px !important;
+    max-width: 200px !important;
+    min-width: 200px !important;
+    width: 200px !important;
+    top: 64px;
     bottom: 0;
 }
 
 .ant-layout-sider.sider-menu {
-    background: linear-gradient(to bottom, #22315b, #577ca6);;
+    background: linear-gradient(to bottom, #22315b, #577ca6);
 }
 
 .sider-menu .ant-menu-dark {
@@ -238,18 +238,18 @@ i.icon.remove-position-button {
 
 .ant-layout-content {
     position: relative;
-    margin-left: 150px;
+    margin-left: 200px;
     margin-top: 64px;
 }
 
 .ant-layout-header {
     position: fixed;
-    left: 150px;
+    left: 0;
     right: 0;
     top: 0;
     z-index: 3;
-    background: #ffffff;
-    padding: 0 20px;
+    background: linear-gradient(to right, #66a6ff, #7cd6ef);
+    padding: 0 50px;
     box-shadow: 0 0 5px rgba(0, 0, 0, .5);
 }
 
@@ -395,4 +395,13 @@ i.icon.remove-position-button {
 
 .table-action-cell > div:first-child {
     margin-left: 0;
+}
+
+.comm-list {
+    margin: 0 -20px;
+}
+
+.ui.table {
+    border-left: none;
+    border-right: none;
 }

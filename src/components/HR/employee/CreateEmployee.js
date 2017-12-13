@@ -27,10 +27,10 @@ class CreateEmployee extends Component {
         return (
             <div className="model-main-container">
                 <Button className="create-button" onClick={() => this.openModal()}>
-                    + <FormattedMessage
-                    id='createEmployee'
-                    defaultMessage='Create Employee'
-                />
+                    <FormattedMessage
+                        id='createEmployee'
+                        defaultMessage='Create Employee'
+                    />
                 </Button>
                 <Modal
                     closeOnEscape={false}

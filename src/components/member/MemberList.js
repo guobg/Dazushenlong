@@ -43,7 +43,7 @@ class MemberList extends Component {
     render() {
         const {member, dispatch} = this.props;
         return (
-            <div>
+            <div className="comm-list">
                 <Table textAlign="center">
                     <Table.Header>
                         <Table.Row>

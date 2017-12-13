@@ -48,7 +48,7 @@ class PositionList extends Component {
     render() {
         const {position, dispatch} = this.props;
         return (
-            <div>
+            <div className="comm-list">
                 <Table textAlign="center">
                     <Table.Header>
                         <Table.Row>

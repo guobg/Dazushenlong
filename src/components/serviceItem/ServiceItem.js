@@ -18,8 +18,8 @@ class ServiceItem extends Component {
                         defaultMessage='ServiceItem'
                     />
                 </div>
-                <ServiceItemList dispatch={dispatch} serviceItem={serviceItem}/>
                 <CreateServiceItem dispatch={dispatch}/>
+                <ServiceItemList dispatch={dispatch} serviceItem={serviceItem}/>
             </div>
         );
     }

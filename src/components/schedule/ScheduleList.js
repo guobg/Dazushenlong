@@ -41,7 +41,7 @@ class ScheduleList extends Component {
     render() {
         const {schedule, dispatch} = this.props;
         return (
-            <div>
+            <div className="comm-list">
                 <Table textAlign="center">
                     <Table.Header>
                         <Table.Row>

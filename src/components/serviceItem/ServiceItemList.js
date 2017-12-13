@@ -48,7 +48,7 @@ class ServiceItemList extends Component {
     render() {
         const {serviceItem, dispatch} = this.props;
         return (
-            <div>
+            <div className="comm-list">
                 <Table textAlign="center">
                     <Table.Header>
                         <Table.Row>

@@ -53,7 +53,7 @@ class EmployeeList extends Component {
     render() {
         const {employee, dispatch, position, organization} = this.props;
         return (
-            <div>
+            <div className="comm-list">
                 <Table textAlign="center">
                     <Table.Header>
                         <Table.Row>

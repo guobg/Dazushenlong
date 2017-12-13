@@ -24,42 +24,40 @@ class CreateServiceItem extends Component {
     render() {
         const {modalOpen} = this.state;
         return (
-            <div className="project-content">
-                <div>
-                    <Button color='blue' onClick={() => this.openModal()}>
+            <div className="model-main-container">
+                <Button className="create-button" onClick={() => this.openModal()}>
+                    <FormattedMessage
+                        id='createServiceItem'
+                        defaultMessage='Create ServiceItem'
+                    />
+                </Button>
+                <Modal
+                    closeOnEscape={false}
+                    closeOnRootNodeClick={false}
+                    open={modalOpen}
+                    size='large'>
+                    <Modal.Header className="modal-title-border">
                         <FormattedMessage
                             id='createServiceItem'
                             defaultMessage='Create ServiceItem'
                         />
-                    </Button>
-                    <Modal
-                        closeOnEscape={false}
-                        closeOnRootNodeClick={false}
-                        open={modalOpen}
-                        size='large'>
-                        <Modal.Header className="modal-title-border">
+                    </Modal.Header>
+                    <ServiceItemInfo ref={(node) => this.serviceItemInfoNode = node}/>
+                    <Modal.Actions>
+                        <Button className="cancel-button" onClick={() => this.closeModal()}>
                             <FormattedMessage
-                                id='createServiceItem'
-                                defaultMessage='Create ServiceItem'
+                                id='cancel'
+                                defaultMessage='Cancel'
                             />
-                        </Modal.Header>
-                        <ServiceItemInfo ref={(node) => this.serviceItemInfoNode = node}/>
-                        <Modal.Actions>
-                            <Button className="cancel-button" onClick={() => this.closeModal()}>
-                                <FormattedMessage
-                                    id='cancel'
-                                    defaultMessage='Cancel'
-                                />
-                            </Button>
-                            <Button className="confirm-button" onClick={() => this.newServiceItem()}>
-                                <FormattedMessage
-                                    id='confirm'
-                                    defaultMessage='Confirm'
-                                />
-                            </Button>
-                        </Modal.Actions>
-                    </Modal>
-                </div>
+                        </Button>
+                        <Button className="confirm-button" onClick={() => this.newServiceItem()}>
+                            <FormattedMessage
+                                id='confirm'
+                                defaultMessage='Confirm'
+                            />
+                        </Button>
+                    </Modal.Actions>
+                </Modal>
             </div>
         );
     }

@@ -78,13 +78,13 @@ class HomePage extends Component {
         return (
             <Layout>
                 <Layout>
+                    <Header><CommonHeader/></Header>
                     <Sider
                         className="sider-menu"
                     >
                         <Image className="menu-user-avatar" src={getUser().avatar} avatar/>
                         <Menu/>
                     </Sider>
-                    <Header><CommonHeader/></Header>
                     <Content style={{minHeight: this.state.minHeight, overflowY: 'hidden'}}>
                         <BackTop/>
                         <Switch>

@@ -41,7 +41,7 @@ class MemberCardList extends Component {
     render() {
         const {memberCard, dispatch} = this.props;
         return (
-            <div>
+            <div className="comm-list">
                 <Table textAlign="center">
                     <Table.Header>
                         <Table.Row>
