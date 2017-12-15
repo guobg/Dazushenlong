@@ -72,12 +72,12 @@ class HomeMenu extends Component {
 
     render() {
         return (
-            <Menu theme="dark" selectedKeys={[defaultKey]}
+            <Menu selectedKeys={[defaultKey]}
                   defaultOpenKeys={[hostKey]}
                   mode="inline">
                 <Menu.Item key="3">
                     <Link to="/home/member"/>
-                    <Image name="menu_project"/>
+                    <Image name={defaultKey === "3" ? "technician_ic_pre" : "technician_ic"}/>
                     <span>
                         <FormattedMessage
                             id='Member'
@@ -87,7 +87,7 @@ class HomeMenu extends Component {
                 </Menu.Item>
                 <Menu.Item key="4">
                     <Link to="/home/mCard"/>
-                    <Image name="menu_model"/>
+                    <Image name={defaultKey === "4" ? "wage_ic_pre" : "wage_ic"}/>
                     <span>
                         <FormattedMessage
                             id='membershipCard'
@@ -97,7 +97,7 @@ class HomeMenu extends Component {
                 </Menu.Item>
                 <Menu.Item key="5">
                     <Link to="/home/schedule"/>
-                    <Image name="menu_hr"/>
+                    <Image name={defaultKey === "5" ? "hr_ic_pre" : "hr_ic"}/>
                     <span>
                         <FormattedMessage
                             id='schedule'
@@ -107,7 +107,7 @@ class HomeMenu extends Component {
                 </Menu.Item>
                 <Menu.Item key="7">
                     <Link to="/home/serviceItem"/>
-                    <Image name="menu_hr"/>
+                    <Image name={defaultKey === "7" ? "service_ic_pre" : "service_ic"}/>
                     <span>
                         <FormattedMessage
                             id='serviceItem'
@@ -116,8 +116,11 @@ class HomeMenu extends Component {
                     </span>
                 </Menu.Item>
                 <SubMenu
+                    className={hostKey === "sub1" ? "selected-host-menu" : ""}
                     key="sub1"
-                    title={<span><Image name="menu_personal"/><span>
+                    title={<span>
+                            <Image name={hostKey === "sub1" ? "hr_ic_pre" : "hr_ic"}/>
+                        <span>
                         <FormattedMessage
                             id='hr'
                             defaultMessage='HR'
@@ -125,18 +128,21 @@ class HomeMenu extends Component {
                     </span></span>}
                 >
                     <Menu.Item key="1"><Link to="/home/employee">
+                        <Image name={defaultKey === "1" ? "staff_ic_pre" : "staff_ic"}/>
                         <FormattedMessage
                             id='employee'
                             defaultMessage='Employee'
                         />
                     </Link></Menu.Item>
                     <Menu.Item key="2"><Link to="/home/organization">
+                        <Image name={defaultKey === "2" ? "organize_ic_pre" : "organize_ic"}/>
                         <FormattedMessage
                             id='department'
                             defaultMessage='Department'
                         />
                     </Link></Menu.Item>
                     <Menu.Item key="6"><Link to="/home/position">
+                        <Image name={defaultKey === "6" ? "position_ic_pre" : "position_ic"}/>
                         <FormattedMessage
                             id='Position'
                             defaultMessage='Position'

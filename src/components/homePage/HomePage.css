@@ -207,24 +207,17 @@ i.icon.remove-position-button {
 }
 
 .ant-layout-sider.sider-menu {
-    background: linear-gradient(to bottom, #22315b, #577ca6);
+    /*background: linear-gradient(to bottom, #22315b, #577ca6);*/
+    background: #ffffff;
 }
 
 .sider-menu .ant-menu-dark {
     background: transparent;
 }
 
-.sider-menu .ant-menu-dark .ant-menu-sub {
-    background: rgba(0, 0, 0, 0.3);
-}
-
-.sider-menu .ant-menu-inline .ant-menu-item,
-.sider-menu .ant-menu-inline .ant-menu-submenu-title {
-    padding-left: 16px !important;
-}
-
-.ant-menu.ant-menu-dark .ant-menu-item-selected {
-    background-color: #d4865b;
+.selected-host-menu > .ant-menu-submenu-title,
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+    background: linear-gradient(to right, #66a6ff, #7cd6ef);
 }
 
 .menu_icon_text {
@@ -233,7 +226,7 @@ i.icon.remove-position-button {
 }
 
 .sider-menu .ant-menu-inline .ant-menu-sub .ant-menu-item {
-    padding-left: 46px !important;
+    padding: 0 35px !important;
 }
 
 .ant-layout-content {
@@ -256,7 +249,7 @@ i.icon.remove-position-button {
 .menu-user-avatar.ui.avatar.image {
     width: 80px;
     height: 80px;
-    margin: 35px;
+    margin: 35px 60px;
 }
 
 .log-out-button {
@@ -404,4 +397,53 @@ i.icon.remove-position-button {
 .ui.table {
     border-left: none;
     border-right: none;
+}
+
+.sider-menu .ant-menu-inline .ant-menu-item {
+    margin: 15px 0;
+    padding: 10px 20px !important;
+    font-size: 14px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.sider-menu .ant-menu-inline .ant-menu-submenu-title {
+    margin: 0;
+    padding: 10px 20px !important;
+    font-size: 14px;
+    line-height: 0;
+    height: auto;
+    border-radius: 10px;
+}
+
+.ant-menu.ant-menu-inline.ant-menu-root {
+    padding: 0 10px;
+    border-right: none;
+}
+
+.ant-menu-inline .ant-menu-item:after {
+    border-right: none;
+}
+
+.sider-menu .ant-menu-inline .ant-menu-sub .ant-menu-item.ant-menu-item-selected {
+    background: #ffffff;
+}
+
+.selected-host-menu,
+.ant-menu-item-selected {
+    color: #ffffff;
+}
+
+.selected-host-menu .ant-menu-submenu-arrow:after,
+.selected-host-menu .ant-menu-submenu-arrow:before,
+.selected-host-menu .ant-menu-submenu-arrow:hover {
+    background: #ffffff !important;
+}
+
+.ant-menu-item > a {
+    color: #cccccc;
+}
+
+.ant-menu-item-selected > a {
+    color: #333333;
 }

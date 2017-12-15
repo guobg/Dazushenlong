@@ -4,7 +4,7 @@ const zh_CN = {
     passWord: "密码",
     logIn: "登录",
     mindvations: "Mindvations",
-    logOut: '登出',
+    logOut: '退出',
     cancel: "取消",
     confirm: "确认",
     "Status": "状态",
