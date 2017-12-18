@@ -9,6 +9,7 @@ import MemberCard from '../../containers/memberCard_container';
 import Schedule from '../../containers/schedule_container';
 import Position from '../../containers/position_container';
 import ServiceItem from '../../containers/serviceItem_container';
+import MaterielAndUnit from '../materiel/MaterielAndUnit';
 import {getUser} from '../../util/UserStore';
 import {Layout, BackTop} from 'antd';
 import {
@@ -49,7 +50,12 @@ const routes = [
     {
         path: '/home/position',
         main: Position
+    },
+    {
+        path: '/home/materiel',
+        main: MaterielAndUnit
     }
+
 ];
 
 class HomePage extends Component {

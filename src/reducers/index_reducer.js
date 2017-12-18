@@ -8,6 +8,8 @@ import schedule from './schedule_reducer';
 import position from './position_reducer';
 import serviceItem from './serviceItem_reducer';
 import commission from './commission_reducer';
+import materiel from './materiel_reducer';
+import materielUnit from './materielUnit_reducer';
 
 const mindvationApp = combineReducers({
     userInfo,
@@ -18,7 +20,9 @@ const mindvationApp = combineReducers({
     schedule,
     position,
     serviceItem,
-    commission
+    commission,
+    materiel,
+    materielUnit
 });
 
 export default mindvationApp;

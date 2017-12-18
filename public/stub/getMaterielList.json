@@ -1,0 +1,29 @@
+{
+  "statusCode": "200",
+  "responseCode": "000",
+  "responseMsg": "请求成功",
+  "responseBody": {
+    "materials": [
+      {
+        "materielId": "M0001",
+        "materielName": "电脑",
+        "materielSpec": "i5 8GB DDR3 500GB",
+        "unit": "U0001",
+        "unitPrice": 5000,
+        "quantity": 10,
+        "totalPrice": 50000
+      },
+      {
+        "materielId": "M0002",
+        "materielName": "啤酒",
+        "materielSpec": "百威啤酒",
+        "unit": "U0004",
+        "unitPrice": 100,
+        "quantity": 15,
+        "totalPrice": 1500
+      }
+    ],
+    "totalNumber": 2,
+    "remarks": null
+  }
+}

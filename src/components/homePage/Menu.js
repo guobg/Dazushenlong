@@ -40,6 +40,10 @@ const keyPathMapping = [
     {
         "key": '7',
         "path": '/home/serviceItem'
+    },
+    {
+        "key": '8',
+        "path": '/home/materiel'
     }
 ];
 
@@ -112,6 +116,16 @@ class HomeMenu extends Component {
                         <FormattedMessage
                             id='serviceItem'
                             defaultMessage='Service Item'
+                        />
+                    </span>
+                </Menu.Item>
+                <Menu.Item key="8">
+                    <Link to="/home/materiel"/>
+                    <Image name={defaultKey === "8" ? "service_ic_pre" : "service_ic"}/>
+                    <span>
+                        <FormattedMessage
+                            id='materiel'
+                            defaultMessage='Materiel'
                         />
                     </span>
                 </Menu.Item>

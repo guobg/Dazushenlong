@@ -1,0 +1,22 @@
+{
+  "statusCode": "200",
+  "responseCode": "000",
+  "responseMsg": "请求成功",
+  "responseBody": [
+    {
+      "materielUnitId": "U0001",
+      "unitName": "个",
+      "decimalDigit": 0
+    },
+    {
+      "materielUnitId": "U0002",
+      "unitName": "钟",
+      "decimalDigit": 1
+    },
+    {
+      "materielUnitId": "U0004",
+      "unitName": "箱",
+      "decimalDigit": 0
+    }
+  ]
+}

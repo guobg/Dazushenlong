@@ -1,5 +1,5 @@
 let url;
-const isProduction = true;
+const isProduction = false;
 
 if (isProduction) {
     const gateWay = "http://47.100.100.211:";
@@ -34,7 +34,13 @@ if (isProduction) {
         createServiceItem: gateWay + '8080/createServiceItem',
         updateServiceItem: gateWay + '8080/updateServiceItem',
         getCommissionList: gateWay + '8080/getCommissionList',
-        updateCommission: gateWay + '8080/updateCommission'
+        updateCommission: gateWay + '8080/updateCommission',
+        getMaterielUnitList: gateWay + '8080/getMaterielUnitList',
+        createMaterielUnit: gateWay + '8080/createMaterielUnit',
+        updateMaterielUnit: gateWay + '8080/updateMaterielUnit',
+        getMaterielList: gateWay + '8080/getMaterielList',
+        createMateriel: gateWay + '8080/createMateriel',
+        updateMateriel: gateWay + '8080/updateMateriel'
     };
 } else {
     const gateWay = "http://192.168.0.107:";
@@ -67,7 +73,13 @@ if (isProduction) {
         createServiceItem: gateWay + '8080/createServiceItem',
         updateServiceItem: gateWay + '8080/updateServiceItem',
         getCommissionList: gateWay + '8080/getCommissionList',
-        updateCommission: gateWay + '8080/updateCommission'
+        updateCommission: gateWay + '8080/updateCommission',
+        getMaterielUnitList: gateWay + '8080/getMaterielUnitList',
+        createMaterielUnit: gateWay + '8080/createMaterielUnit',
+        updateMaterielUnit: gateWay + '8080/updateMaterielUnit',
+        getMaterielList: gateWay + '8080/getMaterielList',
+        createMateriel: gateWay + '8080/createMateriel',
+        updateMateriel: gateWay + '8080/updateMateriel'
     };
 }
 
