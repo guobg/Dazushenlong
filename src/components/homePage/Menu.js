@@ -43,7 +43,13 @@ const keyPathMapping = [
     },
     {
         "key": '8',
-        "path": '/home/materiel'
+        "path": '/home/materiel',
+        "hostKey": "sub2"
+    },
+    {
+        "key": '9',
+        "path": '/home/mUnit',
+        "hostKey": "sub2"
     }
 ];
 
@@ -82,64 +88,74 @@ class HomeMenu extends Component {
                 <Menu.Item key="3">
                     <Link to="/home/member"/>
                     <Image name={defaultKey === "3" ? "technician_ic_pre" : "technician_ic"}/>
-                    <span>
-                        <FormattedMessage
-                            id='Member'
-                            defaultMessage='Member'
-                        />
-                    </span>
+                    <FormattedMessage
+                        id='Member'
+                        defaultMessage='Member'
+                    />
                 </Menu.Item>
                 <Menu.Item key="4">
                     <Link to="/home/mCard"/>
                     <Image name={defaultKey === "4" ? "wage_ic_pre" : "wage_ic"}/>
-                    <span>
-                        <FormattedMessage
-                            id='membershipCard'
-                            defaultMessage='Membership Card'
-                        />
-                    </span>
+                    <FormattedMessage
+                        id='membershipCard'
+                        defaultMessage='Membership Card'
+                    />
                 </Menu.Item>
                 <Menu.Item key="5">
                     <Link to="/home/schedule"/>
                     <Image name={defaultKey === "5" ? "hr_ic_pre" : "hr_ic"}/>
-                    <span>
-                        <FormattedMessage
-                            id='schedule'
-                            defaultMessage='Schedule'
-                        />
-                    </span>
+                    <FormattedMessage
+                        id='schedule'
+                        defaultMessage='Schedule'
+                    />
                 </Menu.Item>
                 <Menu.Item key="7">
                     <Link to="/home/serviceItem"/>
                     <Image name={defaultKey === "7" ? "service_ic_pre" : "service_ic"}/>
-                    <span>
-                        <FormattedMessage
-                            id='serviceItem'
-                            defaultMessage='Service Item'
-                        />
-                    </span>
+                    <FormattedMessage
+                        id='serviceItem'
+                        defaultMessage='Service Item'
+                    />
                 </Menu.Item>
-                <Menu.Item key="8">
-                    <Link to="/home/materiel"/>
-                    <Image name={defaultKey === "8" ? "service_ic_pre" : "service_ic"}/>
-                    <span>
+                <SubMenu
+                    className={hostKey === "sub2" ? "selected-host-menu" : ""}
+                    key="sub2"
+                    title={<span>
+                            <Image name={hostKey === "sub2" ? "hr_ic_pre" : "hr_ic"}/>
                         <FormattedMessage
-                            id='materiel'
-                            defaultMessage='Materiel'
-                        />
-                    </span>
-                </Menu.Item>
+                            id='materielAndUnit'
+                            defaultMessage='Materiel And Unit'
+                        /></span>}
+                >
+                    <Menu.Item key="8">
+                        <Link to="/home/materiel">
+                            <Image name={defaultKey === "8" ? "organize_ic_pre" : "organize_ic"}/>
+                            <FormattedMessage
+                                id='materiel'
+                                defaultMessage='Materiel'
+                            />
+                        </Link>
+                    </Menu.Item>
+                    <Menu.Item key="9">
+                        <Link to="/home/mUnit">
+                            <Image name={defaultKey === "9" ? "organize_ic_pre" : "organize_ic"}/>
+                            <FormattedMessage
+                                id='materielUnit'
+                                defaultMessage='Materiel Unit'
+                            />
+                        </Link>
+                    </Menu.Item>
+                </SubMenu>
                 <SubMenu
                     className={hostKey === "sub1" ? "selected-host-menu" : ""}
                     key="sub1"
                     title={<span>
                             <Image name={hostKey === "sub1" ? "hr_ic_pre" : "hr_ic"}/>
-                        <span>
                         <FormattedMessage
                             id='hr'
                             defaultMessage='HR'
                         />
-                    </span></span>}
+                    </span>}
                 >
                     <Menu.Item key="1"><Link to="/home/employee">
                         <Image name={defaultKey === "1" ? "staff_ic_pre" : "staff_ic"}/>

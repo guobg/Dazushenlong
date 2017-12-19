@@ -20,7 +20,6 @@ class MaterielUnit extends Component {
                 </div>
                 <CreateMaterielUnit dispatch={dispatch}/>
                 <MaterielUnitList dispatch={dispatch} materielUnit={materielUnit}/>
-
             </div>
         );
     }

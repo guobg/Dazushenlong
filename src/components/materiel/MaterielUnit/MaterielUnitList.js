@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Table, Button} from 'semantic-ui-react';
+import {Table} from 'semantic-ui-react';
 import {isEmpty} from '../../../util/CommUtil';
 import {FormattedMessage} from 'react-intl';
 import {deleteMaterielUnit, getMaterielUnitList} from '../../../actions/materielUnit_action';

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {isEmpty, getDesc} from '../../util/CommUtil';
+import {FormattedMessage} from 'react-intl';
 
 class Display extends Component {
 
@@ -9,28 +10,35 @@ class Display extends Component {
             return "";
         } else {
             if (options) {
-                let desc = getDesc(options, value);
-                return desc;
+                return getDesc(options, value);
             }
         }
-
         return value;
     };
 
     render() {
-        const {value, options, textStyle} = this.props;
+        const {label, value, options} = this.props;
         return (
-            <span style={textStyle}>
-                {this.displayValue(value, options)}
-            </span>
+            <div className="components-item item-horizontal align-right">
+                {
+                    label ? <div className="field-title">
+                        <FormattedMessage
+                            id={label}
+                        />
+                    </div> : null
+                }
+                <div className="input-content">
+                    {this.displayValue(value, options)}
+                </div>
+            </div>
         );
     }
 }
 
 Display.propTypes = {
+    label: PropTypes.string,
     value: PropTypes.string,
-    options: PropTypes.array,
-    textStyle: PropTypes.object
+    options: PropTypes.array
 };
 
 export default Display;

@@ -5,6 +5,7 @@ import {isEmpty} from '../../../util/CommUtil';
 import {FormattedMessage} from 'react-intl';
 import {deleteMateriel, getMaterielList} from '../../../actions/materiel_action';
 import EditMateriel from './EditMateriel';
+import StorageMateriel from './StorageMateriel';
 
 const header = ["ID", "Materiel Name", "Materiel Specifications", "Unit", "Unit Price", "Quantity", "Total Price", "Action"];
 const checklistKey = ["materielId", "materielName", "materielSpec", "unit", "unitPrice", "quantity", "totalPrice"];
@@ -24,6 +25,10 @@ class MaterielList extends Component {
 
     edit = (materiel) => {
         this.editMaterielNode.openModal(materiel)
+    };
+
+    storage = (materiel) => {
+        this.storageMaterielNode.openModal(materiel)
     };
 
     getListDesc = (result, key) => {
@@ -93,7 +98,7 @@ class MaterielList extends Component {
                                                 defaultMessage='Delete'
                                             />
                                         </div>
-                                        <div className="table-action-edit">
+                                        <div className="table-action-edit" onClick={() => this.storage(result)}>
                                             入库
                                         </div>
                                     </Table.Cell>
@@ -114,6 +119,7 @@ class MaterielList extends Component {
                 </Table>
                 <EditMateriel ref={node => this.editMaterielNode = node} dispatch={dispatch}
                               materielUnit={materielUnit}/>
+                <StorageMateriel ref={node => this.storageMaterielNode = node} dispatch={dispatch}/>
             </div>
         );
     }

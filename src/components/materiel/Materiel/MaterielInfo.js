@@ -3,9 +3,6 @@ import {Modal} from 'semantic-ui-react';
 import Input from '../../common/Input';
 import Select from '../../common/Select';
 import TextArea from '../../common/TextArea';
-import {
-    staffStatusOptions
-} from '../../../res/data/dataOptions';
 
 class MaterielInfo extends Component {
 

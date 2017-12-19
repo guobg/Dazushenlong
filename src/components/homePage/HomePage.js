@@ -9,7 +9,8 @@ import MemberCard from '../../containers/memberCard_container';
 import Schedule from '../../containers/schedule_container';
 import Position from '../../containers/position_container';
 import ServiceItem from '../../containers/serviceItem_container';
-import MaterielAndUnit from '../materiel/MaterielAndUnit';
+import Materiel from '../../containers/materiel_container';
+import MaterielUnit from '../../containers/materielUnit_container';
 import {getUser} from '../../util/UserStore';
 import {Layout, BackTop} from 'antd';
 import {
@@ -53,7 +54,11 @@ const routes = [
     },
     {
         path: '/home/materiel',
-        main: MaterielAndUnit
+        main: Materiel
+    },
+    {
+        path: '/home/mUnit',
+        main: MaterielUnit
     }
 
 ];
