@@ -2,7 +2,12 @@
  * action 类型
  */
 import {post} from '../util/request';
-import {} from '../util/Convert';
+import {save, getListAndCount, remove} from '../util/CommInterface';
+import {
+    convertPositionToServer,
+    convertPositionToLocal,
+    convertPositionsToLocal
+} from '../util/Convert';
 import StaticLoad from '../components/common/Loading';
 import StaticDialog from '../components/common/Dialog';
 import {url} from '../util/ServiceUrl';
@@ -22,14 +27,11 @@ function retrievedPositionList(positions) {
 
 export function getPositionList(page, pageSize) {
     return dispatch => {
-        post(url.getPositionList, {
-            page: page,
-            pageSize: pageSize
-        })
+        getListAndCount('base_position', page, pageSize)
             .then((res) => {
                 dispatch(retrievedPositionList({
-                    positions: res.responseBody.positionList,
-                    totalElements: res.responseBody.totalPage
+                    positions: convertPositionsToLocal(res.data.rows),
+                    totalElements: res.data.total
                 }));
             })
             .catch((error) => {
@@ -45,10 +47,12 @@ function createdPosition(position) {
 export function createPosition(position, callback) {
     return dispatch => {
         StaticLoad.show("createPosition");
-        post(url.createPosition, position)
+        let params = convertPositionToServer(position);
+        save('base_position', params)
             .then((res) => {
                 StaticLoad.remove("createPosition");
-                dispatch(createdPosition(res.responseBody));
+                let resPosition = convertPositionToLocal(res.data.save_data.header);
+                dispatch(createdPosition(resPosition));
                 callback();
             })
             .catch((error) => {
@@ -66,10 +70,12 @@ function updatedPosition(position) {
 export function updatePosition(position, callback) {
     return dispatch => {
         StaticLoad.show("updatePosition");
-        post(url.updatePosition, position)
+        let params = convertPositionToServer(position);
+        save('base_position', params)
             .then((res) => {
                 StaticLoad.remove("updatePosition");
-                dispatch(updatedPosition(position));
+                let resPosition = convertPositionToLocal(res.data.save_data.header);
+                dispatch(updatedPosition(resPosition));
                 callback();
             })
             .catch((error) => {
@@ -87,9 +93,7 @@ function deletedPosition(position) {
 export function deletePosition(position) {
     return dispatch => {
         StaticLoad.show("deletePosition");
-        post(url.deletePosition, {
-            positionId: position.id
-        })
+        remove('base_position', [position.id])
             .then(() => {
                 StaticLoad.remove("deletePosition");
                 dispatch(deletedPosition(position));

@@ -1,5 +1,5 @@
 let url;
-const isProduction = false;
+const isProduction = true;
 
 if (isProduction) {
     const gateWay = "http://47.100.100.211:";
@@ -40,7 +40,10 @@ if (isProduction) {
         updateMaterielUnit: gateWay + '8080/updateMaterielUnit',
         getMaterielList: gateWay + '8080/getMaterielList',
         createMateriel: gateWay + '8080/createMateriel',
-        updateMateriel: gateWay + '8080/updateMateriel'
+        updateMateriel: gateWay + '8080/updateMateriel',
+        commSave: 'http://www.biuu.xyz/apiv2.json?service=tools_handler.handler_save_data',
+        commGetListAndCount: 'http://www.biuu.xyz/apiv2.json?service=tools_handler.handler_select_list_and_count',
+        commDelete: 'http://www.biuu.xyz/apiv2.json?service=tools_handler.handler_delete_data'
     };
 } else {
     const gateWay = "http://192.168.0.107:";

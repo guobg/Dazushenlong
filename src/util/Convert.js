@@ -102,27 +102,51 @@ function getSubOrg(org, subOrg) {
     }
 }
 
-export function convertPositionToLocal(res) {
-    let position = [];
-    if (res && res.length > 0) {
-        res.map((item) => {
-            let tempPosition = {
-                value: item.id,
-                text: item.name,
-                levels: []
-            };
-
-            if (item.levels && item.levels.length > 0) {
-                item.levels.map((position) => {
-                    tempPosition.levels.push({
-                        value: position.id,
-                        text: position.name
-                    })
-                })
-            }
-            position.push(tempPosition)
-        })
+export function convertPositionToServer(position) {
+    let params = {
+        name: position.name
+    };
+    if (position.levels) {
+        let tempStr = "";
+        position.levels.map((item) => {
+            tempStr += item.name + "/";
+        });
+        tempStr = tempStr.substr(0, tempStr.length - 1);
+        params.position_level = tempStr;
     }
 
+    if (position.id) {
+        params.id = position.id;
+    }
+    return params;
+}
+
+export function convertPositionsToLocal(res) {
+    let positions = [];
+    if (res && res.length > 0) {
+        res.map((position) => {
+            positions.push(convertPositionToLocal(position))
+        })
+    }
+    return positions;
+}
+
+export function convertPositionToLocal(res) {
+    let position = {
+        id: res.id,
+        name: res.name,
+        levels: []
+    };
+    if (res.position_level) {
+        const levels = res.position_level.split("/");
+        if (levels.length > 0) {
+            levels.map((level) => {
+                position.levels.push({
+                    id: level,
+                    name: level
+                })
+            })
+        }
+    }
     return position;
 }

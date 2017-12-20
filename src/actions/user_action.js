@@ -3,7 +3,6 @@ import StaticLoad from '../components/common/Loading';
 import StaticDialog from '../components/common/Dialog';
 import {url} from '../util/ServiceUrl';
 import {setUser, removeUser} from '../util/UserStore';
-import {setAccessCookie,getCookie} from '../util/CookieUtil';
 /*
  * action 类型
  */
