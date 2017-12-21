@@ -18,8 +18,8 @@ class MemberCard extends Component {
                         defaultMessage='Membership Card'
                     />
                 </div>
-                <MemberCardList dispatch={dispatch} memberCard={memberCard}/>
                 <CreateMemberCard dispatch={dispatch}/>
+                <MemberCardList dispatch={dispatch} memberCard={memberCard}/>
             </div>
         );
     }

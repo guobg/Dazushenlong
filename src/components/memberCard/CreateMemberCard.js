@@ -19,42 +19,40 @@ class CreateMemberCard extends Component {
     render() {
         const {modalOpen} = this.state;
         return (
-            <div className="project-content">
-                <div>
-                    <Button color='blue' onClick={() => this.openModal()}>
+            <div className="model-main-container">
+                <Button className="create-button" onClick={() => this.openModal()}>
+                    <FormattedMessage
+                        id='createMemberCard'
+                        defaultMessage='Create Membership Card'
+                    />
+                </Button>
+                <Modal
+                    closeOnEscape={false}
+                    closeOnRootNodeClick={false}
+                    open={modalOpen}
+                    size='large'>
+                    <Modal.Header>
                         <FormattedMessage
                             id='createMemberCard'
-                            defaultMessage='Create Membership Card'
+                            defaultMessage='Create MemberCard'
                         />
-                    </Button>
-                    <Modal
-                        closeOnEscape={false}
-                        closeOnRootNodeClick={false}
-                        open={modalOpen}
-                        size='large'>
-                        <Modal.Header>
+                    </Modal.Header>
+                    <MemberCardInfo ref={(node) => this.memberCardInfoNode = node}/>
+                    <Modal.Actions>
+                        <Button className="cancel-button" onClick={() => this.closeModal()}>
                             <FormattedMessage
-                                id='createMemberCard'
-                                defaultMessage='Create MemberCard'
+                                id='cancel'
+                                defaultMessage='Cancel'
                             />
-                        </Modal.Header>
-                        <MemberCardInfo ref={(node) => this.memberCardInfoNode = node}/>
-                        <Modal.Actions>
-                            <Button className="cancel-button" onClick={() => this.closeModal()}>
-                                <FormattedMessage
-                                    id='cancel'
-                                    defaultMessage='Cancel'
-                                />
-                            </Button>
-                            <Button className="confirm-button" onClick={() => this.newMemberCard()}>
-                                <FormattedMessage
-                                    id='confirm'
-                                    defaultMessage='Confirm'
-                                />
-                            </Button>
-                        </Modal.Actions>
-                    </Modal>
-                </div>
+                        </Button>
+                        <Button className="confirm-button" onClick={() => this.newMemberCard()}>
+                            <FormattedMessage
+                                id='confirm'
+                                defaultMessage='Confirm'
+                            />
+                        </Button>
+                    </Modal.Actions>
+                </Modal>
             </div>
         );
     }

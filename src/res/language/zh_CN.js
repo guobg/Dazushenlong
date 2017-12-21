@@ -130,6 +130,7 @@ const zh_CN = {
     "Product Name": "商品名称",
     "Product Specifications": "商品规格",
     "Quantity": "数量",
-    "Total Price": "总价"
+    "Total Price": "总价",
+    purchase: "入库"
 };
 export default zh_CN;

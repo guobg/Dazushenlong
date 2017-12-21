@@ -99,7 +99,10 @@ class ProductList extends Component {
                                             />
                                         </div>
                                         <div className="table-action-edit" onClick={() => this.purchase(result)}>
-                                            入库
+                                            <FormattedMessage
+                                                id='purchase'
+                                                defaultMessage='Purchase'
+                                            />
                                         </div>
                                     </Table.Cell>
                                 </Table.Row>

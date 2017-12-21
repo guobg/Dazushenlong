@@ -133,6 +133,7 @@ const en_US = {
     "Product Name": "Product Name",
     "Product Specifications": "Product Specifications",
     "Quantity": "Quantity",
-    "Total Price": "Total Price"
+    "Total Price": "Total Price",
+    purchase: "Purchase"
 };
 export default en_US;
