@@ -20,8 +20,21 @@ export function getListAndCount(objectKey, page_index, page_size) {
     return post(url.commGetListAndCount, {
         company_id: getUser().company_id,
         object_key: objectKey,
-        page_index: page_index - 1,
+        page_index: page_index,
         page_size: page_size
+    })
+        .then((data) => {
+            return Promise.resolve(data)
+        })
+        .catch((error) => {
+            return Promise.reject(error)
+        });
+}
+
+export function getList(objectKey) {
+    return post(url.commGetList, {
+        company_id: getUser().company_id,
+        object_key: objectKey
     })
         .then((data) => {
             return Promise.resolve(data)

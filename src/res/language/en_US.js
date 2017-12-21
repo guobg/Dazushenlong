@@ -123,6 +123,16 @@ const en_US = {
     "Call Clock Commission": "Call Clock Commission",
     "Arrange Clock Commission": "Arrange Clock Commission",
     commissionSetting: "Commission Setting",
-    stageSetting: "Stage Setting"
+    stageSetting: "Stage Setting",
+    product: "Product",
+    unit: "Unit",
+    createUnit: "Create Unit",
+    "Unit Name": "Unit Name",
+    "Decimal Digits": "Decimal Digits",
+    createProduct: "Create Product",
+    "Product Name": "Product Name",
+    "Product Specifications": "Product Specifications",
+    "Quantity": "Quantity",
+    "Total Price": "Total Price"
 };
 export default en_US;

@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import {Button, Modal} from 'semantic-ui-react';
 import {FormattedMessage} from 'react-intl';
-import MaterielInfo from './MaterielInfo';
-import {updateMateriel} from '../../../actions/materiel_action';
+import ProductInfo from './ProductInfo';
+import {updateProduct} from '../../../actions/product_action';
 import {checkValid, getDataInfo} from '../../../util/CommUtil';
 
-class EditMateriel extends Component {
-    state = {modalOpen: false, materielInfo: {}};
+class EditProduct extends Component {
+    state = {modalOpen: false, productInfo: {}};
 
     componentWillUpdate() {
         this.fixBody();
@@ -21,27 +21,27 @@ class EditMateriel extends Component {
         if (anotherModal > 0) document.body.classList.add('scrolling', 'dimmable', 'dimmed');
     };
 
-    openModal = (materiel) => {
+    openModal = (product) => {
         this.setState({
             modalOpen: true,
-            materielInfo: materiel
+            productInfo: product
         })
     };
 
     closeModal = () => this.setState({modalOpen: false});
 
-    updateMaterielInfo = () => {
-        let materielInfo = this.materielInfoNode.getInfo();
-        let flag = checkValid(materielInfo);
+    updateProductInfo = () => {
+        let productInfo = this.productInfoNode.getInfo();
+        let flag = checkValid(productInfo);
         if (flag) {
-            materielInfo = getDataInfo(materielInfo);
-            this.props.dispatch(updateMateriel(materielInfo, this.closeModal));
+            productInfo = getDataInfo(productInfo);
+            this.props.dispatch(updateProduct(productInfo, this.closeModal));
         }
     };
 
     render() {
-        const {modalOpen, materielInfo} = this.state;
-        const {materielUnit} = this.props;
+        const {modalOpen, productInfo} = this.state;
+        const {unit} = this.props;
         return (
             <div>
                 <Modal
@@ -50,15 +50,15 @@ class EditMateriel extends Component {
                     open={modalOpen}>
                     <Modal.Header>
                         <FormattedMessage
-                            id='editMateriel'
-                            defaultMessage='Edit Materiel'
+                            id='editProduct'
+                            defaultMessage='Edit Product'
                         />
                     </Modal.Header>
                     <Modal.Content>
-                        <MaterielInfo
-                            materielUnit={materielUnit}
-                            info={materielInfo}
-                            ref={node => this.materielInfoNode = node}/>
+                        <ProductInfo
+                            unit={unit}
+                            info={productInfo}
+                            ref={node => this.productInfoNode = node}/>
                     </Modal.Content>
                     <Modal.Actions>
                         <Button className="cancel-button" onClick={() => this.closeModal()}>
@@ -67,7 +67,7 @@ class EditMateriel extends Component {
                                 defaultMessage='Cancel'
                             />
                         </Button>
-                        <Button className="confirm-button" onClick={() => this.updateMaterielInfo()}>
+                        <Button className="confirm-button" onClick={() => this.updateProductInfo()}>
                             <FormattedMessage
                                 id='confirm'
                                 defaultMessage='Confirm'
@@ -80,4 +80,4 @@ class EditMateriel extends Component {
     }
 }
 
-export default EditMateriel;
+export default EditProduct;

@@ -43,12 +43,12 @@ const keyPathMapping = [
     },
     {
         "key": '8',
-        "path": '/home/materiel',
+        "path": '/home/product',
         "hostKey": "sub2"
     },
     {
         "key": '9',
-        "path": '/home/mUnit',
+        "path": '/home/unit',
         "hostKey": "sub2"
     }
 ];
@@ -123,25 +123,25 @@ class HomeMenu extends Component {
                     title={<span>
                             <Image name={hostKey === "sub2" ? "hr_ic_pre" : "hr_ic"}/>
                         <FormattedMessage
-                            id='materielAndUnit'
-                            defaultMessage='Materiel And Unit'
+                            id='product'
+                            defaultMessage='Product'
                         /></span>}
                 >
                     <Menu.Item key="8">
-                        <Link to="/home/materiel">
+                        <Link to="/home/product">
                             <Image name={defaultKey === "8" ? "organize_ic_pre" : "organize_ic"}/>
                             <FormattedMessage
-                                id='materiel'
-                                defaultMessage='Materiel'
+                                id='product'
+                                defaultMessage='Product'
                             />
                         </Link>
                     </Menu.Item>
                     <Menu.Item key="9">
-                        <Link to="/home/mUnit">
+                        <Link to="/home/unit">
                             <Image name={defaultKey === "9" ? "organize_ic_pre" : "organize_ic"}/>
                             <FormattedMessage
-                                id='materielUnit'
-                                defaultMessage='Materiel Unit'
+                                id='unit'
+                                defaultMessage='Unit'
                             />
                         </Link>
                     </Menu.Item>

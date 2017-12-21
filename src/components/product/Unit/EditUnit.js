@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import {Button, Modal} from 'semantic-ui-react';
 import {FormattedMessage} from 'react-intl';
-import MaterielUnitInfo from './MaterielUnitInfo';
-import {updateMaterielUnit} from '../../../actions/materielUnit_action';
+import UnitInfo from './UnitInfo';
+import {updateUnit} from '../../../actions/unit_action';
 import {checkValid, getDataInfo} from '../../../util/CommUtil';
 
-class EditMaterielUnit extends Component {
-    state = {modalOpen: false, materielUnitInfo: {}};
+class EditUnit extends Component {
+    state = {modalOpen: false, unitInfo: {}};
 
     componentWillUpdate() {
         this.fixBody();
@@ -21,26 +21,26 @@ class EditMaterielUnit extends Component {
         if (anotherModal > 0) document.body.classList.add('scrolling', 'dimmable', 'dimmed');
     };
 
-    openModal = (materielUnit) => {
+    openModal = (unit) => {
         this.setState({
             modalOpen: true,
-            materielUnitInfo: materielUnit
+            unitInfo: unit
         })
     };
 
     closeModal = () => this.setState({modalOpen: false});
 
-    updateMaterielUnitInfo = () => {
-        let materielUnitInfo = this.materielUnitInfoNode.getInfo();
-        let flag = checkValid(materielUnitInfo);
+    updateUnitInfo = () => {
+        let unitInfo = this.unitInfoNode.getInfo();
+        let flag = checkValid(unitInfo);
         if (flag) {
-            materielUnitInfo = getDataInfo(materielUnitInfo);
-            this.props.dispatch(updateMaterielUnit(materielUnitInfo, this.closeModal));
+            unitInfo = getDataInfo(unitInfo);
+            this.props.dispatch(updateUnit(unitInfo, this.closeModal));
         }
     };
 
     render() {
-        const {modalOpen, materielUnitInfo} = this.state;
+        const {modalOpen, unitInfo} = this.state;
         return (
             <div>
                 <Modal
@@ -49,14 +49,14 @@ class EditMaterielUnit extends Component {
                     open={modalOpen}>
                     <Modal.Header>
                         <FormattedMessage
-                            id='editMaterielUnit'
-                            defaultMessage='Edit MaterielUnit'
+                            id='editUnit'
+                            defaultMessage='Edit Unit'
                         />
                     </Modal.Header>
                     <Modal.Content>
-                        <MaterielUnitInfo
-                            info={materielUnitInfo}
-                            ref={node => this.materielUnitInfoNode = node}/>
+                        <UnitInfo
+                            info={unitInfo}
+                            ref={node => this.unitInfoNode = node}/>
                     </Modal.Content>
                     <Modal.Actions>
                         <Button className="cancel-button" onClick={() => this.closeModal()}>
@@ -65,7 +65,7 @@ class EditMaterielUnit extends Component {
                                 defaultMessage='Cancel'
                             />
                         </Button>
-                        <Button className="confirm-button" onClick={() => this.updateMaterielUnitInfo()}>
+                        <Button className="confirm-button" onClick={() => this.updateUnitInfo()}>
                             <FormattedMessage
                                 id='confirm'
                                 defaultMessage='Confirm'
@@ -78,4 +78,4 @@ class EditMaterielUnit extends Component {
     }
 }
 
-export default EditMaterielUnit;
+export default EditUnit;

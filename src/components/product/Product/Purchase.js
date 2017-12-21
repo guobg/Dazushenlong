@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import {Button, Modal} from 'semantic-ui-react';
 import {FormattedMessage} from 'react-intl';
-import {updateMateriel} from '../../../actions/materiel_action';
+import {updateProduct} from '../../../actions/product_action';
 import {checkValid, getDataInfo} from '../../../util/CommUtil';
 import Display from '../../common/Display';
 import Input from '../../common/Input';
 
-class StorageMateriel extends Component {
-    state = {modalOpen: false, materielInfo: {}};
+class Purchase extends Component {
+    state = {modalOpen: false, productInfo: {}};
 
     componentWillUpdate() {
         this.fixBody();
@@ -22,27 +22,27 @@ class StorageMateriel extends Component {
         if (anotherModal > 0) document.body.classList.add('scrolling', 'dimmable', 'dimmed');
     };
 
-    openModal = (materiel) => {
+    openModal = (product) => {
         this.setState({
             modalOpen: true,
-            materielInfo: materiel
+            productInfo: product
         })
     };
 
     closeModal = () => this.setState({modalOpen: false});
 
-    updateMaterielInfo = () => {
-        let storageInfo = {storageNumber: this.storageQuantityNode.getWrappedInstance().getValue()};
-        let flag = checkValid(storageInfo);
+    updateProductInfo = () => {
+        let purchaseInfo = {purchaseNumber: this.purchaseQuantityNode.getWrappedInstance().getValue()};
+        let flag = checkValid(purchaseInfo);
         if (flag) {
-            storageInfo = getDataInfo(storageInfo);
-            this.state.materielInfo.quantity = this.state.materielInfo.quantity + Number(storageInfo.storageNumber);
-            this.props.dispatch(updateMateriel(this.state.materielInfo, this.closeModal));
+            purchaseInfo = getDataInfo(purchaseInfo);
+            this.state.productInfo.quantity = this.state.productInfo.quantity + Number(purchaseInfo.purchaseNumber);
+            this.props.dispatch(updateProduct(this.state.productInfo, this.closeModal));
         }
     };
 
     render() {
-        const {modalOpen, materielInfo} = this.state;
+        const {modalOpen, productInfo} = this.state;
         return (
             <div>
                 <Modal
@@ -51,20 +51,20 @@ class StorageMateriel extends Component {
                     open={modalOpen}>
                     <Modal.Header>
                         <FormattedMessage
-                            id='storageMateriel'
-                            defaultMessage='Storage Materiel'
+                            id='purchaseProduct'
+                            defaultMessage='Storage Product'
                         />
                     </Modal.Header>
                     <Modal.Content>
                         <div className="model-container">
                             <Display
-                                label="Materiel Name"
-                                value={materielInfo.materielName}/>
+                                label="Product Name"
+                                value={productInfo.productName}/>
                             <Display
                                 label="Quantity"
-                                value={materielInfo.quantity}/>
+                                value={productInfo.quantity}/>
                             <Input label="Storage Quantity"
-                                   ref={node => this.storageQuantityNode = node}/>
+                                   ref={node => this.purchaseQuantityNode = node}/>
                         </div>
                     </Modal.Content>
                     <Modal.Actions>
@@ -74,7 +74,7 @@ class StorageMateriel extends Component {
                                 defaultMessage='Cancel'
                             />
                         </Button>
-                        <Button className="confirm-button" onClick={() => this.updateMaterielInfo()}>
+                        <Button className="confirm-button" onClick={() => this.updateProductInfo()}>
                             <FormattedMessage
                                 id='confirm'
                                 defaultMessage='Confirm'
@@ -87,4 +87,4 @@ class StorageMateriel extends Component {
     }
 }
 
-export default StorageMateriel;
+export default Purchase;

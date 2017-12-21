@@ -4,13 +4,13 @@ import Input from '../../common/Input';
 import Select from '../../common/Select';
 import TextArea from '../../common/TextArea';
 
-class MaterielInfo extends Component {
+class ProductInfo extends Component {
 
     getInfo = () => {
         return {
-            materielId: this.props.info ? this.props.info.materielId : '',
-            materielName: this.materielNameNode.getWrappedInstance().getValue(),
-            materielSpec: this.materielSpecNode.getWrappedInstance().getValue(),
+            productId: this.props.info ? this.props.info.productId : '',
+            productName: this.productNameNode.getWrappedInstance().getValue(),
+            productSpec: this.productSpecNode.getWrappedInstance().getValue(),
             unit: this.unitNode.getWrappedInstance().getValue(),
             unitPrice: this.unitPriceNode.getWrappedInstance().getValue(),
             quantity: this.quantityNode.getWrappedInstance().getValue(),
@@ -19,12 +19,12 @@ class MaterielInfo extends Component {
     };
 
     getUnitOption = () => {
-        const {materielUnit} = this.props;
+        const {unit} = this.props;
         let options = [];
-        materielUnit.map((item) => {
+        unit.map((item) => {
             options.push({
-                value: item.materielUnitId,
-                text: item.unitName
+                value: item.id,
+                text: item.name
             })
         });
         return options;
@@ -35,13 +35,13 @@ class MaterielInfo extends Component {
         return (
             <Modal.Content>
                 <div className="model-container">
-                    <Input label="Materiel Name"
-                           ref={node => this.materielNameNode = node}
-                           defaultValue={info.materielName}
+                    <Input label="Product Name"
+                           ref={node => this.productNameNode = node}
+                           defaultValue={info.productName}
                     />
-                    <TextArea label="Materiel Specifications"
-                              ref={node => this.materielSpecNode = node}
-                              defaultValue={info.materielSpec}
+                    <TextArea label="Product Specifications"
+                              ref={node => this.productSpecNode = node}
+                              defaultValue={info.productSpec}
                     />
                     <Select options={this.getUnitOption()} label="Unit"
                             ref={node => this.unitNode = node}
@@ -65,4 +65,4 @@ class MaterielInfo extends Component {
     }
 }
 
-export default MaterielInfo;
+export default ProductInfo;

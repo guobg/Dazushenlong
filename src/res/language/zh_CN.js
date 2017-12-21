@@ -120,6 +120,16 @@ const zh_CN = {
     "Call Clock Commission": "点钟提成",
     "Arrange Clock Commission": "排钟提成",
     commissionSetting: "提成设置",
-    stageSetting: "阶梯设置"
+    stageSetting: "阶梯设置",
+    product: "商品",
+    unit: "单位",
+    createUnit: "创建单位",
+    "Unit Name": "单位名称",
+    "Decimal Digits": "小数位数",
+    createProduct: "创建商品",
+    "Product Name": "商品名称",
+    "Product Specifications": "商品规格",
+    "Quantity": "数量",
+    "Total Price": "总价"
 };
 export default zh_CN;

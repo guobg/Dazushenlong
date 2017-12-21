@@ -2,23 +2,23 @@ import React, {Component} from 'react';
 import {Table} from 'semantic-ui-react';
 import {isEmpty} from '../../../util/CommUtil';
 import {FormattedMessage} from 'react-intl';
-import {deleteMaterielUnit, getMaterielUnitList} from '../../../actions/materielUnit_action';
-import EditMaterielUnit from './EditMaterielUnit';
+import {deleteUnit, getUnitList} from '../../../actions/unit_action';
+import EditUnit from './EditUnit';
 
 const header = ["ID", "Unit Name", "Decimal Digits", "Action"];
-const checklistKey = ["materielUnitId", "unitName", "decimalDigit"];
+const checklistKey = ["id", "name", "unit_decimal"];
 
-class MaterielUnitList extends Component {
+class UnitList extends Component {
     componentDidMount() {
-        this.props.dispatch(getMaterielUnitList());
+        this.props.dispatch(getUnitList());
     };
 
     remove = (result) => {
-        this.props.dispatch(deleteMaterielUnit(result))
+        this.props.dispatch(deleteUnit(result))
     };
 
-    edit = (materielUnit) => {
-        this.editMaterielUnitNode.openModal(materielUnit)
+    edit = (unit) => {
+        this.editUnitNode.openModal(unit)
     };
 
     getListDesc = (result, key) => {
@@ -29,7 +29,7 @@ class MaterielUnitList extends Component {
     };
 
     render() {
-        const {materielUnit, dispatch} = this.props;
+        const {unit, dispatch} = this.props;
         return (
             <div className="comm-list">
                 <Table textAlign="center">
@@ -49,7 +49,7 @@ class MaterielUnitList extends Component {
 
                     <Table.Body>
                         {
-                            materielUnit.map((result, i) => {
+                            unit.map((result, i) => {
                                 return <Table.Row key={i}>
                                     {
                                         checklistKey.map((key, j) => {
@@ -79,10 +79,10 @@ class MaterielUnitList extends Component {
                         }
                     </Table.Body>
                 </Table>
-                <EditMaterielUnit ref={node => this.editMaterielUnitNode = node} dispatch={dispatch}/>
+                <EditUnit ref={node => this.editUnitNode = node} dispatch={dispatch}/>
             </div>
         );
     }
 }
 
-export default MaterielUnitList;
+export default UnitList;

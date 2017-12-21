@@ -6,13 +6,13 @@ import {
     numberOptions
 } from '../../../res/data/dataOptions';
 
-class MaterielUnitInfo extends Component {
+class UnitInfo extends Component {
 
     getInfo = () => {
         return {
-            materielUnitId: this.props.info ? this.props.info.materielUnitId : '',
-            unitName: this.unitNameNode.getWrappedInstance().getValue(),
-            decimalDigit: this.decimalDigitNode.getWrappedInstance().getValue()
+            id: this.props.info ? this.props.info.id : '',
+            name: this.unitNameNode.getWrappedInstance().getValue(),
+            unit_decimal: this.decimalDigitNode.getWrappedInstance().getValue()
         }
     };
 
@@ -23,11 +23,11 @@ class MaterielUnitInfo extends Component {
                 <div className="model-container">
                     <Input label="Unit Name"
                            ref={node => this.unitNameNode = node}
-                           defaultValue={info.unitName}
+                           defaultValue={info.name}
                     />
                     <Select options={numberOptions} label="Decimal Digits"
                             ref={node => this.decimalDigitNode = node}
-                            defaultValue={info.decimalDigit}
+                            defaultValue={info.unit_decimal}
                     />
                 </div>
             </Modal.Content>
@@ -35,4 +35,4 @@ class MaterielUnitInfo extends Component {
     }
 }
 
-export default MaterielUnitInfo;
+export default UnitInfo;

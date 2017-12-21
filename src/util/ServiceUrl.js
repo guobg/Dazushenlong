@@ -35,15 +35,16 @@ if (isProduction) {
         updateServiceItem: gateWay + '8080/updateServiceItem',
         getCommissionList: gateWay + '8080/getCommissionList',
         updateCommission: gateWay + '8080/updateCommission',
-        getMaterielUnitList: gateWay + '8080/getMaterielUnitList',
-        createMaterielUnit: gateWay + '8080/createMaterielUnit',
-        updateMaterielUnit: gateWay + '8080/updateMaterielUnit',
-        getMaterielList: gateWay + '8080/getMaterielList',
-        createMateriel: gateWay + '8080/createMateriel',
-        updateMateriel: gateWay + '8080/updateMateriel',
+        getUnitList: gateWay + '8080/getUnitList',
+        createUnit: gateWay + '8080/createUnit',
+        updateUnit: gateWay + '8080/updateUnit',
+        getProductList: gateWay + '8080/getProductList',
+        createProduct: gateWay + '8080/createProduct',
+        updateProduct: gateWay + '8080/updateProduct',
         commSave: 'http://www.biuu.xyz/apiv2.json?service=tools_handler.handler_save_data',
         commGetListAndCount: 'http://www.biuu.xyz/apiv2.json?service=tools_handler.handler_select_list_and_count',
-        commDelete: 'http://www.biuu.xyz/apiv2.json?service=tools_handler.handler_delete_data'
+        commDelete: 'http://www.biuu.xyz/apiv2.json?service=tools_handler.handler_delete_data',
+        commGetList: 'http://www.biuu.xyz/apiv2.json?service=tools_handler.handler_select_list'
     };
 } else {
     const gateWay = "http://192.168.0.107:";
@@ -77,12 +78,12 @@ if (isProduction) {
         updateServiceItem: gateWay + '8080/updateServiceItem',
         getCommissionList: gateWay + '8080/getCommissionList',
         updateCommission: gateWay + '8080/updateCommission',
-        getMaterielUnitList: gateWay + '8080/getMaterielUnitList',
-        createMaterielUnit: gateWay + '8080/createMaterielUnit',
-        updateMaterielUnit: gateWay + '8080/updateMaterielUnit',
-        getMaterielList: gateWay + '8080/getMaterielList',
-        createMateriel: gateWay + '8080/createMateriel',
-        updateMateriel: gateWay + '8080/updateMateriel'
+        getUnitList: gateWay + '8080/getUnitList',
+        createUnit: gateWay + '8080/createUnit',
+        updateUnit: gateWay + '8080/updateUnit',
+        getProductList: gateWay + '8080/getProductList',
+        createProduct: gateWay + '8080/createProduct',
+        updateProduct: gateWay + '8080/updateProduct'
     };
 }
 

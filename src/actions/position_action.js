@@ -1,7 +1,6 @@
 /*
  * action 类型
  */
-import {post} from '../util/request';
 import {save, getListAndCount, remove} from '../util/CommInterface';
 import {
     convertPositionToServer,
@@ -10,7 +9,6 @@ import {
 } from '../util/Convert';
 import StaticLoad from '../components/common/Loading';
 import StaticDialog from '../components/common/Dialog';
-import {url} from '../util/ServiceUrl';
 
 export const GET_POSITION_LIST = 'GET_POSITION_LIST';
 export const CREATE_POSITION = 'CREATE_POSITION';

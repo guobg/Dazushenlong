@@ -1,35 +1,34 @@
 import React, {Component} from 'react';
 import {Modal, Button} from 'semantic-ui-react';
-import MaterielInfo from './MaterielInfo';
+import UnitInfo from './UnitInfo';
 import {FormattedMessage} from 'react-intl';
-import {createMateriel} from '../../../actions/materiel_action';
+import {createUnit} from '../../../actions/unit_action';
 import {checkValid, getDataInfo} from '../../../util/CommUtil';
 
-class CreateMateriel extends Component {
+class CreateUnit extends Component {
     state = {modalOpen: false};
 
     openModal = () => this.setState({modalOpen: true});
 
     closeModal = () => this.setState({modalOpen: false});
 
-    newMateriel = () => {
-        let materielInfo = this.materielInfoNode.getInfo();
-        let flag = checkValid(materielInfo);
+    newUnit = () => {
+        let unitInfo = this.unitInfoNode.getInfo();
+        let flag = checkValid(unitInfo);
         if (flag) {
-            materielInfo = getDataInfo(materielInfo);
-            this.props.dispatch(createMateriel(materielInfo, this.closeModal));
+            unitInfo = getDataInfo(unitInfo);
+            this.props.dispatch(createUnit(unitInfo, this.closeModal));
         }
     };
 
     render() {
         const {modalOpen} = this.state;
-        const {materielUnit} = this.props;
         return (
             <div className="model-main-container">
                 <Button className="create-button" onClick={() => this.openModal()}>
                     <FormattedMessage
-                        id='createMaterielUnit'
-                        defaultMessage='Create MaterielUnit'
+                        id='createUnit'
+                        defaultMessage='Create Unit'
                     />
                 </Button>
                 <Modal
@@ -39,11 +38,11 @@ class CreateMateriel extends Component {
                     size='large'>
                     <Modal.Header className="modal-title-border">
                         <FormattedMessage
-                            id='createMateriel'
-                            defaultMessage='Create Materiel'
+                            id='createUnit'
+                            defaultMessage='Create Unit'
                         />
                     </Modal.Header>
-                    <MaterielInfo ref={(node) => this.materielInfoNode = node} materielUnit={materielUnit}/>
+                    <UnitInfo ref={(node) => this.unitInfoNode = node}/>
                     <Modal.Actions>
                         <Button className="cancel-button" onClick={() => this.closeModal()}>
                             <FormattedMessage
@@ -51,7 +50,7 @@ class CreateMateriel extends Component {
                                 defaultMessage='Cancel'
                             />
                         </Button>
-                        <Button className="confirm-button" onClick={() => this.newMateriel()}>
+                        <Button className="confirm-button" onClick={() => this.newUnit()}>
                             <FormattedMessage
                                 id='confirm'
                                 defaultMessage='Confirm'
@@ -64,4 +63,4 @@ class CreateMateriel extends Component {
     }
 }
 
-export default CreateMateriel;
+export default CreateUnit;

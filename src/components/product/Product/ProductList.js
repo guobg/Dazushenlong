@@ -3,32 +3,32 @@ import {Table} from 'semantic-ui-react';
 import {Pagination} from 'antd';
 import {isEmpty} from '../../../util/CommUtil';
 import {FormattedMessage} from 'react-intl';
-import {deleteMateriel, getMaterielList} from '../../../actions/materiel_action';
-import EditMateriel from './EditMateriel';
-import StorageMateriel from './StorageMateriel';
+import {deleteProduct, getProductList} from '../../../actions/product_action';
+import EditProduct from './EditProduct';
+import Purchase from './Purchase';
 
-const header = ["ID", "Materiel Name", "Materiel Specifications", "Unit", "Unit Price", "Quantity", "Total Price", "Action"];
-const checklistKey = ["materielId", "materielName", "materielSpec", "unit", "unitPrice", "quantity", "totalPrice"];
+const header = ["ID", "Product Name", "Product Specifications", "Unit", "Unit Price", "Quantity", "Total Price", "Action"];
+const checklistKey = ["productId", "productName", "productSpec", "unit", "unitPrice", "quantity", "totalPrice"];
 
-class MaterielList extends Component {
+class ProductList extends Component {
     componentDidMount() {
-        this.props.dispatch(getMaterielList(1, 10));
+        this.props.dispatch(getProductList(1, 10));
     };
 
     pageChange(page, pageSize) {
-        this.props.dispatch(getMaterielList(page, pageSize));
+        this.props.dispatch(getProductList(page, pageSize));
     }
 
     remove = (result) => {
-        this.props.dispatch(deleteMateriel(result))
+        this.props.dispatch(deleteProduct(result))
     };
 
-    edit = (materiel) => {
-        this.editMaterielNode.openModal(materiel)
+    edit = (product) => {
+        this.editProductNode.openModal(product)
     };
 
-    storage = (materiel) => {
-        this.storageMaterielNode.openModal(materiel)
+    purchase = (product) => {
+        this.purchaseProductNode.openModal(product)
     };
 
     getListDesc = (result, key) => {
@@ -43,10 +43,10 @@ class MaterielList extends Component {
     };
 
     getUnitDesc = (unitId) => {
-        const {materielUnit} = this.props;
+        const {unit} = this.props;
         let desc = 'N/A';
-        materielUnit.some((item) => {
-            if (item.materielUnitId === unitId) {
+        unit.some((item) => {
+            if (item.unitId === unitId) {
                 desc = item.unitName;
                 return true;
             }
@@ -55,7 +55,7 @@ class MaterielList extends Component {
     };
 
     render() {
-        const {materiel, dispatch, materielUnit} = this.props;
+        const {product, dispatch, unit} = this.props;
         return (
             <div className="comm-list">
                 <Table textAlign="center">
@@ -75,7 +75,7 @@ class MaterielList extends Component {
 
                     <Table.Body>
                         {
-                            materiel.materials.map((result, i) => {
+                            product.materials.map((result, i) => {
                                 return <Table.Row key={i}>
                                     {
                                         checklistKey.map((key, j) => {
@@ -98,7 +98,7 @@ class MaterielList extends Component {
                                                 defaultMessage='Delete'
                                             />
                                         </div>
-                                        <div className="table-action-edit" onClick={() => this.storage(result)}>
+                                        <div className="table-action-edit" onClick={() => this.purchase(result)}>
                                             入库
                                         </div>
                                     </Table.Cell>
@@ -110,19 +110,19 @@ class MaterielList extends Component {
                     <Table.Footer>
                         <Table.Row>
                             <Table.HeaderCell colSpan={header.length}>
-                                <Pagination defaultCurrent={1} total={materiel.totalElements}
+                                <Pagination defaultCurrent={1} total={product.totalElements}
                                             showQuickJumper
                                             onChange={(page, pageSize) => this.pageChange(page, pageSize)}/>
                             </Table.HeaderCell>
                         </Table.Row>
                     </Table.Footer>
                 </Table>
-                <EditMateriel ref={node => this.editMaterielNode = node} dispatch={dispatch}
-                              materielUnit={materielUnit}/>
-                <StorageMateriel ref={node => this.storageMaterielNode = node} dispatch={dispatch}/>
+                <EditProduct ref={node => this.editProductNode = node} dispatch={dispatch}
+                              unit={unit}/>
+                <Purchase ref={node => this.purchaseProductNode = node} dispatch={dispatch}/>
             </div>
         );
     }
 }
 
-export default MaterielList;
+export default ProductList;
