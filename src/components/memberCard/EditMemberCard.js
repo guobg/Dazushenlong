@@ -3,6 +3,7 @@ import {Button, Modal} from 'semantic-ui-react';
 import {FormattedMessage} from 'react-intl';
 import MemberCardInfo from './MemberCardInfo';
 import {updateMemberCard} from '../../actions/memberCard_action';
+import {checkValid, getDataInfo} from '../../util/CommUtil';
 
 class EditMemberCard extends Component {
     state = {modalOpen: false, memberCardInfo: {}};
@@ -31,7 +32,11 @@ class EditMemberCard extends Component {
 
     updateMemberCardInfo = () => {
         let memberCardInfo = this.memberCardInfoNode.getInfo();
-        this.props.dispatch(updateMemberCard(memberCardInfo, this.closeModal));
+        let flag = checkValid(memberCardInfo);
+        if (flag) {
+            memberCardInfo = getDataInfo(memberCardInfo);
+            this.props.dispatch(updateMemberCard(memberCardInfo, this.closeModal));
+        }
     };
 
     render() {

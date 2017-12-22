@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import {Table, Button} from 'semantic-ui-react';
 import {Pagination} from 'antd';
-import {getDesc, isEmpty} from '../../util/CommUtil';
+import {isEmpty} from '../../util/CommUtil';
 import {FormattedMessage} from 'react-intl';
 import {deleteMemberCard, getMemberCardList} from '../../actions/memberCard_action';
 import EditMemberCard from './EditMemberCard';
 
 const header = ["Membership Card ID", "Membership Card Name", "Discount", "Action"];
-const checklistKey = ["memberCardId", "memberCardName", "discount"];
+const checklistKey = ["id", "name", "discount"];
 
 class MemberCardList extends Component {
     componentDidMount() {
@@ -28,8 +28,8 @@ class MemberCardList extends Component {
 
     getListDesc = (result, key) => {
         if (key === "discount") {
-            if (!result[key]) return 'N/A';
-            return result[key] + "%";
+            if (!Number(result[key])) return 'N/A';
+            return Number(result[key]);
         }
 
         if (isEmpty(result[key])) {
@@ -71,18 +71,18 @@ class MemberCardList extends Component {
                                         })
                                     }
                                     <Table.Cell className="table-action-cell">
-                                        <Button primary onClick={() => this.edit(result)}>
+                                        <div className="table-action-edit" onClick={() => this.edit(result)}>
                                             <FormattedMessage
                                                 id='edit'
                                                 defaultMessage='Edit'
                                             />
-                                        </Button>
-                                        <Button color='red' onClick={() => this.remove(result)}>
+                                        </div>
+                                        <div className="table-action-delete" onClick={() => this.remove(result)}>
                                             <FormattedMessage
                                                 id='delete'
                                                 defaultMessage='Delete'
                                             />
-                                        </Button>
+                                        </div>
                                     </Table.Cell>
                                 </Table.Row>
 

@@ -116,7 +116,7 @@ class MVInput extends Component {
         };
         const {
             label, required, placeHolder, defaultValue, type = "text",
-            step = "0.1", style, fullWidth, action, value, readOnly
+            step = "0.01", style, fullWidth, action, value, readOnly
         } = this.props;
         const {formatMessage} = this.props.intl;
         if (this.props.withRef) {

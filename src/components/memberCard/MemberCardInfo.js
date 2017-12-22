@@ -1,17 +1,13 @@
 import React, {Component} from 'react';
 import {Modal} from 'semantic-ui-react';
 import Input from '../common/Input';
-import Select from '../common/Select';
-import {
-    contingencyOptions
-} from '../../res/data/dataOptions';
 
 class MemberCardInfo extends Component {
 
     getInfo = () => {
         return {
-            memberCardId: this.props.info ? this.props.info.memberCardId : '',
-            memberCardName: this.memberCardNameNode.getWrappedInstance().getValue(),
+            id: this.props.info ? this.props.info.id : '',
+            name: this.memberCardNameNode.getWrappedInstance().getValue(),
             discount: this.discountNode.getWrappedInstance().getValue()
         }
     };
@@ -23,11 +19,16 @@ class MemberCardInfo extends Component {
                 <div className="model-container">
                     <Input label="Membership Card Name"
                            ref={node => this.memberCardNameNode = node}
-                           defaultValue={info.memberCardName}
+                           defaultValue={info.name}
                     />
-                    <Select options={contingencyOptions} label="Discount"
+                    {/*<Select options={contingencyOptions} label="Discount"
                             ref={node => this.discountNode = node}
                             defaultValue={info.discount}
+                    />*/}
+                    <Input label="Discount"
+                           ref={node => this.discountNode = node}
+                           defaultValue={info.discount}
+                           type="number"
                     />
                 </div>
             </Modal.Content>

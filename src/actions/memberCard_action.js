@@ -5,6 +5,7 @@ import {post, get} from '../util/request';
 import StaticLoad from '../components/common/Loading';
 import StaticDialog from '../components/common/Dialog';
 import {url} from '../util/ServiceUrl';
+import {save, getListAndCount, remove} from '../util/CommInterface';
 
 export const GET_MEMBER_CARD_LIST = 'GET_MEMBER_CARD_LIST';
 export const CREATE_MEMBER_CARD = 'CREATE_MEMBER_CARD';
@@ -21,14 +22,11 @@ function retrievedMemberCardList(memberCards) {
 
 export function getMemberCardList(page, pageSize) {
     return dispatch => {
-        post(url.getMemberCardList, {
-            page: page,
-            pageSize: pageSize
-        })
+        getListAndCount('base_member_card_type', page, pageSize)
             .then((res) => {
                 dispatch(retrievedMemberCardList({
-                    memberCards: res.responseBody.memberCards,
-                    totalElements: res.responseBody.totalNumber
+                    memberCards: res.data.rows,
+                    totalElements: res.data.total
                 }));
             })
             .catch((error) => {
@@ -44,33 +42,15 @@ function createdMemberCard(memberCard) {
 export function createMemberCard(memberCard, callback) {
     return dispatch => {
         StaticLoad.show("createMemberCard");
-        post(url.createMemberCard, memberCard)
+        save('base_member_card_type', memberCard)
             .then((res) => {
                 StaticLoad.remove("createMemberCard");
-                dispatch(createdMemberCard(memberCard));
+                dispatch(createdMemberCard(res.data.save_data.header));
                 callback();
             })
             .catch((error) => {
                 StaticLoad.remove("createMemberCard");
                 StaticDialog.show("createMemberCard-error", error.responseCode, error.message);
-                console.info(error);
-            });
-    }
-}
-
-export function rtrvMemberCardDetail(staffId, callback) {
-    return dispatch => {
-        StaticLoad.show("rtrvMemberCardDetail");
-        get(url.rtrvMemberCardDetail, {
-            staffId: staffId
-        })
-            .then((res) => {
-                StaticLoad.remove("rtrvMemberCardDetail");
-                callback(res);
-            })
-            .catch((error) => {
-                StaticLoad.remove("rtrvMemberCardDetail");
-                StaticDialog.show("rtrvMemberCardDetail-error", error.responseCode, error.message);
                 console.info(error);
             });
     }
@@ -83,10 +63,10 @@ function updatedMemberCard(memberCard) {
 export function updateMemberCard(memberCard, callback) {
     return dispatch => {
         StaticLoad.show("updateMemberCard");
-        post(url.updateMemberCard, memberCard)
+        save('base_member_card_type', memberCard)
             .then((res) => {
                 StaticLoad.remove("updateMemberCard");
-                dispatch(updatedMemberCard(memberCard));
+                dispatch(updatedMemberCard(res.data.save_data.header));
                 callback();
             })
             .catch((error) => {
@@ -104,9 +84,7 @@ function deletedMemberCard(memberCard) {
 export function deleteMemberCard(memberCard) {
     return dispatch => {
         StaticLoad.show("deleteMemberCard");
-        get(url.deleteMemberCard, {
-            staffId: memberCard.staffId
-        })
+        remove('base_member_card_type', [memberCard.id])
             .then(() => {
                 StaticLoad.remove("deleteMemberCard");
                 dispatch(deletedMemberCard(memberCard));

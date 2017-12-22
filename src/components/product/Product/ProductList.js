@@ -8,7 +8,7 @@ import EditProduct from './EditProduct';
 import Purchase from './Purchase';
 
 const header = ["ID", "Product Name", "Product Specifications", "Unit", "Unit Price", "Quantity", "Total Price", "Action"];
-const checklistKey = ["productId", "productName", "productSpec", "unit", "unitPrice", "quantity", "totalPrice"];
+const checklistKey = ["id", "name", "description", "unit_id", "price", "sales", "totalPrice"];
 
 class ProductList extends Component {
     componentDidMount() {
@@ -32,8 +32,12 @@ class ProductList extends Component {
     };
 
     getListDesc = (result, key) => {
-        if (key === 'unit' && !isEmpty(result[key])) {
+        if (key === 'unit_id' && !isEmpty(result[key])) {
             return this.getUnitDesc(result[key]);
+        }
+
+        if (key === 'totalPrice') {
+            return result.price * result.sales
         }
 
         if (isEmpty(result[key])) {
@@ -46,8 +50,8 @@ class ProductList extends Component {
         const {unit} = this.props;
         let desc = 'N/A';
         unit.some((item) => {
-            if (item.unitId === unitId) {
-                desc = item.unitName;
+            if (item.id === unitId) {
+                desc = item.name;
                 return true;
             }
         });
@@ -121,7 +125,7 @@ class ProductList extends Component {
                     </Table.Footer>
                 </Table>
                 <EditProduct ref={node => this.editProductNode = node} dispatch={dispatch}
-                              unit={unit}/>
+                             unit={unit}/>
                 <Purchase ref={node => this.purchaseProductNode = node} dispatch={dispatch}/>
             </div>
         );

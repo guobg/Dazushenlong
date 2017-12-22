@@ -1,10 +1,9 @@
 /*
  * action 类型
  */
-import {post, get} from '../util/request';
 import StaticLoad from '../components/common/Loading';
 import StaticDialog from '../components/common/Dialog';
-import {url} from '../util/ServiceUrl';
+import {save, getListAndCount, remove} from '../util/CommInterface';
 
 export const GET_PRODUCT_LIST = 'GET_PRODUCT_LIST';
 export const CREATE_PRODUCT = 'CREATE_PRODUCT';
@@ -21,14 +20,11 @@ function retrievedProductList(materials) {
 
 export function getProductList(page, pageSize) {
     return dispatch => {
-        post(url.getProductList, {
-            page: page,
-            pageSize: pageSize
-        })
+        getListAndCount('base_product', page, pageSize)
             .then((res) => {
                 dispatch(retrievedProductList({
-                    materials: res.responseBody.materials,
-                    totalElements: res.responseBody.totalNumber
+                    materials: res.data.rows,
+                    totalElements: res.data.total
                 }));
             })
             .catch((error) => {
@@ -44,33 +40,15 @@ function createdProduct(product) {
 export function createProduct(product, callback) {
     return dispatch => {
         StaticLoad.show("createProduct");
-        post(url.createProduct, product)
+        save('base_product', product)
             .then((res) => {
                 StaticLoad.remove("createProduct");
-                dispatch(createdProduct(product));
+                dispatch(createdProduct(res.data.save_data.header));
                 callback();
             })
             .catch((error) => {
                 StaticLoad.remove("createProduct");
                 StaticDialog.show("createProduct-error", error.responseCode, error.message);
-                console.info(error);
-            });
-    }
-}
-
-export function rtrvProductDetail(staffId, callback) {
-    return dispatch => {
-        StaticLoad.show("rtrvProductDetail");
-        get(url.rtrvProductDetail, {
-            staffId: staffId
-        })
-            .then((res) => {
-                StaticLoad.remove("rtrvProductDetail");
-                callback(res);
-            })
-            .catch((error) => {
-                StaticLoad.remove("rtrvProductDetail");
-                StaticDialog.show("rtrvProductDetail-error", error.responseCode, error.message);
                 console.info(error);
             });
     }
@@ -83,10 +61,10 @@ function updatedProduct(product) {
 export function updateProduct(product, callback) {
     return dispatch => {
         StaticLoad.show("updateProduct");
-        post(url.updateProduct, product)
+        save('base_product', product)
             .then((res) => {
                 StaticLoad.remove("updateProduct");
-                dispatch(updatedProduct(product));
+                dispatch(updatedProduct(res.data.save_data.header));
                 callback();
             })
             .catch((error) => {
@@ -104,9 +82,7 @@ function deletedProduct(product) {
 export function deleteProduct(product) {
     return dispatch => {
         StaticLoad.show("deleteProduct");
-        get(url.deleteProduct, {
-            staffId: product.staffId
-        })
+        remove('base_product', [product.id])
             .then(() => {
                 StaticLoad.remove("deleteProduct");
                 dispatch(deletedProduct(product));

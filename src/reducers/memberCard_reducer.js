@@ -19,7 +19,7 @@ function memberCard(state = {
         case UPDATE_MEMBER_CARD:
             let temp2 = {...state};
             temp2.memberCards.some((memberCard) => {
-                if (memberCard.memberCardId === action.memberCard.memberCardId) {
+                if (memberCard.id === action.memberCard.id) {
                     Object.assign(memberCard, action.memberCard);
                     return true;
                 }

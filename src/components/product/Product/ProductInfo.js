@@ -3,18 +3,19 @@ import {Modal} from 'semantic-ui-react';
 import Input from '../../common/Input';
 import Select from '../../common/Select';
 import TextArea from '../../common/TextArea';
+import Display from '../../common/Display';
 
 class ProductInfo extends Component {
 
     getInfo = () => {
         return {
-            productId: this.props.info ? this.props.info.productId : '',
-            productName: this.productNameNode.getWrappedInstance().getValue(),
-            productSpec: this.productSpecNode.getWrappedInstance().getValue(),
-            unit: this.unitNode.getWrappedInstance().getValue(),
-            unitPrice: this.unitPriceNode.getWrappedInstance().getValue(),
-            quantity: this.quantityNode.getWrappedInstance().getValue(),
-            totalPrice: this.totalPriceNode.getWrappedInstance().getValue()
+            id: this.props.info ? this.props.info.id : '',
+            name: this.productNameNode.getWrappedInstance().getValue(),
+            description: this.productSpecNode.getWrappedInstance().getValue(),
+            unit_id: this.unitNode.getWrappedInstance().getValue(),
+            price: this.unitPriceNode.getWrappedInstance().getValue(),
+            sales: this.quantityNode.getWrappedInstance().getValue(),
+            //totalPrice: this.totalPriceNode.getWrappedInstance().getValue()
         }
     };
 
@@ -37,28 +38,25 @@ class ProductInfo extends Component {
                 <div className="model-container">
                     <Input label="Product Name"
                            ref={node => this.productNameNode = node}
-                           defaultValue={info.productName}
+                           defaultValue={info.name}
                     />
                     <TextArea label="Product Specifications"
                               ref={node => this.productSpecNode = node}
-                              defaultValue={info.productSpec}
+                              defaultValue={info.description}
                     />
                     <Select options={this.getUnitOption()} label="Unit"
                             ref={node => this.unitNode = node}
-                            defaultValue={info.unit}
+                            defaultValue={info.unit_id}
                     />
                     <Input label="Unit Price"
                            ref={node => this.unitPriceNode = node}
-                           defaultValue={info.unitPrice}
+                           defaultValue={info.price}
                     />
                     <Input label="Quantity"
                            ref={node => this.quantityNode = node}
-                           defaultValue={info.quantity}
+                           defaultValue={info.sales}
                     />
-                    <Input label="Total Price"
-                           ref={node => this.totalPriceNode = node}
-                           defaultValue={info.totalPrice}
-                    />
+                    <Display label="Total Price" value='100'/>
                 </div>
             </Modal.Content>
         );

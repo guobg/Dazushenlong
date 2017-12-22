@@ -3,6 +3,7 @@ import {Modal, Button} from 'semantic-ui-react';
 import MemberCardInfo from './MemberCardInfo';
 import {FormattedMessage} from 'react-intl';
 import {createMemberCard} from '../../actions/memberCard_action';
+import {checkValid, getDataInfo} from '../../util/CommUtil';
 
 class CreateMemberCard extends Component {
     state = {modalOpen: false};
@@ -13,7 +14,11 @@ class CreateMemberCard extends Component {
 
     newMemberCard = () => {
         let memberCardInfo = this.memberCardInfoNode.getInfo();
-        this.props.dispatch(createMemberCard(memberCardInfo, this.closeModal));
+        let flag = checkValid(memberCardInfo);
+        if (flag) {
+            memberCardInfo = getDataInfo(memberCardInfo);
+            this.props.dispatch(createMemberCard(memberCardInfo, this.closeModal));
+        }
     };
 
     render() {
